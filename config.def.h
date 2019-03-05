@@ -207,10 +207,10 @@ static Key keys[] = {
         TAGKEYS(                        XK_9,                      9)
 
 // igorg: option 1, default: use to summon all windows together
-        { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-        { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+        //{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+        //{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 // igorg: option 2, added: use for one extra tag ("0"), currently using spotify there
-        //TAGKEYS(                        XK_0,                      10)
+        TAGKEYS(                        XK_0,                      10)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // Thus, the below declarations don't work:
