@@ -72,9 +72,9 @@ static const Layout layouts[] = {
 // TODO: pick more representative symbols now that I realized that symbols need to be 3 characters long
 //       to avoid jerking while switching layouts
 	/* symbol     arrange function */
-	{ " ├ " , tile },    /* first entry is default */
-	{ " ▞ " , NULL },    /* no layout function means floating behavior */
-	{ "[M]" , monocle },
+	{ "tile"  , tile },    /* first entry is default */
+	{ "float" , NULL },    /* no layout function means floating behavior */
+	{ "[M]"   , monocle },
 };
 
 /* key definitions */
