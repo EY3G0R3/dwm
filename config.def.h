@@ -113,6 +113,7 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,         XK_s,      spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
 
 // igorg: automatically pick the best resolution/configuration, for solo/multi displays
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("~/rc/bin/igorandr") },
