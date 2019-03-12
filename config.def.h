@@ -12,8 +12,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
-static const char *fonts[]          = { "monospace:pixelsize=13" };
-static const char dmenufont[]       = "monospace:pixelsize=13";
+static const char *fonts[]          = { "monospace:pixelsize=14" };
+static const char dmenufont[]       = "monospace:pixelsize=14";
 
 static char normbordercolor[]  = "#928374";
 static char normbgcolor[]      = "#282828";  // gruvbox dark bg
