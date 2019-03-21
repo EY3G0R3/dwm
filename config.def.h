@@ -102,6 +102,9 @@ static const char *termcmd[]  = { "st", NULL };
 #define XF86AudioPrev 0x1008ff16
 #define XF86AudioStop 0x1008ff15
 
+// igorg: figured these from xev -event keyboard
+#define XF86MonBrightnessUp    0x1008ff02
+#define XF86MonBrightnessDown  0x1008ff03
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -232,6 +235,11 @@ static Key keys[] = {
 	{ 0,                            XF86AudioPrev,  spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
 	{ 0,                            XF86AudioNext,  spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
 
+// igorg: screen brightness
+// TODO: change this to a script which will also show the current brightness from notify-send
+	{ 0,                            XF86MonBrightnessUp,    spawn,     SHCMD("xbacklight +10") },
+	{ 0,                            XF86MonBrightnessDown,  spawn,     SHCMD("xbacklight -10") },
+
 // igorg: program launchers
 	{ MODKEY,                       XK_q,           spawn,     SHCMD("~/rc/bin/quip") },
 	{ MODKEY,                       XK_n,           spawn,     SHCMD("google-chrome") },
@@ -244,10 +252,6 @@ static Key keys[] = {
         //#bindsym $mod+c  exec google-chrome --app=https://outlook.office365.com/owa/?path=/calendar/view/WorkWeek
         // igorg: # FB calendar
         //bindsym $mod+c  exec google-chrome --app=https://our.intern.facebook.com/intern/calendar
-
-// TODO: migrate screen brightness
-        //bindsym XF86MonBrightnessUp exec "xbacklight +10"
-        //bindsym XF86MonBrightnessDown exec "xbacklight -10"
 
 //# TODO: migrate volume control. Not urgent because pa-applet currently handles this
 //# igorg: TODO: fix unmute: https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
