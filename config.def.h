@@ -181,9 +181,9 @@ static Key keys[] = {
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
         //{ MODKEY,                       XK_space,  setlayout,      {0} },
 // igorg: Mod+Space option 2: switch to monocle layout
-	{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[2]} },
 // igorg: Mod+Space option 3: ideal behavior: switch between tile and monocle layouts
-        // TODO: implement and see
+	{ MODKEY,                       XK_space,  swaplayouts,    {0} },
 
 // toggle floating
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },

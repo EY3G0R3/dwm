@@ -247,6 +247,7 @@ static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
+static void swaplayouts(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
@@ -1764,6 +1765,22 @@ setlayout(const Arg *arg)
 		arrange(selmon);
 	else
 		drawbar(selmon);
+}
+
+/* swaps between tile and monocle layouts */
+void
+swaplayouts(const Arg *arg)
+{
+  // TODO: tweak this if we update Layout layouts[]
+  const Layout* tilelayout = &layouts[0];
+  const Layout* monoclelayout = &layouts[2];
+
+  Arg a = {.v = monoclelayout};
+
+  if (selmon->lt[selmon->sellt] == monoclelayout)
+    a.v = tilelayout;
+
+  setlayout(&a);
 }
 
 /* arg > 1.0 will set mfact absolutely */
