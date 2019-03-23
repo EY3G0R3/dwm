@@ -243,6 +243,7 @@ static Key keys[] = {
 // igorg: program launchers
 	{ MODKEY,                       XK_q,           spawn,     SHCMD("~/rc/bin/quip") },
 	{ MODKEY,                       XK_n,           spawn,     SHCMD("google-chrome") },
+	{ MODKEY,                       XK_z,           spawn,     SHCMD("~/rc/bin/et")   },
 
 // TODO: migrate keybindings for commonly used apps
 // TODO: invoke them from their ~/rc/bin/ launchers
