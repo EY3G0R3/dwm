@@ -71,10 +71,11 @@ static const Layout layouts[] = {
 // igorg: some more: ╠ ├ ┣ ▞ ꖸ 𐌎
 // TODO: pick more representative symbols now that I realized that symbols need to be 3 characters long
 //       to avoid jerking while switching layouts
+//       Currently keeping all symbols 5 characters long
 	/* symbol     arrange function */
-	{ "tile"  , tile },    /* first entry is default */
-	{ "float" , NULL },    /* no layout function means floating behavior */
-	{ "[M]"   , monocle },
+	{ "tile " , tile    },    /* first entry is default */
+	{ "float" , NULL    },    /* no layout function means floating behavior */
+	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
 };
 
 /* key definitions */

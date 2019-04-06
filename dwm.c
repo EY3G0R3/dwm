@@ -822,6 +822,7 @@ drawbar(Monitor *m)
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0, n = 0;
+	unsigned int a = 0, s = 0;
 	Client *c;
 
 	if(showsystray && m == systraytomon(m))
@@ -853,8 +854,18 @@ drawbar(Monitor *m)
 				urg & 1 << i);
 		x += w;
 	}
-	w = blw = TEXTW(m->ltsymbol);
+
+	if (m->lt[m->sellt]->arrange == monocle) { /* replace [M] symbol with [current/total] text */
+		for (c = nexttiled(m->clients), a = 0, s = 0; c; c = nexttiled(c->next), a++)
+			if (c == m->stack)
+				s = a;
+		if (!s && a)
+			s = a;
+		snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "[%d/%d]", s, a);
+	}
+
 	drw_setscheme(drw, scheme[SchemeNorm]);
+	w = blw = TEXTW(m->ltsymbol);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - stw - x) > bh) {
@@ -1309,8 +1320,6 @@ monocle(Monitor *m)
 	for (c = m->clients; c; c = c->next)
 		if (ISVISIBLE(c))
 			n++;
-	if (n > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
 }
