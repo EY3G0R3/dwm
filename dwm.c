@@ -848,10 +848,10 @@ drawbar(Monitor *m)
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxs, boxs, boxw, boxw,
-				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-				urg & 1 << i);
+		if (m->tagset[m->seltags] & 1 << i) /* underline selected tag */
+			drw_rect(drw, x + lrpad / 2, bh - taglinepx - 1, w - lrpad, taglinepx, 1, 0);
+		/* TODO: highlight tags which have clients (occ) and tags which have urgent clients (urg) */
+		/*       probably by introducing two new schemes and linking them from xrdb */
 		x += w;
 	}
 
