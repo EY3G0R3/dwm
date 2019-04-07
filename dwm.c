@@ -328,7 +328,9 @@ static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
 
 /* configuration, allows nested code to access above variables */
-#include "config.h"
+/* igorg: use config.def.h instead of config.h because config.h is not source controlled */
+/* igorg: and patches target config.def.h anyway */
+#include "config.def.h"
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
