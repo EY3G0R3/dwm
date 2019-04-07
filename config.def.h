@@ -19,15 +19,59 @@ static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "monospace:pixelsize=14" };
 static const char dmenufont[]       = "monospace:pixelsize=14";
 
-static char normbordercolor[]  = "#928374";
-static char normbgcolor[]      = "#282828";  // gruvbox dark bg
-static char normfgcolor[]      = "#eeeeee";  // lightgray
-static char selbordercolor[]   = "#005577";  // cyan
-static char selbgcolor[]       = "#005577";  // cyan
-static char selfgcolor[]       = "#eeeeee";  // lightgray
-static char titlebordercolor[] = "#282828";  // gruvbox dark bg
-static char titlebgcolor[]     = "#282828";  // gruvbox dark bg
-static char titlefgcolor[]     = "#eeeeee";  // lightgray
+/* gruvbox color scheme */
+#define COL_GRUVBOX_BG        "#282828"
+#define COL_GRUVBOX_BG0       "#282828"
+#define COL_GRUVBOX_BG0_H     "#1d2021"
+#define COL_GRUVBOX_BG0_S     "#32302f"
+#define COL_GRUVBOX_BG1       "#3c3836"
+#define COL_GRUVBOX_BG2       "#504945"
+#define COL_GRUVBOX_BG3       "#665c54"
+#define COL_GRUVBOX_BG4       "#7c6f64"
+
+#define COL_GRUVBOX_FG        "#ebdbb2"
+#define COL_GRUVBOX_FG0       "#fbf1c7"
+#define COL_GRUVBOX_FG1       "#ebdbb2"
+#define COL_GRUVBOX_FG2       "#d5c4a1"
+#define COL_GRUVBOX_FG3       "#bdae93"
+#define COL_GRUVBOX_FG4       "#a89984"
+
+#define COL_GRUVBOX_GRAY1     "#a89984"
+#define COL_GRUVBOX_GRAY2     "#928374"
+#define COL_GRUVBOX_GRAY3     "#928374"
+
+#define COL_GRUVBOX_RED_HI    "#cc241d"
+#define COL_GRUVBOX_RED_LO    "#fb4934"
+#define COL_GRUVBOX_GREEN_HI  "#98971a"
+#define COL_GRUVBOX_GREEN_LO  "#b8bb26"
+#define COL_GRUVBOX_YELLOW_HI "#d79921"
+#define COL_GRUVBOX_YELLOW_LO "#fabd2f"
+#define COL_GRUVBOX_BLUE_HI   "#458588"
+#define COL_GRUVBOX_BLUE_LO   "#83a598"
+#define COL_GRUVBOX_PURPLE_HI "#b16286"
+#define COL_GRUVBOX_PURPLE_LO "#d3869b"
+#define COL_GRUVBOX_AQUA_HI   "#689d6a"
+#define COL_GRUVBOX_AQUA_LO   "#8ec07c"
+#define COL_GRUVBOX_ORANGE_HI "#d65d0e"
+#define COL_GRUVBOX_ORANGE_LO "#fe8019"
+
+/* some schemes don't use border/fg/bg colors */
+#define COL_UNUSED            "#ff0000"
+
+static char normbordercolor[]  = COL_GRUVBOX_BG;
+static char normbgcolor[]      = COL_GRUVBOX_BG;
+static char normfgcolor[]      = COL_GRUVBOX_GRAY2;
+static char selbordercolor[]   = COL_GRUVBOX_YELLOW_LO;
+static char selbgcolor[]       = COL_GRUVBOX_BG;
+static char selfgcolor[]       = COL_GRUVBOX_GRAY2;
+// option 1: title is present
+//static char titlebordercolor[] = COL_UNUSED;
+//static char titlebgcolor[]     = COL_GRUVBOX_BG;
+//static char titlefgcolor[]     = COL_GRUVBOX_FG1;
+// option 2: title is disabled (fg=bg) because it introduces more noise than value
+static char titlebordercolor[] = COL_UNUSED;
+static char titlebgcolor[]     = COL_GRUVBOX_BG;
+static char titlefgcolor[]     = COL_GRUVBOX_BG;
 
 
 static const char col_gray1[]       = "#222222";
