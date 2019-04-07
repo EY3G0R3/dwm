@@ -853,9 +853,7 @@ drawbar(Monitor *m)
 		/* TODO: for empty tags, draw them as empty even if they are selected */
 		const int tag_mask = 1 << i;
 		size_t sch = SchemeEmpty;
-		if (m->tagset[m->seltags] & tag_mask)
-			sch = SchemeSel;
-		else if (urg & tag_mask)
+		if (urg & tag_mask)
 			sch = SchemeUrgent;
 		else if (occ & tag_mask)
 			sch = SchemeNorm;
@@ -863,8 +861,11 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[sch]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], 0);
 
-		if (sch == SchemeSel) /* underline selected tag */
+                /* underline selected tag */
+		if (m->tagset[m->seltags] & tag_mask) {
+			drw_setscheme(drw, scheme[SchemeSel]);
 			drw_rect(drw, x + lrpad / 2, bh - taglinepx - 1, w - lrpad, taglinepx, 1, 0);
+		}
 		x += w;
 	}
 
