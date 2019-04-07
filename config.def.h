@@ -58,20 +58,26 @@ static const char dmenufont[]       = "monospace:pixelsize=14";
 /* some schemes don't use border/fg/bg colors */
 #define COL_UNUSED            "#ff0000"
 
-static char normbordercolor[]  = COL_GRUVBOX_BG;
-static char normbgcolor[]      = COL_GRUVBOX_BG;
-static char normfgcolor[]      = COL_GRUVBOX_GRAY2;
-static char selbordercolor[]   = COL_GRUVBOX_YELLOW_LO;
-static char selbgcolor[]       = COL_GRUVBOX_BG;
-static char selfgcolor[]       = COL_GRUVBOX_GRAY2;
+static char normbordercolor[]   = COL_GRUVBOX_BG;
+static char normbgcolor[]       = COL_GRUVBOX_BG;
+static char normfgcolor[]       = COL_GRUVBOX_GRAY2;
+static char selbordercolor[]    = COL_GRUVBOX_YELLOW_LO;
+static char selbgcolor[]        = COL_GRUVBOX_BG;
+static char selfgcolor[]        = COL_GRUVBOX_GRAY2;
 // option 1: title is present
 //static char titlebordercolor[] = COL_UNUSED;
 //static char titlebgcolor[]     = COL_GRUVBOX_BG;
 //static char titlefgcolor[]     = COL_GRUVBOX_FG1;
 // option 2: title is disabled (fg=bg) because it introduces more noise than value
-static char titlebordercolor[] = COL_UNUSED;
-static char titlebgcolor[]     = COL_GRUVBOX_BG;
-static char titlefgcolor[]     = COL_GRUVBOX_BG;
+static char titlebordercolor[]  = COL_UNUSED;
+static char titlebgcolor[]      = COL_GRUVBOX_BG;
+static char titlefgcolor[]      = COL_GRUVBOX_BG;
+static char urgentbordercolor[] = COL_GRUVBOX_RED_LO;
+static char urgentbgcolor[]     = COL_GRUVBOX_BG;
+static char urgentfgcolor[]     = COL_GRUVBOX_GREEN_LO;
+static char emptybordercolor[]  = COL_UNUSED;
+static char emptybgcolor[]      = COL_GRUVBOX_BG;
+static char emptyfgcolor[]      = COL_GRUVBOX_BG1;
 
 
 static const char col_gray1[]       = "#222222";
@@ -81,9 +87,11 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*                      fg            bg               border   */
-	[SchemeNorm]   = { normfgcolor  , normbgcolor   , normbordercolor  },
-	[SchemeSel]    = { selfgcolor   , selbgcolor    , selbordercolor   },
-	[SchemeTitle]  = { titlefgcolor , titlebgcolor  , titlebordercolor },
+	[SchemeNorm]     = { normfgcolor    , normbgcolor    , normbordercolor     },
+	[SchemeSel]      = { selfgcolor     , selbgcolor     , selbordercolor      },
+	[SchemeTitle]    = { titlefgcolor   , titlebgcolor   , titlebordercolor    },
+	[SchemeUrgent]   = { urgentfgcolor  , urgentbgcolor  , urgentbordercolor   },
+	[SchemeEmpty]    = { emptyfgcolor   , emptybgcolor   , emptybordercolor    },
 };
 
 static const char *xres = "/home/igorg/.Xresources";

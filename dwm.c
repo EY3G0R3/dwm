@@ -91,7 +91,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeTitle }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeTitle, SchemeUrgent, SchemeEmpty }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
@@ -848,12 +848,23 @@ drawbar(Monitor *m)
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
-		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (m->tagset[m->seltags] & 1 << i) /* underline selected tag */
+
+		/* pick the right scheme for this tag based on selection, urgency and occupancy */
+		/* TODO: for empty tags, draw them as empty even if they are selected */
+		const int tag_mask = 1 << i;
+		size_t sch = SchemeEmpty;
+		if (m->tagset[m->seltags] & tag_mask)
+			sch = SchemeSel;
+		else if (urg & tag_mask)
+			sch = SchemeUrgent;
+		else if (occ & tag_mask)
+			sch = SchemeNorm;
+
+		drw_setscheme(drw, scheme[sch]);
+		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], 0);
+
+		if (sch == SchemeSel) /* underline selected tag */
 			drw_rect(drw, x + lrpad / 2, bh - taglinepx - 1, w - lrpad, taglinepx, 1, 0);
-		/* TODO: highlight tags which have clients (occ) and tags which have urgent clients (urg) */
-		/*       probably by introducing two new schemes and linking them from xrdb */
 		x += w;
 	}
 
@@ -1217,6 +1228,12 @@ loadxrdb()
     XRDB_LOAD_COLOR("dwm.titlebordercolor", titlebordercolor);
     XRDB_LOAD_COLOR("dwm.titlebgcolor", titlebgcolor);
     XRDB_LOAD_COLOR("dwm.titlefgcolor", titlefgcolor);
+    XRDB_LOAD_COLOR("dwm.urgentbordercolor", urgentbordercolor);
+    XRDB_LOAD_COLOR("dwm.urgentbgcolor", urgentbgcolor);
+    XRDB_LOAD_COLOR("dwm.urgentfgcolor", urgentfgcolor);
+    XRDB_LOAD_COLOR("dwm.emptybordercolor", emptybordercolor);
+    XRDB_LOAD_COLOR("dwm.emptybgcolor", emptybgcolor);
+    XRDB_LOAD_COLOR("dwm.emptyfgcolor", emptyfgcolor);
   }
 }
 
@@ -2625,6 +2642,14 @@ xrdb(const Arg *arg)
   drw_clr_create(drw, &scheme[SchemeTitle][ColBorder], titlebordercolor);
   drw_clr_create(drw, &scheme[SchemeTitle][ColBg    ], titlebgcolor);
   drw_clr_create(drw, &scheme[SchemeTitle][ColFg    ], titlefgcolor);
+
+  drw_clr_create(drw, &scheme[SchemeUrgent][ColBorder], urgentbordercolor);
+  drw_clr_create(drw, &scheme[SchemeUrgent][ColBg    ], urgentbgcolor);
+  drw_clr_create(drw, &scheme[SchemeUrgent][ColFg    ], urgentfgcolor);
+
+  drw_clr_create(drw, &scheme[SchemeEmpty][ColBorder], emptybordercolor);
+  drw_clr_create(drw, &scheme[SchemeEmpty][ColBg    ], emptybgcolor);
+  drw_clr_create(drw, &scheme[SchemeEmpty][ColFg    ], emptyfgcolor);
 
   focus(NULL);
   arrange(NULL);
