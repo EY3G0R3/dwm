@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+/* igorg: needed for media keys */
+#include "X11/XF86keysym.h"
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gap pixel between windows */
@@ -8,7 +11,7 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int taglinepx = 1;        /* height of tag underline */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
@@ -94,19 +97,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-
-
-
-// igorg: audio keys not defined, so define them
-// igorg: from https://shanetully.com/2012/07/simulating-mediakey-presses-in-x11/
-#define XF86AudioPlay 0x1008ff14
-#define XF86AudioNext 0x1008ff17
-#define XF86AudioPrev 0x1008ff16
-#define XF86AudioStop 0x1008ff15
-
-// igorg: figured these from xev -event keyboard
-#define XF86MonBrightnessUp    0x1008ff02
-#define XF86MonBrightnessDown  0x1008ff03
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -232,20 +222,20 @@ static Key keys[] = {
 
 
 // igorg: audio controls for spotify
-	{ 0,                            XF86AudioPlay,  spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
-	{ 0,                            XF86AudioStop,  spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") },
-	{ 0,                            XF86AudioPrev,  spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
-	{ 0,                            XF86AudioNext,  spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
+	{ 0,                            XF86XK_AudioPlay,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
+	{ 0,                            XF86XK_AudioStop,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") },
+	{ 0,                            XF86XK_AudioPrev,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
+	{ 0,                            XF86XK_AudioNext,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
 
 // igorg: screen brightness
 // TODO: change this to a script which will also show the current brightness from notify-send
-	{ 0,                            XF86MonBrightnessUp,    spawn,     SHCMD("xbacklight +10") },
-	{ 0,                            XF86MonBrightnessDown,  spawn,     SHCMD("xbacklight -10") },
+	{ 0,                            XF86XK_MonBrightnessUp,     spawn,     SHCMD("xbacklight +10") },
+	{ 0,                            XF86XK_MonBrightnessDown,   spawn,     SHCMD("xbacklight -10") },
 
 // igorg: program launchers
-	{ MODKEY,                       XK_q,           spawn,     SHCMD("~/rc/bin/quip") },
-	{ MODKEY,                       XK_n,           spawn,     SHCMD("google-chrome") },
-	{ MODKEY,                       XK_z,           spawn,     SHCMD("~/rc/bin/et")   },
+	{ MODKEY,                       XK_q,                       spawn,     SHCMD("~/rc/bin/quip") },
+	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
+	{ MODKEY,                       XK_z,                       spawn,     SHCMD("~/rc/bin/et")   },
 
 // TODO: migrate keybindings for commonly used apps
 // TODO: invoke them from their ~/rc/bin/ launchers
@@ -258,9 +248,9 @@ static Key keys[] = {
 
 //# TODO: migrate volume control. Not urgent because pa-applet currently handles this
 //# igorg: TODO: fix unmute: https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
-        //bindsym XF86AudioMute exec amixer -D default sset Master toggle && pkill -RTMIN+10 i3blocks
-        //bindsym XF86AudioRaiseVolume exec amixer -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
-        //bindsym XF86AudioLowerVolume exec amixer -D default sset Master 5%- && pkill -RTMIN+10 i3blocks
+        //bindsym XF86XK_AudioMute        exec amixer -D default sset Master toggle && pkill -RTMIN+10 i3blocks
+        //bindsym XF86XK_AudioRaiseVolume exec amixer -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
+        //bindsym XF86XK_AudioLowerVolume exec amixer -D default sset Master 5%- && pkill -RTMIN+10 i3blocks
 };
 
 /* button definitions */
