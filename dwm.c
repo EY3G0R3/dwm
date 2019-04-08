@@ -20,6 +20,7 @@
  *
  * To understand everything else, start reading main().
  */
+#include <time.h>
 #include <errno.h>
 #include <locale.h>
 #include <signal.h>
@@ -882,6 +883,20 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		drw_rect(drw, x, 0, w, bh, 1, 1);
 	}
+
+	/* igorg: show time in the middle of the bar */
+	time_t t = time(NULL);
+	char time_str[1024];
+	if (!strftime(time_str, sizeof(time_str), "%I:%M %p", localtime(&t))) {
+		*time_str = 0;
+	}
+	int time_width = TEXTW(time_str);
+	if (time_width < m->ww) {
+		int time_x = (m->ww - time_width) / 2;
+		drw_setscheme(drw, scheme[SchemeNorm]);
+		drw_text(drw, time_x, 0, time_width, bh, lrpad / 2, time_str, 0);
+	}
+
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
 }
 
