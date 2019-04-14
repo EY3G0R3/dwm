@@ -219,6 +219,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_o,      winview,        {0} },
 
 // igorg: Mod+Tab option 1: show previous tag. Not that useful
 	//{ MODKEY,                       XK_Tab,    view,           {0} },
