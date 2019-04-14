@@ -122,6 +122,7 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
+#include "layouts.c"
 static const Layout layouts[] = {
 // igorg: custom characters for layouts
 // igorg: some more: ╠ ├ ┣ ▞ ꖸ 𐌎
@@ -132,6 +133,7 @@ static const Layout layouts[] = {
 	{ "tile " , tile    },    /* first entry is default */
 	{ "float" , NULL    },    /* no layout function means floating behavior */
 	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
+	{ " HHH " , grid    },
 };
 
 /* key definitions */
@@ -216,6 +218,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 
 // igorg: Mod+Tab option 1: show previous tag. Not that useful
 	//{ MODKEY,                       XK_Tab,    view,           {0} },
