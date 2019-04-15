@@ -224,7 +224,9 @@ static Key keys[] = {
 // igorg: Mod+Tab option 1: show previous tag. Not that useful
 	//{ MODKEY,                       XK_Tab,    view,           {0} },
 // igorg: Mod+Tab option 2: switch to tile layout
-	{ MODKEY,                       XK_Tab,    setlayout,      {.v = &layouts[0]} },
+	//{ MODKEY,                       XK_Tab,    setlayout,      {.v = &layouts[0]} },
+ //igorg: Mod+Tab option 3: summon all windows so we can switch to them with Mod+o
+	{ MODKEY,                       XK_Tab,      view,           {.ui = ~0 } },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
         //{ MODKEY,                       XK_space,  setlayout,      {0} },
@@ -258,10 +260,10 @@ static Key keys[] = {
         TAGKEYS(                        XK_9,                      9)
 
 // igorg: option 1, default: use to summon all windows together
-        //{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-        //{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 // igorg: option 2, added: use for one extra tag ("0"), currently using spotify there
-        TAGKEYS(                        XK_0,                      10)
+	TAGKEYS(                        XK_0,                      10)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // Thus, the below declarations don't work:
