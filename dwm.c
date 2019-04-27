@@ -849,6 +849,8 @@ void
 drawbar(Monitor *m)
 {
 	int x, w, sw = 0, stw = 0;
+	int boxs = drw->fonts->h / 9;
+	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	unsigned int a = 0, s = 0;
 	Client *c;
@@ -884,6 +886,10 @@ drawbar(Monitor *m)
 
 		drw_setscheme(drw, scheme[sch]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], 0);
+
+		if (urg & tag_mask) {
+			drw_rect(drw, x + boxs, boxs, boxw, boxw, 1, 0);
+		}
 
                 /* underline selected tag */
 		if (m->tagset[m->seltags] & tag_mask) {
