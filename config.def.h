@@ -183,7 +183,7 @@ static Key keys[] = {
 // igorg: disable touchpad
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
 
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,  		XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 
@@ -296,7 +296,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,                       spawn,     SHCMD("~/rc/bin/et")   },
 
 // igorg: websearch
-	{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google: https://google.com/?q= monospace:pixelsize=14") },
+// TODO: turn monospace:pixelsize=14 into a macro
+	{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google: https://google.com/?q=          monospace:pixelsize=14") },
+	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:  https://bunnylol.facebook.net/? monospace:pixelsize=14") },
 
 // TODO: migrate keybindings for commonly used apps
 // TODO: invoke them from their ~/rc/bin/ launchers
