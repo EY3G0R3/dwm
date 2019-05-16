@@ -295,6 +295,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
 	{ MODKEY,                       XK_z,                       spawn,     SHCMD("~/rc/bin/et")   },
 
+// igorg: websearch
+	{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google: https://google.com/?q= monospace:pixelsize=14") },
+
 // TODO: migrate keybindings for commonly used apps
 // TODO: invoke them from their ~/rc/bin/ launchers
         // igorg: # Mail
