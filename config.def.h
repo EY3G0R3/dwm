@@ -133,7 +133,7 @@ static const Layout layouts[] = {
 	{ "tile " , tile    },    /* first entry is default */
 	{ "float" , NULL    },    /* no layout function means floating behavior */
 	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
-	{ " HHH " , grid    },
+	{ "grid " , grid    },
 };
 
 /* key definitions */
