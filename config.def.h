@@ -151,6 +151,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -294,7 +295,7 @@ static Key keys[] = {
 // igorg: program launchers
 	{ MODKEY,                       XK_q,                       spawn,     SHCMD("~/rc/bin/quip") },
 	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
-	{ MODKEY,                       XK_z,                       spawn,     SHCMD("~/rc/bin/et")   },
+	{ MODKEY,                       XK_z,                       runorraise,  {.v = todocmd } },
 
 // igorg: websearch
 // TODO: turn monospace:pixelsize=14 into a macro
