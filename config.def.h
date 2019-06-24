@@ -169,8 +169,11 @@ static Key keys[] = {
 // igorg: automatically pick the best resolution/configuration, for solo/multi displays
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("~/rc/bin/igorandr") },
 
-// igorg: show pavucontrol for audio profile selection
-	{ MODKEY,                       XK_bracketleft, spawn,     SHCMD("pavucontrol -t 5") },
+// igorg: option 1: show pavucontrol for audio profile selection
+	//{ MODKEY,                       XK_bracketleft, spawn,     SHCMD("pavucontrol -t 5") },
+// igorg: option 2: route audio between hdmi/internal directly by hotkeys
+	{ MODKEY,                       XK_bracketleft,	  spawn,   SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
+	{ MODKEY,                       XK_bracketright,  spawn,   SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
 
 // igorg: screenshots
 	{ 0,                            XK_Print,  spawn,          SHCMD("maim --select ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
