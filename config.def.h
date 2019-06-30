@@ -302,8 +302,9 @@ static Key keys[] = {
 
 // igorg: websearch
 // TODO: turn monospace:pixelsize=14 into a macro
-	{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google: https://google.com/?q=          monospace:pixelsize=14") },
-	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:  https://bunnylol.facebook.net/? monospace:pixelsize=14") },
+	{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=          monospace:pixelsize=14") },
+	{ MODKEY,                       XK_y,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=         monospace:pixelsize=14") },
+	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/? monospace:pixelsize=14") },
 
 // TODO: migrate keybindings for commonly used apps
 // TODO: invoke them from their ~/rc/bin/ launchers
