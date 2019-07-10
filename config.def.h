@@ -189,8 +189,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
 
 	{ MODKEY|ShiftMask,  		XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+// igorg: disable increment/decrement number of clients in master/stack area.
+// 	  rationale:
+// 	 	1. mod+d after several mod+i doesn't restore the previous layout
+// 		2. misclicking one of these buttons result in a few seconds of confusion
+// 		   with no intuitive "undo" action
+	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 
 // igorg: option 1, default: use dwm's navigation
         //{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
