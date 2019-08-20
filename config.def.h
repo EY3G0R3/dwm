@@ -11,6 +11,11 @@ static const unsigned int taglinepx = 1;        /* height of tag underline */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
+static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
@@ -219,7 +224,8 @@ static Key keys[] = {
         { MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
         { MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
         { MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
-
+	{ MODKEY|ShiftMask,             XK_Up,     incrovgaps,     {.i = -5 } },
+	{ MODKEY|ShiftMask,             XK_Down,   incrovgaps,     {.i = +5 } },
 // make the selected window "in spotlight", bumping it to order 0
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 
