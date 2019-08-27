@@ -178,6 +178,7 @@ static Key keys[] = {
 // igorg: option 2: route audio between hdmi/internal directly by hotkeys
 	{ MODKEY,                       XK_bracketleft,	  spawn,   SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
 	{ MODKEY,                       XK_bracketright,  spawn,   SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
+	{ MODKEY,                       XK_backslash,	  spawn,   SHCMD("pavucontrol -t 5") },
 
 // igorg: screenshots
 	{ 0,                            XK_Print,  spawn,          SHCMD("maim --select ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
