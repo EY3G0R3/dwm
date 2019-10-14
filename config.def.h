@@ -318,6 +318,7 @@ static Key keys[] = {
 // igorg: program launchers
 	{ MODKEY,                       XK_q,                       spawn,     SHCMD("~/rc/bin/quip") },
 	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
+	{ MODKEY|ShiftMask,		XK_n,                       spawn,     SHCMD("google-chrome --incognito") },
 	{ MODKEY,                       XK_d,                       runorraise,  {.v = todocmd } },
 
 // igorg: websearch
