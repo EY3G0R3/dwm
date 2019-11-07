@@ -185,7 +185,9 @@ static Key keys[] = {
 	//{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("maim -i $(xdotool getactivewindow) ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
 	//{ ControlMask,                  XK_Print,  spawn,          SHCMD("maim ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
 // igorg: screenshots: option 2 (default): using scrot
-	{ 0,                            XK_Print,  spawn,          SHCMD("scrot '%Y-%m-%d---%H-%M-%S.png' --select	--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
+// igorg: have to do some magic before scrot -s, because the mouse/kb are not released fast enough
+// igorg: more details here: https://stackoverflow.com/questions/35500163/bash-script-with-scrot-area-not-working
+	{ 0,                            XK_Print,  spawn,          SHCMD("setxkbmap -option grab:break_actions; xdotool key XF86Ungrab; scrot '%Y-%m-%d---%H-%M-%S.png' --select	--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
 	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("scrot '%Y-%m-%d---%H-%M-%S.png' --focused	--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
 	{ ControlMask,                  XK_Print,  spawn,          SHCMD("scrot '%Y-%m-%d---%H-%M-%S.png'		--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
 
