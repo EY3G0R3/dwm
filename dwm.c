@@ -1315,9 +1315,10 @@ manage(Window w, XWindowAttributes *wa)
 	selmon->tagset[selmon->seltags] &= ~scratchtag;
 	if (!strcmp(c->name, scratchpadname)) {
 		c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag;
-		c->isfloating = True;
-		c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
-		c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+		// igorg: don't float scratchpad
+		// c->isfloating = True;
+		// c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
+		// c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
 	}
 
 	wc.border_width = c->bw;
