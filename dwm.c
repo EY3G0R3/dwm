@@ -2242,6 +2242,7 @@ togglefloating(const Arg *arg)
 	arrange(selmon);
 }
 
+void
 togglescratch(const Arg *arg)
 {
 	Client *c;
