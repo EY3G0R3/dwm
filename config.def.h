@@ -101,24 +101,24 @@ static const char *colors[][3]      = {
 static const char *xres = "/home/igorg/.Xresources";
 
 /* tagging */
-static const char *tags[] = { "~", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 
 static const Rule rules[] = {
 	// xprop(1):
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
 	/* class           instance                                       title       tags mask     isfloating   monitor */
-	{ "Google-chrome", "www.wunderlist.com"                         , NULL,       1 << 1,       0,           -1 },
-	{ "Firefox"      , NULL                                         , NULL,       1 << 2,       0,           -1 },
-	{ "Google-chrome", "outlook.office365.com__owa"                 , NULL,       1 << 3,       0,           -1 },
-	{ "Google-chrome", "outlook.office.com__calendar_view_workweek" , NULL,       1 << 4,       0,           -1 },
-	{ "Google-chrome", "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 4,       0,           -1 },
-	{ "Google-chrome", "fb.workplace.com__chat"                     , NULL,       1 << 5,       0,           -1 },
-	{ "Google-chrome", "www.messenger.com"                          , NULL,       1 << 6,       0,           -1 },
-	{ "Nautilus"     , "nautilus"                                   , NULL,       1 << 7,       0,           -1 },
-	{ "Steam"        , NULL                                         , NULL,       1 << 9,       0,           -1,},
+	{ "Google-chrome", "www.wunderlist.com"                         , NULL,       1 << 0,       0,           -1 },
+	{ "Firefox"      , NULL                                         , NULL,       1 << 1,       0,           -1 },
+	{ "Google-chrome", "outlook.office365.com__owa"                 , NULL,       1 << 2,       0,           -1 },
+	{ "Google-chrome", "outlook.office.com__calendar_view_workweek" , NULL,       1 << 3,       0,           -1 },
+	{ "Google-chrome", "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 3,       0,           -1 },
+	{ "Google-chrome", "fb.workplace.com__chat"                     , NULL,       1 << 4,       0,           -1 },
+	{ "Google-chrome", "www.messenger.com"                          , NULL,       1 << 5,       0,           -1 },
+	{ "Nautilus"     , "nautilus"                                   , NULL,       1 << 6,       0,           -1 },
+	{ "Steam"        , NULL                                         , NULL,       1 << 8,       0,           -1,},
 // igorg: Spotify detection doesn't seem to work
-	{ "Spotify"      , NULL                                         , NULL,       1 << 10,      0,           -1,},
+	{ "Spotify"      , NULL                                         , NULL,       1 << 9,      0,           -1,},
 };
 
 /* layout(s) */
@@ -164,8 +164,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_a,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("~/rc/bin/dwm-dmenu-desktop") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	// TODO: change to XK_grave
-	{ MODKEY,                       XK_w,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 
 // igorg: lock/suspend/kill client/exit:
 	{ Mod1Mask|ControlMask,         XK_l,      spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
@@ -279,16 +278,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 
 // tags
-        TAGKEYS(                        XK_grave,                  0)
-        TAGKEYS(                        XK_1,                      1)
-        TAGKEYS(                        XK_2,                      2)
-        TAGKEYS(                        XK_3,                      3)
-        TAGKEYS(                        XK_4,                      4)
-        TAGKEYS(                        XK_5,                      5)
-        TAGKEYS(                        XK_6,                      6)
-        TAGKEYS(                        XK_7,                      7)
-        TAGKEYS(                        XK_8,                      8)
-        TAGKEYS(                        XK_9,                      9)
+	// used for scratchpad
+        //TAGKEYS(                        XK_grave,                  0)
+        TAGKEYS(                        XK_1,                      0)
+        TAGKEYS(                        XK_2,                      1)
+        TAGKEYS(                        XK_3,                      2)
+        TAGKEYS(                        XK_4,                      3)
+        TAGKEYS(                        XK_5,                      4)
+        TAGKEYS(                        XK_6,                      5)
+        TAGKEYS(                        XK_7,                      6)
+        TAGKEYS(                        XK_8,                      7)
+        TAGKEYS(                        XK_9,                      8)
 
 // igorg: option 1, default: use to summon all windows together
 	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
