@@ -2190,6 +2190,10 @@ tile(Monitor *m)
 		oe = 0; // outer gaps disabled
 	}
 
+	if (n > 1) {
+		oe = 0; // igorg: disable outer gaps when there is more than one window
+	}
+
 	if (n > m->nmaster)
 		mw = m->nmaster ? (m->ww + m->gappiv*ie) * m->mfact : 0;
 	else
