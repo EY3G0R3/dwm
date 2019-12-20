@@ -107,18 +107,19 @@ static const Rule rules[] = {
 	// xprop(1):
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
-	/* class           instance                                       title       tags mask     isfloating   monitor */
-	{ "Firefox"      , NULL                                         , NULL,       1 << 1,       0,           -1 },
-	{ "Google-chrome", "outlook.office365.com__owa"                 , NULL,       1 << 2,       0,           -1 },
-	{ "Google-chrome", "outlook.office.com__calendar_view_workweek" , NULL,       1 << 3,       0,           -1 },
-	{ "Google-chrome", "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 3,       0,           -1 },
-	{ "Google-chrome", "fb.workplace.com__chat"                     , NULL,       1 << 4,       0,           -1 },
-	{ "Google-chrome", "www.messenger.com"                          , NULL,       1 << 5,       0,           -1 },
-	{ "Nautilus"     , "nautilus"                                   , NULL,       1 << 6,       0,           -1 },
-	{ "Steam"        , NULL                                         , NULL,       1 << 8,       0,           -1,},
-	{ "Google-chrome", "www.wunderlist.com"                         , NULL,       1 << 9,       0,           -1 },
+        /* class                   instance                                       title       tags mask     isfloating   monitor */
+        { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           -1 },
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 2,       0,           -1 },
+        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 3,       0,           -1 },
+        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 3,       0,           -1 },
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 4,       0,           -1 },
+        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 5,       0,           -1 },
+        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 6,       0,           -1 },
+        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 6,       0,           -1 },
+        { "Steam"                , NULL                                         , NULL,       1 << 8,       0,           -1,},
+        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 9,       0,           -1 },
 // igorg: Spotify detection doesn't seem to work
-	{ "Spotify"      , NULL                                         , NULL,       1 << 9,      0,           -1,},
+        { "Spotify"              , NULL                                         , NULL,       1 << 9,       0,           -1,},
 };
 
 /* layout(s) */
