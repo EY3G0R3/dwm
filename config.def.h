@@ -101,18 +101,18 @@ static const char *colors[][3]      = {
 static const char *xres = "/home/igorg/.Xresources";
 
 /* tagging */
-// Experiment 1 (use 'bmcwf01234567890' tags): scratchpad is unnecessary, just use regular '~' tag
-//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
-
-
-// start from line 110. Tag's number can be easily figured out by subtracting 110 from line number
+// Experiment 1 (use 'bmcwf01234567890' tags): First tag has to be on line 110.
+// Experiment 1 (use 'bmcwf01234567890' tags): Then tags number can be figured out.
+// Experiment 1 (use 'bmcwf01234567890' tags): By subtracting 110 from the line number
+// Experiment 1 (use 'bmcwf01234567890' tags): TODO: tidy some code and move it to line 100 instead
+// Experiment 1 (use 'bmcwf01234567890' tags): convention: first letter of the word is the shortcut
 static const char *tags[] = {
 	"~",
-	"(b)rowser",
-	"(m)ail",
-	"(c)alendar",
-	"(w)ork chat",
-	"(f)ind",
+	"browser",
+	"mail",
+	"calendar",
+	"workchat",
+	"find",
 	"0",
 	"1",
 	"2",
