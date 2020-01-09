@@ -101,14 +101,14 @@ static const char *colors[][3]      = {
 static const char *xres = "/home/igorg/.Xresources";
 
 /* tagging */
-// Experiment 1 (use 'bmcwf01234567890' tags): First tag has to be on line 110.
-// Experiment 1 (use 'bmcwf01234567890' tags): Then tags number can be figured out.
-// Experiment 1 (use 'bmcwf01234567890' tags): By subtracting 110 from the line number
-// Experiment 1 (use 'bmcwf01234567890' tags): TODO: tidy some code and move it to line 100 instead
-// Experiment 1 (use 'bmcwf01234567890' tags): convention: first letter of the word is the shortcut
+// Experiment 1 (use '~smcwf01234567890' tags): First tag has to be on line 110.
+// Experiment 1 (use '~smcwf01234567890' tags): Then tags number can be figured out.
+// Experiment 1 (use '~smcwf01234567890' tags): By subtracting 110 from the line number
+// Experiment 1 (use '~smcwf01234567890' tags): TODO: tidy some code and move it to line 100 instead
+// Experiment 1 (use '~smcwf01234567890' tags): convention: first letter of the word is the shortcut
 static const char *tags[] = {
 	"~",
-	"browser",
+	"surf",
 	"mail",
 	"calendar",
 	"workchat",
@@ -131,10 +131,10 @@ static const Rule rules[] = {
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
         /* class                   instance                                       title       tags mask     isfloating   monitor */
-// Experiment 1 (use 'bmcwf01234567890' tags): TODO: figure out how to resolve clash of Ctrl+Shift+(b)rowser with show/hide bar functionality
+// Experiment 1 (use '~smcwf01234567890' tags): TODO: figure out how to resolve clash of Ctrl+Shift+(b)rowser with show/hide bar functionality
 //
-// Experiment 1 (use 'bmcwf01234567890' tags): tilda
-// Experiment 1 (use 'bmcwf01234567890' tags): alphabetical characters
+// Experiment 1 (use '~smcwf01234567890' tags): tilda
+// Experiment 1 (use '~smcwf01234567890' tags): alphabetical characters
         { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           -1 },
         { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 2,       0,           -1 },
         { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 3,       0,           -1 },
@@ -143,10 +143,10 @@ static const Rule rules[] = {
         { "Nautilus"             , "nautilus"                                   , NULL,       1 << 5,       0,           -1 },
         { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 5,       0,           -1 },
 
-// Experiment 1 (use 'bmcwf01234567890' tags): '0' character for Wunderlist (because Wunderlist has popular <C-0> mapping
+// Experiment 1 (use '~smcwf01234567890' tags): '0' character for Wunderlist (because Wunderlist has popular <C-0> mapping
         { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 6,       0,           -1 },
 
-// Experiment 1 (use 'bmcwf01234567890' tags): digits
+// Experiment 1 (use '~smcwf01234567890' tags): digits
         { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 12,      0,           -1 },
         { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           -1,},
 // igorg: Spotify detection doesn't seem to work
@@ -187,7 +187,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
-// Experiment 1 (use 'bmcwf01234567890' tags): scratchpad is unnecessary, just use regular '~' tag
+// Experiment 1 (use '~smcwf01234567890' tags): scratchpad is unnecessary, just use regular '~' tag
 // TODO: remove scratchpad code altogether if experiment 1 succeeds
 static const char scratchpadname[] = "scratchpad";
 ////static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
@@ -199,13 +199,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_a,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("~/rc/bin/dwm-dmenu-desktop") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-// Experiment 1 (use 'bmcwf01234567890' tags): scratchpad is unnecessary, just use regular '~' tag
+// Experiment 1 (use '~smcwf01234567890' tags): scratchpad is unnecessary, just use regular '~' tag
 	//{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 
 // igorg: lock/suspend/kill client/exit:
 	{ Mod1Mask|ControlMask,         XK_l,      spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
 	{ Mod1Mask|ControlMask,         XK_s,      spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
-// Experiment 1 (use 'bmcwf01234567890' tags): use XK_c for calendar tag
+// Experiment 1 (use '~smcwf01234567890' tags): use XK_c for calendar tag
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
@@ -239,8 +239,7 @@ static Key keys[] = {
 // igorg: disable touchpad
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
 
-// Experiment 1 (use 'bmcwf01234567890' tags): use XK_b for browser tag
-	//{ MODKEY|ShiftMask,  		XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,  		XK_b,      togglebar,      {0} },
 // igorg: disable increment/decrement number of clients in master/stack area.
 // 	  rationale:
 // 	 	1. mod+d after several mod+i doesn't restore the previous layout
@@ -279,7 +278,7 @@ static Key keys[] = {
 
 // layout switching (tile, floating, monocle)
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	// Experiment 1 (use 'bmcwf01234567890' tags): since floating mode is so seldomly used, use xk_f for "Files" application (like Nautilus)
+	// Experiment 1 (use '~smcwf01234567890' tags): since floating mode is so seldomly used, use xk_f for "Files" application (like Nautilus)
 	//{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	// experiment 1
 	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }
@@ -319,25 +318,25 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 
 // tags
-	// Experiment 1 (use 'bmcwf01234567890' tags): try to leverage as many letter-based tags as possible
+	// Experiment 1 (use '~smcwf01234567890' tags): try to leverage as many letter-based tags as possible
 
-	// Experiment 1 (use 'bmcwf01234567890' tags): stop using <~> (XK_grave) for scratchpad
+	// Experiment 1 (use '~smcwf01234567890' tags): stop using <~> (XK_grave) for scratchpad
 	TAGKEYS(                        XK_grave,                  0)
 
 	//
-	// Experiment 1 (use 'bmcwf01234567890' tags): previously tag '2' - Browser
-        TAGKEYS(                        XK_b,                      1)
-	// Experiment 1 (use 'bmcwf01234567890' tags): previously tag '3' - Mail
+	// Experiment 1 (use '~smcwf01234567890' tags): previously tag '2' - Surf
+        TAGKEYS(                        XK_s,                      1)
+	// Experiment 1 (use '~smcwf01234567890' tags): previously tag '3' - Mail
         TAGKEYS(                        XK_m,                      2)
-	// Experiment 1 (use 'bmcwf01234567890' tags): previously tag '4' - Calendar
+	// Experiment 1 (use '~smcwf01234567890' tags): previously tag '4' - Calendar
         TAGKEYS(                        XK_c,                      3)
-	// Experiment 1 (use 'bmcwf01234567890' tags): previously tag '5' - WorkChat
+	// Experiment 1 (use '~smcwf01234567890' tags): previously tag '5' - WorkChat
         TAGKEYS(                        XK_w,                      4)
   	// TODO: find alphabetic tag for Messenger
-	// Experiment 1 (use 'bmcwf01234567890' tags): previously tag '7' - Nautilus (new word easy to remember: 'Find')
+	// Experiment 1 (use '~smcwf01234567890' tags): previously tag '7' - Nautilus (new word easy to remember: 'Find')
         TAGKEYS(                        XK_f,                      5)
 
-	// Experiment 1 (use 'bmcwf01234567890' tags): use '~bmcwf0123456789' tags: 0 goes after all the letters
+	// Experiment 1 (use '~smcwf01234567890' tags): use '~bmcwf0123456789' tags: 0 goes after all the letters
 	TAGKEYS(                        XK_0,                      6)
 
 	// used for scratchpad
@@ -358,7 +357,7 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 // igorg: option 2, added: use for one extra tag ("0"), currently using spotify there
-	// Experiment 1 (use 'bmcwf01234567890' tags): 0 goes after all the letters
+	// Experiment 1 (use '~smcwf01234567890' tags): 0 goes after all the letters
 	//TAGKEYS(                        XK_0,                      9)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
@@ -393,9 +392,9 @@ static Key keys[] = {
 
 // igorg: websearch
 // TODO: turn monospace:pixelsize=14 into a macro
-	{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=          monospace:pixelsize=14") },
+	//{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=          monospace:pixelsize=14") },
 	{ MODKEY,                       XK_y,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=         monospace:pixelsize=14") },
-	//{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/? monospace:pixelsize=14") },
+	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/? monospace:pixelsize=14") },
 
 // igorg: open chrome bookmark
 	{ MODKEY,                       XK_apostrophe,		    spawn,     SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
