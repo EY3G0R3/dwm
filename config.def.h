@@ -107,14 +107,15 @@ static const char *xres = "/home/igorg/.Xresources";
 // TODO: tidy some code and move it to line 100 instead
 // Convention: first letter of the word is the shortcut
 static const char *tags[] = {
-	"~",
-	"surf",
-	"mail",
-	"calendar",
-	"workchat",
-	"find",
-	"0",
-	"1",
+	"~", 		// ~: terminal
+	"quip",		// q: quip
+	"workchat", 	// w: workchat
+	"email", 	// e: email 	        a: launching apps
+	"surf",		// s: surf 		d:scratchpad  		z:zoom
+	"xchat", 	// x: personal chat (Messenger)
+	"calendar",     // c: calendar
+	"files",        // f: files
+	"1",  		// 1: wunderlist
 	"2",
 	"3",
 	"4",
@@ -123,6 +124,7 @@ static const char *tags[] = {
 	"7",
 	"8",
 	"9",
+	"0",
 };
 
 
@@ -131,18 +133,30 @@ static const Rule rules[] = {
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
         /* class                   instance                                       title       tags mask     isfloating   monitor */
+// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
+	// terminal
+	// q: quip
+        { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 1,       0,           -1 },
+	// w: workchat
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           -1 },
+	// e: email
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 3,       0,           -1 },
+	// s: surf
         { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           -1 },
-        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 2,       0,           -1 },
-        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 3,       0,           -1 },
-        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 3,       0,           -1 },
-        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 4,       0,           -1 },
-        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 5,       0,           -1 },
-        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 5,       0,           -1 },
-        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 6,       0,           -1 },
-        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 12,      0,           -1 },
-        { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           -1,},
-// igorg: Spotify detection doesn't seem to work
-        { "Spotify"              , NULL                                         , NULL,       1 << 15,      0,           -1,},
+	// x: xchat
+        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 5,       0,           -1 },
+	// c: calendar
+        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           -1 },
+        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           -1 },
+	// f: files
+        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 7,       0,           -1 },
+        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 7,       0,           -1 },
+	// 1: Wunderlist
+        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 8,       0,           -1 },
+	// 9: steam
+        { "Steam"                , NULL                                         , NULL,       1 << 16,      0,           -1,},
+	// 0: Spotify (detection doesn't seem to work well
+        { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
 };
 
 /* layout(s) */
@@ -198,8 +212,10 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,         XK_s,      spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
 // Experiment 1 (use '~smcwf01234567890' tags): use XK_c for calendar tag
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
+// Experiment 2 (wasd): unbind Mod+Shift+q because it's used for a tag key
+	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+// Experiment 2 (wasd): Use mod+shift+r to quit for good
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
 
 // igorg: automatically pick the best resolution/configuration, for solo/multi displays
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("~/rc/bin/igorandr") },
@@ -302,22 +318,28 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 
 // tags
+	// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
 	TAGKEYS(                        XK_grave,                  0)
-        TAGKEYS(                        XK_s,                      1)
-        TAGKEYS(                        XK_m,                      2)
-        TAGKEYS(                        XK_c,                      3)
-        TAGKEYS(                        XK_w,                      4)
-        TAGKEYS(                        XK_f,                      5)
-	TAGKEYS(                        XK_0,                      6)
-        TAGKEYS(                        XK_1,                      7)
-        TAGKEYS(                        XK_2,                      8)
-        TAGKEYS(                        XK_3,                      9)
-        TAGKEYS(                        XK_4,                      10)
-        TAGKEYS(                        XK_5,                      11)
-        TAGKEYS(                        XK_6,                      12)
-        TAGKEYS(                        XK_7,                      13)
-        TAGKEYS(                        XK_8,                      14)
-        TAGKEYS(                        XK_9,                      15)
+        TAGKEYS(                        XK_q,                      1)
+        TAGKEYS(                        XK_w,                      2)
+        TAGKEYS(                        XK_e,                      3)
+        //TAGKEYS(                        XK_a,                      ) 	// reserved for launching apps
+        TAGKEYS(                        XK_s,                      4)
+        //TAGKEYS(                        XK_d,                      ) 	// reserved for vim TODO
+        //TAGKEYS(                        XK_z,                      )  // reserved for 'zoom': switch between tile/mono
+        TAGKEYS(                        XK_x,                      5)   // xchat
+        TAGKEYS(                        XK_c,                      6)   // calendar
+        TAGKEYS(                        XK_f,                      7)   // files
+        TAGKEYS(                        XK_1,                      8)
+        TAGKEYS(                        XK_2,                      9)
+        TAGKEYS(                        XK_3,                      10)
+        TAGKEYS(                        XK_4,                      11)
+        TAGKEYS(                        XK_5,                      12)
+        TAGKEYS(                        XK_6,                      13)
+        TAGKEYS(                        XK_7,                      14)
+        TAGKEYS(                        XK_8,                      15)
+        TAGKEYS(                        XK_9,                      16)
+	TAGKEYS(                        XK_0,                      17)
 
 // igorg: option 1, default: use to summon all windows together
 	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -327,16 +349,16 @@ static Key keys[] = {
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // Thus, the below declarations don't work:
-        TAGKEYS(                        XK_KP_1,                   7)
-        TAGKEYS(                        XK_KP_2,                   8)
-        TAGKEYS(                        XK_KP_3,                   9)
-        TAGKEYS(                        XK_KP_4,                   10)
-        TAGKEYS(                        XK_KP_5,                   11)
-        TAGKEYS(                        XK_KP_6,                   12)
-        TAGKEYS(                        XK_KP_7,                   13)
-        TAGKEYS(                        XK_KP_8,                   14)
-        TAGKEYS(                        XK_KP_9,                   15)
-
+        TAGKEYS(                        XK_KP_1,                   8)
+        TAGKEYS(                        XK_KP_2,                   9)
+        TAGKEYS(                        XK_KP_3,                   10)
+        TAGKEYS(                        XK_KP_4,                   11)
+        TAGKEYS(                        XK_KP_5,                   12)
+        TAGKEYS(                        XK_KP_6,                   13)
+        TAGKEYS(                        XK_KP_7,                   14)
+        TAGKEYS(                        XK_KP_8,                   15)
+        TAGKEYS(                        XK_KP_9,                   16)
+        TAGKEYS(                        XK_KP_0,                   17)
 
 // igorg: audio controls for spotify
 	{ 0,                            XF86XK_AudioPlay,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
@@ -350,7 +372,6 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,     SHCMD("xbacklight -10") },
 
 // igorg: program launchers
-	{ MODKEY,                       XK_q,                       spawn,     SHCMD("~/rc/bin/quip") },
 	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
 	{ MODKEY|ShiftMask,		XK_n,                       spawn,     SHCMD("google-chrome --incognito") },
 	{ MODKEY,                       XK_d,                       runorraise,  {.v = todocmd } },
