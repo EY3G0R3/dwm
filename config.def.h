@@ -220,16 +220,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_bracketright,  spawn,   SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
 	{ MODKEY,                       XK_backslash,	  spawn,   SHCMD("pavucontrol -t 5") },
 
-// igorg: screenshots, option 1: using maim
-	//{ 0,                            XK_Print,  spawn,          SHCMD("maim --select ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
-	//{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("maim -i $(xdotool getactivewindow) ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
-	//{ ControlMask,                  XK_Print,  spawn,          SHCMD("maim ~/db/Screenshots/$(date +%Y-%m-%d---%H-%M-%S).png") },
-// igorg: screenshots: option 2 (default): using scrot
-// igorg: have to do some magic before scrot -s, because the mouse/kb are not released fast enough
-// igorg: more details here: https://stackoverflow.com/questions/35500163/bash-script-with-scrot-area-not-working
-	{ 0,                            XK_Print,  spawn,          SHCMD("setxkbmap -option grab:break_actions; xdotool key XF86Ungrab; scrot '%Y-%m-%d---%H-%M-%S.png' --select	--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
-	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("scrot '%Y-%m-%d---%H-%M-%S.png' --focused	--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
-	{ ControlMask,                  XK_Print,  spawn,          SHCMD("scrot '%Y-%m-%d---%H-%M-%S.png'		--quality 75 --exec 'mv $f ~/db/Screenshots/'") },
+// igorg: screenshots
+	{ 0,                            XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh --select") },
+	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh --window") },
+	{ ControlMask,                  XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh") },
 
 // igorg: keyboard layout switching
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("xkblayout-state set 0") },
