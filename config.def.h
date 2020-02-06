@@ -21,7 +21,6 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 static const char *fonts[]          = { "monospace:pixelsize=14" };
-static const char dmenufont[]       = "monospace:pixelsize=14";
 
 /* gruvbox color scheme */
 #define COL_GRUVBOX_BG        "#282828"
@@ -185,7 +184,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
 // Experiment 1 (use '~smcwf01234567890' tags): scratchpad is unnecessary, just use regular '~' tag
 // TODO: remove scratchpad code altogether if experiment 1 succeeds
