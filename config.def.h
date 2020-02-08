@@ -109,10 +109,10 @@ static const char *xres = "/home/igorg/.Xresources";
 static const char *tags[] = {
 	"~", 		// ~: terminal
 	"quip",		// q: quip
-	"workchat", 	// w: workchat
-	"email", 	// e: email 	        a: launching apps
-	"surf",		// s: surf 		d:scratchpad  		z:zoom
-	"xchat", 	// x: personal chat (Messenger)
+	"web", 	 	// w: web 		e: english layout 	a: launch apps
+	"slack", 	// s: slack (WorkChat)
+	"dm",		// d: dm (Messenger) 				z:zoom
+	"xmail", 	// x: mail
 	"calendar",     // c: calendar
 	"files",        // f: files
 	"1",  		// 1: wunderlist
@@ -137,14 +137,14 @@ static const Rule rules[] = {
 	// terminal
 	// q: quip
         { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 1,       0,           -1 },
-	// w: workchat
-        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           -1 },
-	// e: email
-        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 3,       0,           -1 },
-	// s: surf
-        { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           -1 },
-	// x: xchat
-        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 5,       0,           -1 },
+	// s: slack (WorkChat)
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 3,       0,           -1 },
+	// x: email
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 5,       0,           -1 },
+	// w: web
+        { "Firefox"              , NULL                                         , NULL,       1 << 2,       0,           -1 },
+	// d: dm (Messenger)
+        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 4,       0,           -1 },
 	// c: calendar
         { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           -1 },
         { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           -1 },
@@ -155,7 +155,7 @@ static const Rule rules[] = {
         { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 8,       0,           -1 },
 	// 9: steam
         { "Steam"                , NULL                                         , NULL,       1 << 16,      0,           -1,},
-	// 0: Spotify (detection doesn't seem to work well
+	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
 };
 
@@ -197,7 +197,8 @@ static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
 static const char scratchpadname[] = "scratchpad";
 ////static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 //static const char *scratchpadcmd[] = { "kitty", "-T", scratchpadname, NULL };
-static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
+// Experiment 2 (wasd): d is now used by Messenger
+//static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -247,6 +248,7 @@ static Key keys[] = {
 // 		2. misclicking one of these buttons result in a few seconds of confusion
 // 		   with no intuitive "undo" action
 	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
 	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 
 // igorg: option 1, default: use dwm's navigation
@@ -319,26 +321,26 @@ static Key keys[] = {
 
 // tags
 	// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
-	TAGKEYS(                        XK_grave,                  0)
-        TAGKEYS(                        XK_q,                      1)
-        TAGKEYS(                        XK_w,                      2)
-        TAGKEYS(                        XK_e,                      3)
-        //TAGKEYS(                        XK_a,                      ) 	// reserved for launching apps
-        TAGKEYS(                        XK_s,                      4)
-        //TAGKEYS(                        XK_d,                      ) 	// reserved for vim TODO
-        //TAGKEYS(                        XK_z,                      )  // reserved for 'zoom': switch between tile/mono
-        TAGKEYS(                        XK_x,                      5)   // xchat
-        TAGKEYS(                        XK_c,                      6)   // calendar
-        TAGKEYS(                        XK_f,                      7)   // files
-        TAGKEYS(                        XK_1,                      8)
-        TAGKEYS(                        XK_2,                      9)
-        TAGKEYS(                        XK_3,                      10)
-        TAGKEYS(                        XK_4,                      11)
-        TAGKEYS(                        XK_5,                      12)
-        TAGKEYS(                        XK_6,                      13)
-        TAGKEYS(                        XK_7,                      14)
-        TAGKEYS(                        XK_8,                      15)
-        TAGKEYS(                        XK_9,                      16)
+	TAGKEYS(                        XK_grave,                  0)   // console
+	TAGKEYS(                        XK_q,                      1)   // quip
+	TAGKEYS(                        XK_w,                      2)   // web
+	//TAGKEYS(                        XK_e,                      )  // reserved for switching to english layout
+	//TAGKEYS(                        XK_a,                      ) 	// reserved for launching apps
+	TAGKEYS(                        XK_s,                      3)   // slack
+	TAGKEYS(                        XK_d,                      4)   // dm
+	//TAGKEYS(                        XK_z,                      )  // reserved for 'zoom': switch between tile/mono
+	TAGKEYS(                        XK_x,                      5)   // xmail
+	TAGKEYS(                        XK_c,                      6)   // calendar
+	TAGKEYS(                        XK_f,                      7)   // files
+	TAGKEYS(                        XK_1,                      8)   // wunderlist
+	TAGKEYS(                        XK_2,                      9)
+	TAGKEYS(                        XK_3,                      10)
+	TAGKEYS(                        XK_4,                      11)
+	TAGKEYS(                        XK_5,                      12)
+	TAGKEYS(                        XK_6,                      13)
+	TAGKEYS(                        XK_7,                      14)
+	TAGKEYS(                        XK_8,                      15)
+	TAGKEYS(                        XK_9,                      16)
 	TAGKEYS(                        XK_0,                      17)
 
 // igorg: option 1, default: use to summon all windows together
@@ -349,16 +351,16 @@ static Key keys[] = {
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // Thus, the below declarations don't work:
-        TAGKEYS(                        XK_KP_1,                   8)
-        TAGKEYS(                        XK_KP_2,                   9)
-        TAGKEYS(                        XK_KP_3,                   10)
-        TAGKEYS(                        XK_KP_4,                   11)
-        TAGKEYS(                        XK_KP_5,                   12)
-        TAGKEYS(                        XK_KP_6,                   13)
-        TAGKEYS(                        XK_KP_7,                   14)
-        TAGKEYS(                        XK_KP_8,                   15)
-        TAGKEYS(                        XK_KP_9,                   16)
-        TAGKEYS(                        XK_KP_0,                   17)
+	TAGKEYS(                        XK_KP_1,                   8)
+	TAGKEYS(                        XK_KP_2,                   9)
+	TAGKEYS(                        XK_KP_3,                   10)
+	TAGKEYS(                        XK_KP_4,                   11)
+	TAGKEYS(                        XK_KP_5,                   12)
+	TAGKEYS(                        XK_KP_6,                   13)
+	TAGKEYS(                        XK_KP_7,                   14)
+	TAGKEYS(                        XK_KP_8,                   15)
+	TAGKEYS(                        XK_KP_9,                   16)
+	TAGKEYS(                        XK_KP_0,                   17)
 
 // igorg: audio controls for spotify
 	{ 0,                            XF86XK_AudioPlay,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
@@ -374,7 +376,7 @@ static Key keys[] = {
 // igorg: program launchers
 	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
 	{ MODKEY|ShiftMask,		XK_n,                       spawn,     SHCMD("google-chrome --incognito") },
-	{ MODKEY,                       XK_d,                       runorraise,  {.v = todocmd } },
+	//{ MODKEY,                       XK_d,                       runorraise,  {.v = todocmd } },
 
 // igorg: websearch
 	//{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=       ") },
