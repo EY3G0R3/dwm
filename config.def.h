@@ -20,7 +20,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
-static const char *fonts[]          = { "monospace:pixelsize=14" };
+static const char *fonts[]          = { "monospace:pixelsize=12" };
 
 /* gruvbox color scheme */
 #define COL_GRUVBOX_BG        "#282828"
@@ -384,10 +384,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,                       runorraise,  {.v = todocmd } },
 
 // igorg: websearch
-// TODO: turn monospace:pixelsize=14 into a macro
-	//{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=          monospace:pixelsize=14") },
-	{ MODKEY,                       XK_y,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=         monospace:pixelsize=14") },
-	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/? monospace:pixelsize=14") },
+	//{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=       ") },
+	{ MODKEY,                       XK_y,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=        ") },
+	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
 
 // igorg: open chrome bookmark
 	{ MODKEY,                       XK_apostrophe,		    spawn,     SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
