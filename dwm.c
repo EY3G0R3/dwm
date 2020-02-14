@@ -2948,7 +2948,8 @@ main(int argc, char *argv[])
 	scan();
 
 	// igorg: autostart logic
-	system("~/rc/autostart/autostart.sh");
+	if (-1 == system("~/rc/autostart/autostart.sh"))
+		fprintf(stderr, "dwm: running ~/rc/autostart/autostart.sh failed\n");
 
 	run();
 	if(restart) execvp(argv[0], argv);
