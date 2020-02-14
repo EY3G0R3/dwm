@@ -639,7 +639,14 @@ clientmessage(XEvent *e)
 			c->mon = selmon;
 			c->next = systray->icons;
 			systray->icons = c;
-			XGetWindowAttributes(dpy, c->win, &wa);
+
+			if (!XGetWindowAttributes(dpy, c->win, &wa)) {
+				/* igorg: use sane defaults */
+				wa.width = 1;
+				wa.height = 1;
+				wa.border_width = 0;
+			}
+
 			c->x = c->oldx = c->y = c->oldy = 0;
 			c->w = c->oldw = wa.width;
 			c->h = c->oldh = wa.height;
