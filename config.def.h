@@ -133,7 +133,7 @@ static const Rule rules[] = {
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
         /* class                   instance                                       title       tags mask     isfloating   monitor */
-// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
+// use left-hand-only shortcuts to switch between tags
 	// terminal
 	// q: quip
         { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 1,       0,           -1 },
@@ -193,11 +193,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
-// TODO: remove scratchpad code altogether if experiment 1 succeeds
 static const char scratchpadname[] = "scratchpad";
-////static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+//static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 //static const char *scratchpadcmd[] = { "kitty", "-T", scratchpadname, NULL };
-// Experiment 2 (wasd): d is now used by Messenger
 //static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
@@ -211,11 +209,10 @@ static Key keys[] = {
 // igorg: lock/suspend/kill client/exit:
 	{ Mod1Mask|ControlMask,         XK_l,      spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
 	{ Mod1Mask|ControlMask,         XK_s,      spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
-// Experiment 1 (use '~smcwf01234567890' tags): use XK_c for calendar tag
+// TODO: find appropriate shortcuts for these key which are currently used by tags:
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-// Experiment 2 (wasd): unbind Mod+Shift+q because it's used for a tag key
 	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-// Experiment 2 (wasd): Use mod+shift+r to quit for good
+// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
 
 // igorg: automatically pick the best resolution/configuration, for solo/multi displays
@@ -248,7 +245,6 @@ static Key keys[] = {
 // 		2. misclicking one of these buttons result in a few seconds of confusion
 // 		   with no intuitive "undo" action
 	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
 	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 
 // igorg: option 1, default: use dwm's navigation
@@ -320,7 +316,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 
 // tags
-	// Experiment 2 (wasd): use left-hand-only shortcuts to switch between tags
 	TAGKEYS(                        XK_grave,                  0)   // console
 	TAGKEYS(                        XK_q,                      1)   // quip
 	TAGKEYS(                        XK_w,                      2)   // web
