@@ -2955,8 +2955,9 @@ main(int argc, char *argv[])
 	scan();
 
 	// igorg: autostart logic
-	if (-1 == system("~/rc/autostart/autostart.sh"))
-		fprintf(stderr, "dwm: running ~/rc/autostart/autostart.sh failed\n");
+	if(!restart) // don't invoke autostart when we are just restarting dwm
+		if (-1 == system("~/rc/autostart/autostart.sh"))
+			fprintf(stderr, "dwm: running ~/rc/autostart/autostart.sh failed\n");
 
 	run();
 	if(restart) execvp(argv[0], argv);
