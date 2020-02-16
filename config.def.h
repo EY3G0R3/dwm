@@ -196,7 +196,7 @@ static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
 static const char scratchpadname[] = "scratchpad";
 //static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 //static const char *scratchpadcmd[] = { "kitty", "-T", scratchpadname, NULL };
-//static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
+static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -371,7 +371,7 @@ static Key keys[] = {
 // igorg: program launchers
 	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
 	{ MODKEY|ShiftMask,		XK_n,                       spawn,     SHCMD("google-chrome --incognito") },
-	//{ MODKEY,                       XK_d,                       runorraise,  {.v = todocmd } },
+	{ MODKEY,                       XK_v,                       runorraise,  {.v = todocmd } },
 
 // igorg: websearch
 	//{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=       ") },
