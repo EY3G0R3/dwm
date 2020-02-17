@@ -2784,6 +2784,7 @@ updatebars(void)
 					  CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->tabwin, cursor[CurNormal]->cursor);
 		XMapRaised(dpy, m->tabwin);
+		XSetClassHint(dpy, m->tabwin, &ch);
 	}
 }
 
