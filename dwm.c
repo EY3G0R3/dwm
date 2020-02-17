@@ -759,7 +759,6 @@ clientmessage(XEvent *e)
 			for(i=0; !(c->tags & 1 << i); i++);
 			view(&(Arg){.ui = 1 << i});
 		}
-		pop(c);
 	}
 }
 
