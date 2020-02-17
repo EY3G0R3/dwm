@@ -609,18 +609,17 @@ buttonpress(XEvent *e)
 		  click = ClkTabBar;
 		  arg.ui = i;
 		}
-	}
-	else if((c = wintoclient(ev->window))) {
+	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
 		XAllowEvents(dpy, ReplayPointer, CurrentTime);
 		click = ClkClientWin;
 	}
-	for(i = 0; i < LENGTH(buttons); i++)
-		if(click == buttons[i].click && buttons[i].func && buttons[i].button == ev->button
-		   && CLEANMASK(buttons[i].mask) == CLEANMASK(ev->state)){
-		  buttons[i].func(((click == ClkTagBar || click == ClkTabBar)
-				   && buttons[i].arg.i == 0) ? &arg : &buttons[i].arg);
+	for (i = 0; i < LENGTH(buttons); i++)
+		if (click == buttons[i].click && buttons[i].func && buttons[i].button == ev->button
+		&& CLEANMASK(buttons[i].mask) == CLEANMASK(ev->state)) {
+			buttons[i].func(((click == ClkTagBar || click == ClkTabBar)
+				&& buttons[i].arg.i == 0) ? &arg : &buttons[i].arg);
 		}
 }
 
@@ -646,8 +645,8 @@ cleanup(void)
 	view(&a);
 	selmon->lt[selmon->sellt] = &foo;
 	for (m = mons; m; m = m->next)
-		while(m->stack)
-			unmanage(m->stack, False);
+		while (m->stack)
+			unmanage(m->stack, 0);
 	XUngrabKey(dpy, AnyKey, AnyModifier, root);
 	while (mons)
 		cleanupmon(mons);
@@ -790,7 +789,7 @@ configurenotify(XEvent *e)
 	XConfigureEvent *ev = &e->xconfigure;
 	int dirty;
 
-	// TODO: updategeom handling sucks, needs to be simplified
+	/* TODO: updategeom handling sucks, needs to be simplified */
 	if (ev->window == root) {
 		dirty = (sw != ev->width || sh != ev->height);
 		sw = ev->width;
@@ -870,7 +869,7 @@ Monitor *
 createmon(void)
 {
 	Monitor *m;
-	int i;
+	unsigned int i;
 
 	m = ecalloc(1, sizeof(Monitor));
 	m->tagset[0] = m->tagset[1] = 1;
@@ -894,7 +893,8 @@ createmon(void)
 	if(!(m->pertag = (Pertag *)calloc(1, sizeof(Pertag))))
 		die("fatal: could not malloc() %u bytes\n", sizeof(Pertag));
 	m->pertag->curtag = m->pertag->prevtag = 1;
-	for(i=0; i <= LENGTH(tags); i++) {
+
+	for (i = 0; i <= LENGTH(tags); i++) {
 		/* init nmaster */
 		m->pertag->nmasters[i] = m->nmaster;
 
@@ -1706,7 +1706,7 @@ motionnotify(XEvent *e)
 	if (ev->window != root)
 		return;
 	if ((m = recttomon(ev->x_root, ev->y_root, 1, 1)) != mon && mon) {
-		unfocus(selmon->sel, True);
+		unfocus(selmon->sel, 1);
 		selmon = m;
 		focus(NULL);
 	}
@@ -2103,11 +2103,11 @@ sendevent(Window w, Atom proto, int mask, long d0, long d1, long d2, long d3, lo
 void
 setfocus(Client *c)
 {
-	if(!c->neverfocus) {
+	if (!c->neverfocus) {
 		XSetInputFocus(dpy, c->win, RevertToPointerRoot, CurrentTime);
 		XChangeProperty(dpy, root, netatom[NetActiveWindow],
- 		                XA_WINDOW, 32, PropModeReplace,
- 		                (unsigned char *) &(c->win), 1);
+			XA_WINDOW, 32, PropModeReplace,
+			(unsigned char *) &(c->win), 1);
 	}
 	sendevent(c->win, wmatom[WMTakeFocus], NoEventMask, wmatom[WMTakeFocus], CurrentTime, 0, 0, 0);
 }
@@ -2252,20 +2252,13 @@ incrivgaps(const Arg *arg)
 void
 setlayout(const Arg *arg)
 {
-/*<<<<<<< ours*/
-	/*if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])*/
-		/*selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;*/
-	/*if (arg && arg->v)*/
-		/*selmon->lt[selmon->sellt] = selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] = (Layout *)arg->v;*/
-/*=======*/
 	if(!arg || !arg->v || arg->v != selmon->lt[selmon->sellt]) {
 		selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
 		selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag];
 	}
-	if(arg && arg->v)
+	if (arg && arg->v)
 		selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] = (Layout *)arg->v;
 	selmon->lt[selmon->sellt] = selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt];
-/*>>>>>>> theirs*/
 	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
 	if (selmon->sel)
 		arrange(selmon);
@@ -2560,7 +2553,7 @@ tabmode(const Arg *arg)
 void
 togglefloating(const Arg *arg)
 {
-	if(!selmon->sel)
+	if (!selmon->sel)
 		return;
 	if (selmon->sel->isfullscreen
 	&&  !selmon->sel->isfakefullscreen) /* no support for fullscreen windows */
@@ -2678,6 +2671,7 @@ toggleview(const Arg *arg)
 
 		if (selmon->showbar != selmon->pertag->showbars[selmon->pertag->curtag])
 			togglebar(NULL);
+
 		focus(NULL);
 		arrange(selmon);
 	}
@@ -2807,9 +2801,8 @@ updatebarpos(Monitor *m)
 		m->by = m->topbar ? m->wy : m->wy + m->wh;
 		if ( m->topbar )
 			m->wy += bh;
-	} else {
+	} else
 		m->by = -bh;
-	}
 
 	for(c = m->clients; c; c = c->next){
 	  if(ISVISIBLE(c)) ++nvis;
@@ -3116,9 +3109,9 @@ updatewindowtype(Client *c)
 	Atom wtype = getatomprop(c, netatom[NetWMWindowType]);
 
 	if (state == netatom[NetWMFullscreen])
-		setfullscreen(c, True);
+		setfullscreen(c, 1);
 	if (wtype == netatom[NetWMWindowTypeDialog])
-		c->isfloating = True;
+		c->isfloating = 1;
 }
 
 void
@@ -3173,6 +3166,7 @@ view(const Arg *arg)
 
 	if (selmon->showbar != selmon->pertag->showbars[selmon->pertag->curtag])
 		togglebar(NULL);
+
 	focus(NULL);
 	arrange(selmon);
 }
