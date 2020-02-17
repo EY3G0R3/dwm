@@ -1089,16 +1089,18 @@ void
 drawtab(Monitor *m) {
 	Client *c;
 	int i;
-	int itag = -1;
-	char view_info[50];
-	int view_info_w = 0;
+	/*int itag = -1;*/
+	/*char view_info[50];*/
+	/*int view_info_w = 0;*/
 	int sorted_label_widths[MAXTABS];
-	int tot_width;
+	/*int tot_width;*/
+	int tot_width = 0;
 	int maxsize = bh;
 	int x = 0;
 	int w = 0;
 
 	//view_info: indicate the tag which is displayed in the view
+	/*
 	for(i = 0; i < LENGTH(tags); ++i){
 	  if((selmon->tagset[selmon->seltags] >> i) & 1) {
 	    if(itag >=0){ //more than one tag selected
@@ -1116,6 +1118,7 @@ drawtab(Monitor *m) {
 	view_info[sizeof(view_info) - 1 ] = 0;
 	view_info_w = TEXTW(view_info);
 	tot_width = view_info_w;
+	*/
 
 	/* Calculates number of labels and their width */
 	m->ntabs = 0;
@@ -1130,7 +1133,7 @@ drawtab(Monitor *m) {
 	if(tot_width > m->ww){ //not enough space to display the labels, they need to be truncated
 	  memcpy(sorted_label_widths, m->tab_widths, sizeof(int) * m->ntabs);
 	  qsort(sorted_label_widths, m->ntabs, sizeof(int), cmpint);
-	  tot_width = view_info_w;
+	  /*tot_width = view_info_w;*/
 	  for(i = 0; i < m->ntabs; ++i){
 	    if(tot_width + (m->ntabs - i) * sorted_label_widths[i] > m->ww)
 	      break;
@@ -1141,27 +1144,46 @@ drawtab(Monitor *m) {
 	  maxsize = m->ww;
 	}
 	i = 0;
+
+	/*int tab_width = (m->ww - view_info_w) / (m->ntabs ? m->ntabs : 1);*/
+	int tab_width = m->ww / (m->ntabs ? m->ntabs : 1);
+	// TODO: assert that tab_width >= 0
+
 	for(c = m->clients; c; c = c->next){
+	  /*if(!ISVISIBLE(c)) continue;*/
+	  /*if(i >= m->ntabs) break;*/
+	  /*if(m->tab_widths[i] >  maxsize) m->tab_widths[i] = maxsize;*/
+	  /*w = m->tab_widths[i];*/
+	  /*drw_setscheme(drw, (c == m->sel) ? scheme[SchemeSel] : scheme[SchemeNorm]);*/
+	  /*drw_text(drw, x, 0, w, th, lrpad / 2, c->name, 0);*/
+	  /*x += w;*/
+	  /*++i;*/
+
 	  if(!ISVISIBLE(c)) continue;
 	  if(i >= m->ntabs) break;
-	  if(m->tab_widths[i] >  maxsize) m->tab_widths[i] = maxsize;
-	  w = m->tab_widths[i];
+	  // TODO: igorg: what if text len is higher than tab len?
 	  drw_setscheme(drw, (c == m->sel) ? scheme[SchemeSel] : scheme[SchemeNorm]);
-	  drw_text(drw, x, 0, w, th, lrpad / 2, c->name, 0);
-	  x += w;
+
+	  int name_width = TEXTW(c->name);
+	  int padding_width = (tab_width - name_width) / 2;
+	  drw_rect(drw, x, 0, padding_width, th, 1, 1);
+	  drw_text(drw, x + padding_width, 0, name_width, th, lrpad / 2, c->name, 0);
+	  drw_rect(drw, x + padding_width + name_width, 0, padding_width + 2, th, 1, 1); /* adding +2 here to paint more space to account to rounding errors */
+	  x += tab_width;
 	  ++i;
 	}
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
 
 	/* cleans interspace between window names and current viewed tag label */
-	w = m->ww - view_info_w - x;
+	/*w = m->ww - view_info_w - x;*/
+	w = m->ww - x;
 	drw_text(drw, x, 0, w, th, lrpad / 2, "", 0);
 
 	/* view info */
-	x += w;
-	w = view_info_w;
-	drw_text(drw, x, 0, w, th, lrpad / 2, view_info, 0);
+	/*x += w;*/
+	/*w = view_info_w;*/
+	/*drw_text(drw, x, 0, w, th, lrpad / 2, view_info, 0);*/
 
 	drw_map(drw, m->tabwin, 0, 0, m->ww, th);
 }
