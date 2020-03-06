@@ -2361,6 +2361,21 @@ unmanage(Client *c, int destroyed)
 	free(c);
 	focus(NULL);
 	updateclientlist();
+
+	// igorg: automatically switch to tile layout after
+	// closing the second window in monocle mode
+	if (m->lt[m->sellt]->arrange == monocle) {
+		int nclients = 0;
+		for (c = m->clients; c; c = c->next) {
+			if (ISVISIBLE(c)) ++nclients;
+			if (nclients > 1) break;
+		}
+		if (nclients == 1) {
+			Arg a = {.v = &layouts[0]}; // default layout (tile)
+			setlayout(&a);
+		}
+	}
+
 	arrange(m);
 }
 
