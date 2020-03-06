@@ -3,6 +3,8 @@ grid(Monitor *m) {
 	unsigned int i, n, cx, cy, cw, ch, aw, ah, cols, rows;
 	Client *c;
 
+	int gapw = 32, gaph = 32;
+
 	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		n++;
 
@@ -21,7 +23,8 @@ grid(Monitor *m) {
 		/* adjust height/width of last row/column's windows */
 		ah = ((i + 1) % rows == 0) ? m->wh - ch * rows : 0;
 		aw = (i >= rows * (cols - 1)) ? m->ww - cw * cols : 0;
-		resize(c, cx, cy, cw - 2 * c->bw + aw, ch - 2 * c->bw + ah, False);
+		/* igorg:  add gaps: gapw and gaph */
+		resize(c, cx + gapw, cy + gaph, cw - 2 * c->bw + aw - 2 * gapw, ch - 2 * c->bw + ah - 2 * gaph, False);
 		i++;
 	}
 }
