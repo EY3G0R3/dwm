@@ -280,6 +280,7 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void toggleoverview(const Arg *arg);
 static void togglescratch(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
@@ -2251,6 +2252,28 @@ togglefloating(const Arg *arg)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 			selmon->sel->w, selmon->sel->h, 0);
 	arrange(selmon);
+}
+
+void
+toggleoverview(const Arg *arg)
+{
+	Client* c = selmon->sel;
+
+	if (selmon->tagset[selmon->seltags] == TAGMASK) {
+		Arg viewarg = {.ui = c->tags};
+		view(&viewarg);
+	} else {
+		Arg viewarg = {.ui = TAGMASK};
+		view(&viewarg);
+		// igorg: using setlayout here somehow also sets it on the first tag (~)
+		// igorg: thus, call grid() directly
+		// setlayoutarg = {.v = &layouts[3]};
+		// setlayout(&setlayoutarg);
+		grid(selmon);
+		// Known Problem: if a window appears/disappears during change to grid layout
+		//                it can force an update to tile layout
+		//                this can possibly be connected with [autoswitch] to tile patch
+	}
 }
 
 void

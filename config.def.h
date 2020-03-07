@@ -176,6 +176,7 @@ static const Layout layouts[] = {
 	{ "float" , NULL    },    /* no layout function means floating behavior */
 	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
 	{ "grid " , grid    },
+	// TODO: if modified, remember to update all references to &layouts[0] etc
 };
 
 /* key definitions */
@@ -284,12 +285,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_o,      winview,        {0} },
 
-// igorg: Mod+Tab option 1: show previous tag. Not that useful
-	//{ MODKEY,                       XK_Tab,    view,           {0} },
-// igorg: Mod+Tab option 2: switch to tile layout
-	//{ MODKEY,                       XK_Tab,    setlayout,      {.v = &layouts[0]} },
- //igorg: Mod+Tab option 3: summon all windows so we can switch to them with Mod+o
-	{ MODKEY,                       XK_Tab,      view,           {.ui = ~0 } },
+	{ MODKEY,                       XK_Tab,    toggleoverview, {0} },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
         //{ MODKEY,                       XK_space,  setlayout,      {0} },
