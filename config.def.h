@@ -283,7 +283,6 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }
 // unintentionally switching to grid layout can be confusing. Thus use Shift in addition to Modkey
 	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_o,      winview,        {0} },
 
 	{ MODKEY,                       XK_Tab,    toggleoverview, {0} },
 
