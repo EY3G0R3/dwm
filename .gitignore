@@ -2,3 +2,5 @@
 *.o
 # ignore binary
 dwm
+# ignore tags file
+tags
