@@ -3,7 +3,7 @@ grid(Monitor *m) {
 	unsigned int i, n, cx, cy, cw, ch, aw, ah, cols, rows;
 	Client *c;
 
-	int gapw = 32, gaph = 32;
+	int gapw = 16, gaph = 16;
 
 	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		n++;
