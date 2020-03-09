@@ -201,30 +201,48 @@ static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+// igorg: dmenu-powered launchers/searches:
 	{ MODKEY,                       XK_a,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("~/rc/bin/dwm-dmenu-desktop") },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-// scratchpad is unnecessary, just use regular '~' tag
+	// igorg: websearch
+	{ MODKEY,                       XK_y,                      spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
+	{ MODKEY,                       XK_b,                      spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
+	//{ MODKEY,                       XK_s,                      spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=") },
+	// igorg: open chrome bookmark
+	{ MODKEY,                       XK_apostrophe,             spawn,     SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
+
+// igorg: program launchers
+	{ MODKEY|ShiftMask,             XK_Return,                 spawn,     {.v = termcmd } },
+	{ MODKEY,                       XK_n,                      spawn,     SHCMD("google-chrome") },
+	{ MODKEY|ShiftMask,             XK_n,                      spawn,     SHCMD("google-chrome --incognito") },
+	{ MODKEY,                       XK_v,                      runorraise,{.v = todocmd } },
+
+// igorg: scratchpad is unnecessary, just use regular '~' tag
 	//{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 
-// igorg: lock/suspend/kill client/exit:
+// igorg: session control: lock/suspend/kill client/exit:
 	{ Mod1Mask|ControlMask,         XK_l,      spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
 	{ Mod1Mask|ControlMask,         XK_s,      spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
-// TODO: find appropriate shortcuts for these key which are currently used by tags:
+	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	// TODO: find appropriate shortcuts for these key which are currently used by tags:
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
-
-// igorg: automatically pick the best resolution/configuration, for solo/multi displays
+	// igorg: dwm-xrdb patch: reload ~/.Xresources
+	{ MODKEY|ShiftMask,             XK_F5,     xrdb,           {0} },
+	// igorg: show/hide bar
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	// igorg: disable touchpad
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
+	//igorg: automatically pick the best resolution/configuration, for solo/multi displays
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("~/rc/bin/igorandr") },
 
 // igorg: option 1: show pavucontrol for audio profile selection
 	//{ MODKEY,                       XK_bracketleft, spawn,     SHCMD("pavucontrol -t 5") },
 // igorg: option 2: route audio between hdmi/internal directly by hotkeys
-	{ MODKEY,                       XK_bracketleft,	  spawn,   SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
+	{ MODKEY,                       XK_bracketleft,   spawn,   SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
 	{ MODKEY,                       XK_bracketright,  spawn,   SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
-	{ MODKEY,                       XK_backslash,	  spawn,   SHCMD("pavucontrol -t 5") },
+	{ MODKEY,                       XK_backslash,     spawn,   SHCMD("pavucontrol -t 5") },
 
 // igorg: screenshots
 	{ 0,                            XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh --select") },
@@ -236,10 +254,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          SHCMD("xkblayout-state set 1") },
 	{ MODKEY,                       XK_u,      spawn,          SHCMD("xkblayout-state set 2") },
 
-// igorg: disable touchpad
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
-
-	{ MODKEY|ShiftMask,  		XK_b,      togglebar,      {0} },
 // igorg: disable increment/decrement number of clients in master/stack area.
 // 	  rationale:
 // 	 	1. mod+d after several mod+i doesn't restore the previous layout
@@ -278,28 +292,24 @@ static Key keys[] = {
 
 // layout switching (tile, floating, monocle)
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-// use XK_f and XK_m for tags
+	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
+// igorg: use XK_f and XK_m for tags
 	//{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }
-// unintentionally switching to grid layout can be confusing. Thus use Shift in addition to Modkey
-	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
-
-	{ MODKEY,                       XK_Tab,    toggleoverview, {0} },
+// igorg: switch between tile and monocle layouts
+	{ MODKEY,                       XK_z,      swaplayouts,    {0} },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
         //{ MODKEY,                       XK_space,  setlayout,      {0} },
 // igorg: Mod+Space option 2: switch to monocle layout
 	//{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[2]} },
 // igorg: Mod+Space option 3: superior to option 1 and 2: switch between tile and monocle layouts
-	{ MODKEY,                       XK_space,  swaplayouts,    {0} },
+	//{ MODKEY,                       XK_space,  swaplayouts,    {0} },
 // igorg: Mod+Space option 4: disable and use Mod+Z because it works better with mouse
 	//{ MODKEY,                       XK_space,  swaplayouts,    {0} },
 
-// igorg: switch between tile and monocle layouts
-	{ MODKEY,                       XK_z,  swaplayouts,    {0} },
-
-// toggle floating
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_Tab,    toggleoverview, {0} },
 
 // navigating between multiple monitors
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -307,15 +317,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-// dwm-xrdb patch: reload ~/.Xresources
-	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 
 // tags
 	TAGKEYS(                        XK_grave,                  0)   // console
 	TAGKEYS(                        XK_q,                      1)   // quip
 	TAGKEYS(                        XK_w,                      2)   // web
 	//TAGKEYS(                        XK_e,                      )  // reserved for switching to english layout
-	//TAGKEYS(                        XK_a,                      ) 	// reserved for launching apps
+	//TAGKEYS(                        XK_a,                      )  // reserved for launching apps
 	TAGKEYS(                        XK_s,                      3)   // slack
 	TAGKEYS(                        XK_d,                      4)   // dm
 	//TAGKEYS(                        XK_z,                      )  // reserved for 'zoom': switch between tile/mono
@@ -333,14 +341,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      16)
 	TAGKEYS(                        XK_0,                      17)
 
-// igorg: option 1, default: use to summon all windows together
-	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-// igorg: option 2, added: use for one extra tag ("0"), currently using spotify there
-	//TAGKEYS(                        XK_0,                      9)
-
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
-// Thus, the below declarations don't work:
+// igorg: Thus, the below declarations don't work:
 	TAGKEYS(                        XK_KP_1,                   8)
 	TAGKEYS(                        XK_KP_2,                   9)
 	TAGKEYS(                        XK_KP_3,                   10)
@@ -352,7 +354,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_KP_9,                   16)
 	TAGKEYS(                        XK_KP_0,                   17)
 
-// igorg: audio controls for spotify
+// igorg: audio controls for Spotify
 	{ 0,                            XF86XK_AudioPlay,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
 	{ 0,                            XF86XK_AudioStop,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") },
 	{ 0,                            XF86XK_AudioPrev,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
@@ -364,26 +366,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,     SHCMD("xbacklight -10") },
 
 // igorg: program launchers
-	{ MODKEY,                       XK_n,                       spawn,     SHCMD("google-chrome") },
-	{ MODKEY|ShiftMask,		XK_n,                       spawn,     SHCMD("google-chrome --incognito") },
-	{ MODKEY,                       XK_v,                       runorraise,  {.v = todocmd } },
 
-// igorg: websearch
-	//{ MODKEY,                       XK_s,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=       ") },
-	{ MODKEY,                       XK_y,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=        ") },
-	{ MODKEY,                       XK_b,                       spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
-
-// igorg: open chrome bookmark
-	{ MODKEY,                       XK_apostrophe,		    spawn,     SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
-
-// TODO: migrate keybindings for commonly used apps
-// TODO: invoke them from their ~/rc/bin/ launchers
-        // igorg: # Mail
-        //bindsym $mod+m  exec google-chrome --app=https://outlook.office365.com/owa/
-        // igorg: # Outlook Calendar
-        //#bindsym $mod+c  exec google-chrome --app=https://outlook.office365.com/owa/?path=/calendar/view/WorkWeek
-        // igorg: # FB calendar
-        //bindsym $mod+c  exec google-chrome --app=https://our.intern.facebook.com/intern/calendar
 
 //# TODO: migrate volume control. Not urgent because pa-applet currently handles this
 //# igorg: TODO: fix unmute: https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
