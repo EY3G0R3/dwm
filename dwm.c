@@ -2952,10 +2952,15 @@ zoom(const Arg *arg)
 int
 main(int argc, char *argv[])
 {
+	Bool autostart = True;
+	const char disableautostart[] = "--disable-autostart";
+
 	if (argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION);
+	else if (argc == 2 && !strcmp(disableautostart, argv[1]))
+		autostart = False;
 	else if (argc != 1)
-		die("usage: dwm [-v]");
+		die("usage: dwm [-v | --disable-autostart]");
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
@@ -2970,12 +2975,16 @@ main(int argc, char *argv[])
 	scan();
 
 	// igorg: autostart logic
-	if(!restart) // don't invoke autostart when we are just restarting dwm
+	if (autostart)
 		if (-1 == system("~/rc/autostart/autostart.sh"))
 			fprintf(stderr, "dwm: running ~/rc/autostart/autostart.sh failed\n");
 
 	run();
-	if(restart) execvp(argv[0], argv);
+
+	// igorg: in-place restart
+	if (restart) // igorg: warning: other command-line parameters will be lost
+		execlp(argv[0], argv[0], disableautostart, (char*)NULL);
+
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;

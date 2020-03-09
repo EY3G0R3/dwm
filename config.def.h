@@ -225,6 +225,7 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,         XK_s,                           spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
 	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
 	// TODO: find appropriate shortcuts for these key which are currently used by tags:
 	//{ MODKEY|ShiftMask,             XK_c,                           killclient,     {0} },
 	//{ MODKEY|ShiftMask,             XK_q,                           quit,           {0} },
