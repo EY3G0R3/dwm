@@ -126,7 +126,26 @@ static const char *tags[] = {
 	"9",
 	"0",
 };
-
+static const char *defaultapps[] = { // has to contain the same number of entries as tags[]
+	"dwm-sensible-terminal", 	// ~: terminal
+	"quip",		// q: quip
+	"google-chrome",// w: web 		e: english layout 	a: launch apps
+	"WorkChat", 	// s: slack (WorkChat)
+	"Messenger",    // d: dm (Messenger) 				z:zoom
+	"Mail", 	// x: mail
+	"Calendar",     // c: calendar
+	"nautilus",     // f: files
+	"Wunderlist",  	// 1: wunderlist
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	"steam",
+	"spotify",
+};
 
 static const Rule rules[] = {
 	// xprop(1):
@@ -182,7 +201,7 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY,                       KEY,      vieworlaunch,   {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },

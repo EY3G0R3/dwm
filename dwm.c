@@ -218,6 +218,7 @@ static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
+static const char* getdefaultapp(const Arg* a);
 static int getrootptr(int *x, int *y);
 static long getstate(Window w);
 static unsigned int getsystraywidth();
@@ -301,6 +302,7 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void vieworlaunch(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static Client *wintosystrayicon(Window w);
@@ -1102,6 +1104,29 @@ getatomprop(Client *c, Atom prop)
 		XFree(p);
 	}
 	return atom;
+}
+
+const char*
+getdefaultapp(const Arg *arg)
+{
+	unsigned int newtagset = arg->ui & TAGMASK;
+
+	// doubletap only if we repeatedly try to show the same tag
+	if (newtagset != selmon->tagset[selmon->seltags])
+		return NULL;
+
+	// launch programs only if there are no visible clients
+	Client *c;
+	for (c = selmon->clients; c; c = c->next)
+		if (ISVISIBLE(c))
+			return NULL;
+
+	int i;
+	for (i = 0; !(newtagset & 1 << i); i++) ;
+	if (i >= LENGTH(tags))
+		return NULL;
+
+	return defaultapps[i];
 }
 
 int
@@ -2812,6 +2837,19 @@ view(const Arg *arg)
 
 	focus(NULL);
 	arrange(selmon);
+}
+
+void
+vieworlaunch(const Arg *arg)
+{
+	const char *defaultapp = getdefaultapp(arg);
+	if (defaultapp) {
+		const char *arguments[] = { defaultapp, NULL };
+		Arg a = {.v = arguments};
+		spawn(&a);
+		return;
+	} else
+		view(arg);
 }
 
 Client *
