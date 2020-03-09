@@ -200,169 +200,169 @@ static const char scratchpadname[] = "scratchpad";
 static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
+	/* modifier                     key                             function        argument */
 // igorg: dmenu-powered launchers/searches:
-	{ MODKEY,                       XK_a,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("~/rc/bin/dwm-dmenu-desktop") },
+	{ MODKEY,                       XK_a,                           spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_a,                           spawn,          SHCMD("~/rc/bin/dwm-dmenu-desktop") },
 	// igorg: websearch
-	{ MODKEY,                       XK_y,                      spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
-	{ MODKEY,                       XK_b,                      spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
-	//{ MODKEY,                       XK_s,                      spawn,     SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=") },
+	{ MODKEY,                       XK_y,                           spawn,          SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
+	{ MODKEY,                       XK_b,                           spawn,          SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
+	//{ MODKEY,                       XK_s,                           spawn,          SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=") },
 	// igorg: open chrome bookmark
-	{ MODKEY,                       XK_apostrophe,             spawn,     SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
+	{ MODKEY,                       XK_apostrophe,                  spawn,          SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
 
 // igorg: program launchers
-	{ MODKEY|ShiftMask,             XK_Return,                 spawn,     {.v = termcmd } },
-	{ MODKEY,                       XK_n,                      spawn,     SHCMD("google-chrome") },
-	{ MODKEY|ShiftMask,             XK_n,                      spawn,     SHCMD("google-chrome --incognito") },
-	{ MODKEY,                       XK_v,                      runorraise,{.v = todocmd } },
+	{ MODKEY|ShiftMask,             XK_Return,                      spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_n,                           spawn,          SHCMD("google-chrome") },
+	{ MODKEY|ShiftMask,             XK_n,                           spawn,          SHCMD("google-chrome --incognito") },
+	{ MODKEY,                       XK_v,                           runorraise,     {.v = todocmd } },
 
 // igorg: scratchpad is unnecessary, just use regular '~' tag
-	//{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	//{ MODKEY,                       XK_grave,                       togglescratch,  {.v = scratchpadcmd } },
 
 // igorg: session control: lock/suspend/kill client/exit:
-	{ Mod1Mask|ControlMask,         XK_l,      spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
-	{ Mod1Mask|ControlMask,         XK_s,      spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
+	{ Mod1Mask|ControlMask,         XK_l,                           spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
+	{ Mod1Mask|ControlMask,         XK_s,                           spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
 	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
 	// TODO: find appropriate shortcuts for these key which are currently used by tags:
-	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	//{ MODKEY|ShiftMask,             XK_c,                           killclient,     {0} },
+	//{ MODKEY|ShiftMask,             XK_q,                           quit,           {0} },
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
-	{ MODKEY|ShiftMask,             XK_F5,     xrdb,           {0} },
+	{ MODKEY|ShiftMask,             XK_F5,                          xrdb,           {0} },
 	// igorg: show/hide bar
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_b,                           togglebar,      {0} },
 	// igorg: disable touchpad
-	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
+	{ MODKEY|ShiftMask,             XK_t,                           spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
 	//igorg: automatically pick the best resolution/configuration, for solo/multi displays
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("~/rc/bin/igorandr") },
+	{ MODKEY,                       XK_p,                           spawn,          SHCMD("~/rc/bin/igorandr") },
 
 // igorg: option 1: show pavucontrol for audio profile selection
-	//{ MODKEY,                       XK_bracketleft, spawn,     SHCMD("pavucontrol -t 5") },
+	//{ MODKEY,                       XK_bracketleft,         spawn,          SHCMD("pavucontrol -t 5") },
 // igorg: option 2: route audio between hdmi/internal directly by hotkeys
-	{ MODKEY,                       XK_bracketleft,   spawn,   SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
-	{ MODKEY,                       XK_bracketright,  spawn,   SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
-	{ MODKEY,                       XK_backslash,     spawn,   SHCMD("pavucontrol -t 5") },
+	{ MODKEY,                       XK_bracketleft,                 spawn,          SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
+	{ MODKEY,                       XK_bracketright,                spawn,          SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
+	{ MODKEY,                       XK_backslash,                   spawn,          SHCMD("pavucontrol -t 5") },
 
 // igorg: screenshots
-	{ 0,                            XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh --select") },
-	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh --window") },
-	{ ControlMask,                  XK_Print,  spawn,          SHCMD("~/rc/bin/take-screenshot.sh") },
+	{ 0,                            XK_Print,                       spawn,          SHCMD("~/rc/bin/take-screenshot.sh --select") },
+	{ Mod1Mask,                     XK_Print,                       spawn,          SHCMD("~/rc/bin/take-screenshot.sh --window") },
+	{ ControlMask,                  XK_Print,                       spawn,          SHCMD("~/rc/bin/take-screenshot.sh") },
 
 // igorg: keyboard layout switching
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("xkblayout-state set 0") },
-	{ MODKEY,                       XK_r,      spawn,          SHCMD("xkblayout-state set 1") },
-	{ MODKEY,                       XK_u,      spawn,          SHCMD("xkblayout-state set 2") },
+	{ MODKEY,                       XK_e,                           spawn,          SHCMD("xkblayout-state set 0") },
+	{ MODKEY,                       XK_r,                           spawn,          SHCMD("xkblayout-state set 1") },
+	{ MODKEY,                       XK_u,                           spawn,          SHCMD("xkblayout-state set 2") },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
 //		1. mod+d after several mod+i doesn't restore the previous layout
 //		2. misclicking one of these buttons result in a few seconds of confusion
 //		   with no intuitive "undo" action
-	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	//{ MODKEY,                       XK_i,                           incnmaster,     {.i = +1 } },
+	//{ MODKEY,                       XK_d,                           incnmaster,     {.i = -1 } },
 
 // igorg: option 1, default: use dwm's navigation
-	//{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	//{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+        //{ MODKEY,                       XK_j,                           focusstack,     {.i = +1 } },
+	//{ MODKEY,                       XK_k,                           focusstack,     {.i = -1 } },
+	//{ MODKEY,                       XK_h,                           setmfact,       {.f = -0.05} },
+	//{ MODKEY,                       XK_l,                           setmfact,       {.f = +0.05} },
 // igorg: option 2: use dwm's navigation but with inverted j and k (j goes down k goes up)
-	//{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
-	//{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
-	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	//{ MODKEY,                       XK_j,                           focusstack,     {.i = -1 } },
+	//{ MODKEY,                       XK_k,                           focusstack,     {.i = +1 } },
+	//{ MODKEY,                       XK_h,                           setmfact,       {.f = -0.05} },
+	//{ MODKEY,                       XK_l,                           setmfact,       {.f = +0.05} },
 // igorg: option 3: use vim navigation (hjkl) and left-right arrows to move screen divider:
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_j,                           focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,                           focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_h,                           focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_l,                           focusstack,     {.i = +1 } },
 
 // igorg: arrow keys: up/down/left/right navigate the stack; shift+left/right moves screen delimiter
-	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Up,     incrovgaps,     {.i = -5 } },
-	{ MODKEY|ShiftMask,             XK_Down,   incrovgaps,     {.i = +5 } },
+	{ MODKEY,                       XK_Left,                        focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Right,                       focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_Up,                          focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Down,                        focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,                        setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_Right,                       setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_Up,                          incrovgaps,     {.i = -5 } },
+	{ MODKEY|ShiftMask,             XK_Down,                        incrovgaps,     {.i = +5 } },
 // make the selected window "in spotlight", bumping it to order 0
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_Return,                      zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[3]} },
 // igorg: use XK_f and XK_m for tags
-	//{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }
+	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[1]} },
+	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[2]} }
 // igorg: switch between tile and monocle layouts
-	{ MODKEY,                       XK_z,      swaplayouts,    {0} },
+	{ MODKEY,                       XK_z,                           swaplayouts,    {0} },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
-	//{ MODKEY,                       XK_space,  setlayout,      {0} },
+	//{ MODKEY,                       XK_space,               setlayout,      {0} },
 // igorg: Mod+Space option 2: switch to monocle layout
-	//{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_space,               setlayout,      {.v = &layouts[2]} },
 // igorg: Mod+Space option 3: superior to option 1 and 2: switch between tile and monocle layouts
-	//{ MODKEY,                       XK_space,  swaplayouts,    {0} },
+	//{ MODKEY,                       XK_space,               swaplayouts,    {0} },
 // igorg: Mod+Space option 4: disable and use Mod+Z because it works better with mouse
-	//{ MODKEY,                       XK_space,  swaplayouts,    {0} },
+	//{ MODKEY,                       XK_space,               swaplayouts,    {0} },
 
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_Tab,    toggleoverview, {0} },
+	{ MODKEY|ShiftMask,             XK_space,                       togglefloating, {0} },
+	{ MODKEY,                       XK_Tab,                         toggleoverview, {0} },
 
 // navigating between multiple monitors
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,                       focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,                      focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,                       tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,                      tagmon,         {.i = +1 } },
 
 // tags
-	TAGKEYS(                        XK_grave,                  0)   // console
-	TAGKEYS(                        XK_q,                      1)   // quip
-	TAGKEYS(                        XK_w,                      2)   // web
-	//TAGKEYS(                        XK_e,                      )  // reserved for switching to english layout
-	//TAGKEYS(                        XK_a,                      )  // reserved for launching apps
-	TAGKEYS(                        XK_s,                      3)   // slack
-	TAGKEYS(                        XK_d,                      4)   // dm
-	//TAGKEYS(                        XK_z,                      )  // reserved for 'zoom': switch between tile/mono
-	TAGKEYS(                        XK_x,                      5)   // xmail
-	TAGKEYS(                        XK_c,                      6)   // calendar
-	TAGKEYS(                        XK_f,                      7)   // files
-	TAGKEYS(                        XK_1,                      8)   // wunderlist
-	TAGKEYS(                        XK_2,                      9)
-	TAGKEYS(                        XK_3,                      10)
-	TAGKEYS(                        XK_4,                      11)
-	TAGKEYS(                        XK_5,                      12)
-	TAGKEYS(                        XK_6,                      13)
-	TAGKEYS(                        XK_7,                      14)
-	TAGKEYS(                        XK_8,                      15)
-	TAGKEYS(                        XK_9,                      16)
-	TAGKEYS(                        XK_0,                      17)
+	TAGKEYS(                        XK_grave,                       0)   // console
+	TAGKEYS(                        XK_q,                           1)   // quip
+	TAGKEYS(                        XK_w,                           2)   // web
+	//TAGKEYS(                        XK_e,                           )  // reserved for switching to english layout
+	//TAGKEYS(                        XK_a,                           )  // reserved for launching apps
+	TAGKEYS(                        XK_s,                           3)   // slack
+	TAGKEYS(                        XK_d,                           4)   // dm
+	//TAGKEYS(                        XK_z,                           )  // reserved for 'zoom': switch between tile/mono
+	TAGKEYS(                        XK_x,                           5)   // xmail
+	TAGKEYS(                        XK_c,                           6)   // calendar
+	TAGKEYS(                        XK_f,                           7)   // files
+	TAGKEYS(                        XK_1,                           8)   // wunderlist
+	TAGKEYS(                        XK_2,                           9)
+	TAGKEYS(                        XK_3,                           10)
+	TAGKEYS(                        XK_4,                           11)
+	TAGKEYS(                        XK_5,                           12)
+	TAGKEYS(                        XK_6,                           13)
+	TAGKEYS(                        XK_7,                           14)
+	TAGKEYS(                        XK_8,                           15)
+	TAGKEYS(                        XK_9,                           16)
+	TAGKEYS(                        XK_0,                           17)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // igorg: Thus, the below declarations don't work:
-	TAGKEYS(                        XK_KP_1,                   8)
-	TAGKEYS(                        XK_KP_2,                   9)
-	TAGKEYS(                        XK_KP_3,                   10)
-	TAGKEYS(                        XK_KP_4,                   11)
-	TAGKEYS(                        XK_KP_5,                   12)
-	TAGKEYS(                        XK_KP_6,                   13)
-	TAGKEYS(                        XK_KP_7,                   14)
-	TAGKEYS(                        XK_KP_8,                   15)
-	TAGKEYS(                        XK_KP_9,                   16)
-	TAGKEYS(                        XK_KP_0,                   17)
+	TAGKEYS(                        XK_KP_1,                        8)
+	TAGKEYS(                        XK_KP_2,                        9)
+	TAGKEYS(                        XK_KP_3,                        10)
+	TAGKEYS(                        XK_KP_4,                        11)
+	TAGKEYS(                        XK_KP_5,                        12)
+	TAGKEYS(                        XK_KP_6,                        13)
+	TAGKEYS(                        XK_KP_7,                        14)
+	TAGKEYS(                        XK_KP_8,                        15)
+	TAGKEYS(                        XK_KP_9,                        16)
+	TAGKEYS(                        XK_KP_0,                        17)
 
 // igorg: audio controls for Spotify
-	{ 0,                            XF86XK_AudioPlay,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
-	{ 0,                            XF86XK_AudioStop,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") },
-	{ 0,                            XF86XK_AudioPrev,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
-	{ 0,                            XF86XK_AudioNext,           spawn,     SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
+	{ 0,                            XF86XK_AudioPlay,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
+	{ 0,                            XF86XK_AudioStop,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") },
+	{ 0,                            XF86XK_AudioPrev,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
+	{ 0,                            XF86XK_AudioNext,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
 
 // igorg: screen brightness
 // TODO: change this to a script which will also show the current brightness from notify-send
-	{ 0,                            XF86XK_MonBrightnessUp,     spawn,     SHCMD("xbacklight +10") },
-	{ 0,                            XF86XK_MonBrightnessDown,   spawn,     SHCMD("xbacklight -10") },
+	{ 0,                            XF86XK_MonBrightnessUp,         spawn,          SHCMD("xbacklight +10") },
+	{ 0,                            XF86XK_MonBrightnessDown,       spawn,          SHCMD("xbacklight -10") },
 
 //# TODO: migrate volume control. Not urgent because pa-applet currently handles this
 //# igorg: TODO: fix unmute: https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
