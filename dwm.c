@@ -2842,14 +2842,14 @@ view(const Arg *arg)
 void
 vieworlaunch(const Arg *arg)
 {
+	view(arg);
 	const char *defaultapp = getdefaultapp(arg);
 	if (defaultapp) {
 		const char *arguments[] = { defaultapp, NULL };
 		Arg a = {.v = arguments};
 		spawn(&a);
 		return;
-	} else
-		view(arg);
+	}
 }
 
 Client *
