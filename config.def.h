@@ -255,36 +255,36 @@ static Key keys[] = {
 	{ MODKEY,                       XK_u,      spawn,          SHCMD("xkblayout-state set 2") },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
-// 	  rationale:
-// 	 	1. mod+d after several mod+i doesn't restore the previous layout
-// 		2. misclicking one of these buttons result in a few seconds of confusion
-// 		   with no intuitive "undo" action
+//	rationale:
+//		1. mod+d after several mod+i doesn't restore the previous layout
+//		2. misclicking one of these buttons result in a few seconds of confusion
+//		   with no intuitive "undo" action
 	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 
 // igorg: option 1, default: use dwm's navigation
-        //{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-        //{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-        //{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-        //{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	//{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	//{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 // igorg: option 2: use dwm's navigation but with inverted j and k (j goes down k goes up)
-        //{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
-        //{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
-        //{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-        //{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	//{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
+	//{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
+	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 // igorg: option 3: use vim navigation (hjkl) and left-right arrows to move screen divider:
-        { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-        { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-        { MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
-        { MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 
 // igorg: arrow keys: up/down/left/right navigate the stack; shift+left/right moves screen delimiter
-        { MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-        { MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-        { MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
-        { MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-        { MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
-        { MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Up,     incrovgaps,     {.i = -5 } },
 	{ MODKEY|ShiftMask,             XK_Down,   incrovgaps,     {.i = +5 } },
 // make the selected window "in spotlight", bumping it to order 0
@@ -300,7 +300,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,      swaplayouts,    {0} },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
-        //{ MODKEY,                       XK_space,  setlayout,      {0} },
+	//{ MODKEY,                       XK_space,  setlayout,      {0} },
 // igorg: Mod+Space option 2: switch to monocle layout
 	//{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[2]} },
 // igorg: Mod+Space option 3: superior to option 1 and 2: switch between tile and monocle layouts
@@ -316,7 +316,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-
 
 // tags
 	TAGKEYS(                        XK_grave,                  0)   // console
@@ -365,14 +364,11 @@ static Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessUp,     spawn,     SHCMD("xbacklight +10") },
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,     SHCMD("xbacklight -10") },
 
-// igorg: program launchers
-
-
 //# TODO: migrate volume control. Not urgent because pa-applet currently handles this
 //# igorg: TODO: fix unmute: https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
-        //bindsym XF86XK_AudioMute        exec amixer -D default sset Master toggle && pkill -RTMIN+10 i3blocks
-        //bindsym XF86XK_AudioRaiseVolume exec amixer -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
-        //bindsym XF86XK_AudioLowerVolume exec amixer -D default sset Master 5%- && pkill -RTMIN+10 i3blocks
+	//bindsym XF86XK_AudioMute        exec amixer -D default sset Master toggle && pkill -RTMIN+10 i3blocks
+	//bindsym XF86XK_AudioRaiseVolume exec amixer -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
+	//bindsym XF86XK_AudioLowerVolume exec amixer -D default sset Master 5%- && pkill -RTMIN+10 i3blocks
 };
 
 /* button definitions */
