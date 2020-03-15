@@ -255,7 +255,7 @@ static Key keys[] = {
 	// igorg: disable touchpad
 	{ MODKEY|ShiftMask,             XK_t,                           spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
 	//igorg: automatically pick the best resolution/configuration, for solo/multi displays
-	{ MODKEY,                       XK_p,                           spawn,          SHCMD("~/rc/bin/igorandr") },
+	{ MODKEY,                       XK_p,                           spawn,          SHCMD("~/rc/bin/igorandr dwm") },
 
 // igorg: option 1: show pavucontrol for audio profile selection
 	//{ MODKEY,                       XK_bracketleft,         spawn,          SHCMD("pavucontrol -t 5") },
