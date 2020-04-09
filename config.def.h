@@ -224,11 +224,11 @@ static Key keys[] = {
 	/* modifier                     key                             function        argument */
 // igorg: dmenu-powered launchers/searches:
 	{ MODKEY,                       XK_a,                           spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_a,                           spawn,          SHCMD("~/rc/bin/dwm-dmenu-desktop") },
+	{ MODKEY|ShiftMask,             XK_a,                           spawn,          SHCMD("~/bin/dwm-dmenu-desktop") },
 	// igorg: websearch
-	{ MODKEY,                       XK_y,                           spawn,          SHCMD("~/rc/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
-	{ MODKEY,                       XK_b,                           spawn,          SHCMD("~/rc/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
-	//{ MODKEY,                       XK_s,                           spawn,          SHCMD("~/rc/bin/dmenu_websearch.sh Google:  https://google.com/?q=") },
+	{ MODKEY,                       XK_y,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
+	{ MODKEY,                       XK_b,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
+	//{ MODKEY,                       XK_s,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Google:  https://google.com/?q=") },
 	// igorg: open chrome bookmark
 	{ MODKEY,                       XK_apostrophe,                  spawn,          SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
 
@@ -242,8 +242,8 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_grave,                       togglescratch,  {.v = scratchpadcmd } },
 
 // igorg: session control: lock/suspend/kill client/exit:
-	{ Mod1Mask|ControlMask,         XK_l,                           spawn,          SHCMD("~/rc/bin/i3exit.sh lock") },
-	{ Mod1Mask|ControlMask,         XK_s,                           spawn,          SHCMD("~/rc/bin/i3exit.sh suspend") },
+	{ Mod1Mask|ControlMask,         XK_l,                           spawn,          SHCMD("~/bin/i3exit.sh lock") },
+	{ Mod1Mask|ControlMask,         XK_s,                           spawn,          SHCMD("~/bin/i3exit.sh suspend") },
 	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
@@ -255,21 +255,21 @@ static Key keys[] = {
 	// igorg: show/hide bar
 	{ MODKEY|ShiftMask,             XK_b,                           togglebar,      {0} },
 	// igorg: disable touchpad
-	{ MODKEY|ShiftMask,             XK_t,                           spawn,          SHCMD("~/rc/bin/toggle-touchpad.sh") },
+	{ MODKEY|ShiftMask,             XK_t,                           spawn,          SHCMD("~/bin/toggle-touchpad.sh") },
 	//igorg: automatically pick the best resolution/configuration, for solo/multi displays
-	{ MODKEY,                       XK_p,                           spawn,          SHCMD("~/rc/bin/igorandr dwm") },
+	{ MODKEY,                       XK_p,                           spawn,          SHCMD("~/bin/igorandr dwm") },
 
 // igorg: option 1: show pavucontrol for audio profile selection
 	//{ MODKEY,                       XK_bracketleft,         spawn,          SHCMD("pavucontrol -t 5") },
 // igorg: option 2: route audio between hdmi/internal directly by hotkeys
-	{ MODKEY,                       XK_bracketleft,                 spawn,          SHCMD("~/rc/bin/route-audio-to-audio-jack.sh") },
-	{ MODKEY,                       XK_bracketright,                spawn,          SHCMD("~/rc/bin/route-audio-to-hdmi.sh") },
+	{ MODKEY,                       XK_bracketleft,                 spawn,          SHCMD("~/bin/route-audio-to-audio-jack.sh") },
+	{ MODKEY,                       XK_bracketright,                spawn,          SHCMD("~/bin/route-audio-to-hdmi.sh") },
 	{ MODKEY,                       XK_backslash,                   spawn,          SHCMD("pavucontrol -t 5") },
 
 // igorg: screenshots
-	{ 0,                            XK_Print,                       spawn,          SHCMD("~/rc/bin/take-screenshot.sh --select") },
-	{ Mod1Mask,                     XK_Print,                       spawn,          SHCMD("~/rc/bin/take-screenshot.sh --window") },
-	{ ControlMask,                  XK_Print,                       spawn,          SHCMD("~/rc/bin/take-screenshot.sh") },
+	{ 0,                            XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh --select") },
+	{ Mod1Mask,                     XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh --window") },
+	{ ControlMask,                  XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh") },
 
 // igorg: keyboard layout switching
 	{ MODKEY,                       XK_e,                           spawn,          SHCMD("xkblayout-state set 0") },
