@@ -172,6 +172,8 @@ static const Rule rules[] = {
         { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 7,       0,           -1 },
 	// 1: Wunderlist
         { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 8,       0,           -1 },
+	// 3: Terraforming Mars
+        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 10,      0,           -1 },
 	// 9: steam
         { "Steam"                , NULL                                         , NULL,       1 << 16,      0,           -1,},
 	// 0: Spotify (detection doesn't seem to work well)
