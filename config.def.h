@@ -115,7 +115,7 @@ static const char *tags[] = {
 	"xmail", 	// x: mail
 	"calendar",     // c: calendar
 	"files",        // f: files
-	"1",  		// 1: wunderlist
+	"1",  		// 1: todo
 	"2",
 	"3",
 	"4",
@@ -135,7 +135,7 @@ static const char *defaultapps[] = { // has to contain the same number of entrie
 	"Mail", 	// x: mail
 	"Calendar",     // c: calendar
 	"nautilus",     // f: files
-	"Wunderlist",  	// 1: wunderlist
+	"Todo",  	// 1: todo
 	NULL,
 	NULL,
 	NULL,
@@ -170,8 +170,9 @@ static const Rule rules[] = {
 	// f: files
         { "Nautilus"             , "nautilus"                                   , NULL,       1 << 7,       0,           -1 },
         { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 7,       0,           -1 },
-	// 1: Wunderlist
+	// 1: Todo
         { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 8,       0,           -1 },
+        { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 8,       0,           -1 },
 	// 3: Terraforming Mars
         { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 10,      0,           -1 },
 	// 9: steam
@@ -351,7 +352,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_x,                           5)   // xmail
 	TAGKEYS(                        XK_c,                           6)   // calendar
 	TAGKEYS(                        XK_f,                           7)   // files
-	TAGKEYS(                        XK_1,                           8)   // wunderlist
+	TAGKEYS(                        XK_1,                           8)   // todo
 	TAGKEYS(                        XK_2,                           9)
 	TAGKEYS(                        XK_3,                           10)
 	TAGKEYS(                        XK_4,                           11)
