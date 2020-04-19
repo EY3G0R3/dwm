@@ -245,6 +245,7 @@ static Key keys[] = {
 // igorg: session control: lock/suspend/kill client/exit:
 	{ Mod1Mask|ControlMask,         XK_l,                           spawn,          SHCMD("~/bin/i3exit.sh lock") },
 	{ Mod1Mask|ControlMask,         XK_s,                           spawn,          SHCMD("~/bin/i3exit.sh suspend") },
+	{ Mod1Mask|ControlMask,         XK_h,                           spawn,          SHCMD("~/bin/i3exit.sh hibernate") },
 	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
