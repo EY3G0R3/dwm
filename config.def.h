@@ -264,9 +264,10 @@ static Key keys[] = {
 // igorg: option 1: show pavucontrol for audio profile selection
 	//{ MODKEY,                       XK_bracketleft,         spawn,          SHCMD("pavucontrol -t 5") },
 // igorg: option 2: route audio between hdmi/internal directly by hotkeys
-	{ MODKEY,                       XK_bracketleft,                 spawn,          SHCMD("~/bin/route-audio-to-audio-jack.sh") },
-	{ MODKEY,                       XK_bracketright,                spawn,          SHCMD("~/bin/route-audio-to-hdmi.sh") },
-	{ MODKEY,                       XK_backslash,                   spawn,          SHCMD("pavucontrol -t 5") },
+	{ MODKEY,                       XK_bracketleft,                 spawn,          SHCMD("~/bin/route-audio-to-hdmi.sh") },
+	{ MODKEY,                       XK_bracketright,                spawn,          SHCMD("~/bin/route-audio-to-headphones.sh") },
+	{ MODKEY,                       XK_backslash,                   spawn,          SHCMD("~/bin/route-audio-to-bluetooth.sh") },
+	{ MODKEY,                       XK_equal,                       spawn,          SHCMD("pavucontrol -t 5") },
 
 // igorg: screenshots
 	{ 0,                            XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh --select") },
