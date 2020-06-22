@@ -2292,9 +2292,12 @@ toggleoverview(const Arg *arg)
 	} else {
 		Arg viewarg = {.ui = TAGMASK};
 		view(&viewarg);
+		// igorg: setlayout sets the layout not for the tag set (TAGMASK),
+		// but only on the first tag of the tag set (usually ~).
+		// hence using setlayout here will botch the layout of the first tag
 		// igorg: using setlayout here somehow also sets it on the first tag (~)
 		// igorg: thus, call grid() directly
-		// setlayoutarg = {.v = &layouts[3]};
+		// Arg setlayoutarg = {.v = &layouts[3]};
 		// setlayout(&setlayoutarg);
 		grid(selmon);
 		// Known Problem: if a window appears/disappears during change to grid layout
@@ -2426,7 +2429,12 @@ unmanage(Client *c, int destroyed)
 		}
 	}
 
-	arrange(m);
+	// igorg: don't rearrange after closing windows in overview mode
+	// because arrange() doesn't look at all the tags but only the current tag
+	// and rearrange the clients according to the layout set for tag 1
+	if (selmon->tagset[selmon->seltags] != TAGMASK) {
+	  arrange(m);
+	}
 }
 
 void
