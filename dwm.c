@@ -752,13 +752,6 @@ clientmessage(XEvent *e)
 	} else if (cme->message_type == netatom[NetActiveWindow]) {
 		if (c != selmon->sel && !c->isurgent)
 			seturgent(c, 1);
-		/* igorg: careful, this whole block comes from tab patch, and it looks like we removed a part of this code before */
-		if (!ISVISIBLE(c)) {
-			c->mon->seltags ^= 1;
-			c->mon->tagset[c->mon->seltags] = c->tags;
-			for(i=0; !(c->tags & 1 << i); i++);
-			view(&(Arg){.ui = 1 << i});
-		}
 	}
 }
 
