@@ -595,20 +595,12 @@ buttonpress(XEvent *e)
 			click = ClkWinTitle;
 	}
 	if(ev->window == selmon->tabwin) {
-		i = 0; x = 0;
-		for(c = selmon->clients; c; c = c->next){
-		  if(!ISVISIBLE(c)) continue;
-		  x += selmon->tab_widths[i];
-		  if (ev->x > x)
-		    ++i;
-		  else
-		    break;
-		  if(i >= m->ntabs) break;
-		}
-		if(c) {
-		  click = ClkTabBar;
-		  arg.ui = i;
-		}
+		// igorg
+		if (selmon->clients && m->ntabs) {
+			click = ClkTabBar;
+			// more precise version of arg.ui = ev->x / ( m->ww / m->ntabs);
+			arg.ui = ev->x * m->ntabs / m->ww;
+		 }
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
