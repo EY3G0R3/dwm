@@ -34,7 +34,7 @@ case $# in
 	esac
 	;;
 *)
-	echo "Too many arguments."
+	echo "Usage: dwmc <command> [argument]"
 	exit 1
 	;;
 esac
