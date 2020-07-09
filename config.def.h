@@ -229,7 +229,7 @@ static Key keys[] = {
 	// igorg: websearch
 	{ MODKEY,                       XK_y,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
 	{ MODKEY,                       XK_b,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
-	//{ MODKEY,                       XK_s,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Google:  https://google.com/?q=") },
+	{ MODKEY,                       XK_g,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Google:  https://google.com/search?q=") },
 	// igorg: open chrome bookmark
 	{ MODKEY,                       XK_apostrophe,                  spawn,          SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
 
