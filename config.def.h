@@ -249,9 +249,11 @@ static Key keys[] = {
 	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
-	// TODO: find appropriate shortcuts for these key which are currently used by tags:
+
+	// igorg: use xkill instead of killclient() because it requires one more level of confirmation - a mouse click
+	{ MODKEY|ShiftMask,             XK_k,                           spawn,          SHCMD("xkill") },
 	//{ MODKEY|ShiftMask,             XK_c,                           killclient,     {0} },
-	//{ MODKEY|ShiftMask,             XK_q,                           quit,           {0} },
+
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
 	{ MODKEY|ShiftMask,             XK_F5,                          xrdb,           {0} },
 	// igorg: show/hide bar
