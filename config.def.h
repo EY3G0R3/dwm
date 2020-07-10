@@ -256,6 +256,8 @@ static Key keys[] = {
 
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
 	{ MODKEY|ShiftMask,             XK_F5,                          xrdb,           {0} },
+	// igorg: reload xkb config
+	{ MODKEY|ShiftMask,             XK_F6,                          spawn,          SHCMD("~/rc/autostart/key.sh") },
 	// igorg: show/hide bar
 	{ MODKEY|ShiftMask,             XK_b,                           togglebar,      {0} },
 	// igorg: disable touchpad
