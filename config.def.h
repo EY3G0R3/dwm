@@ -89,12 +89,17 @@ static char emptybordercolor[]  = COL_UNUSED;
 static char emptybgcolor[]      = COL_GRUVBOX_BG;
 static char emptyfgcolor[]      = COL_GRUVBOX_BG1;
 
+static char inactivebordercolor[]  = COL_GRUVBOX_BG1;
+static char inactivebgcolor[]      = "#141414"; 	// half of "#282828"
+static char inactivefgcolor[]      = "#49413a"; 	// half of "#928374"
+
 static const char *colors[][3]      = {
 	/*                      fg            bg               border   */
 	[SchemeNorm]     = { normfgcolor    , normbgcolor    , normbordercolor     },
 	[SchemeSel]      = { selfgcolor     , selbgcolor     , selbordercolor      },
 	[SchemeTitle]    = { titlefgcolor   , titlebgcolor   , titlebordercolor    },
 	[SchemeUrgent]   = { urgentfgcolor  , urgentbgcolor  , urgentbordercolor   },
+	[SchemeDimmed]   = { inactivefgcolor, inactivebgcolor, inactivebordercolor },
 	[SchemeEmpty]    = { emptyfgcolor   , emptybgcolor   , emptybordercolor    },
 };
 
