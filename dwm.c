@@ -96,7 +96,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeTitle, SchemeUrgent, SchemeEmpty }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeTitle, SchemeUrgent, SchemeDimmed, SchemeEmpty }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
@@ -1147,7 +1147,8 @@ drawtab(Monitor *m) {
 	  if(!ISVISIBLE(c)) continue;
 	  if(i >= m->ntabs) break;
 	  // TODO: igorg: what if text len is higher than tab len?
-	  drw_setscheme(drw, (c == m->sel) ? scheme[SchemeSel] : scheme[SchemeNorm]);
+	  // igorg: use normal scheme for active tabs and dimmed scheme for inactive
+	  drw_setscheme(drw, (c == m->sel) ? scheme[SchemeNorm] : scheme[SchemeDimmed]);
 
 	  int name_width = TEXTW(c->name);
 	  int padding_width = (tab_width - name_width) / 2;
@@ -1158,7 +1159,7 @@ drawtab(Monitor *m) {
 	  ++i;
 	}
 
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_setscheme(drw, scheme[SchemeDimmed]);
 
 	/* cleans interspace between window names and current viewed tag label */
 	/*w = m->ww - view_info_w - x;*/
@@ -2772,6 +2773,7 @@ updatebars(void)
 		.event_mask = ButtonPressMask|ExposureMask
 	};
 	XClassHint ch = {"dwm", "dwm"};
+	XClassHint tabch = {"dwmtab", "dwmtab"};
 	for (m = mons; m; m = m->next) {
 		if (m->barwin)
 			continue;
@@ -2791,7 +2793,7 @@ updatebars(void)
 					  CWOverrideRedirect|CWBackPixmap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->tabwin, cursor[CurNormal]->cursor);
 		XMapRaised(dpy, m->tabwin);
-		XSetClassHint(dpy, m->tabwin, &ch);
+		XSetClassHint(dpy, m->tabwin, &tabch);
 	}
 }
 
