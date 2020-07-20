@@ -223,65 +223,20 @@ static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
 	/* modifier                     key                             function        argument */
-// igorg: dmenu-powered launchers/searches:
-	{ MODKEY,                       XK_a,                           spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_a,                           spawn,          SHCMD("~/bin/dwm-dmenu-desktop") },
-	// igorg: websearch
-	{ MODKEY,                       XK_y,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh YouTube: https://youtube.com/?q=") },
-	{ MODKEY,                       XK_b,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Bunny:   https://bunnylol.facebook.net/?") },
-	{ MODKEY,                       XK_g,                           spawn,          SHCMD("~/bin/dmenu_websearch.sh Google:  https://google.com/search?q=") },
-	// igorg: open chrome bookmark
-	{ MODKEY,                       XK_apostrophe,                  spawn,          SHCMD("~/src/chrome-dmenu/chrome-dmenu.sh") },
-
-// igorg: program launchers
-	{ MODKEY|ShiftMask,             XK_Return,                      spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_n,                           spawn,          SHCMD("google-chrome") },
-	{ MODKEY|ShiftMask,             XK_n,                           spawn,          SHCMD("google-chrome --incognito") },
 	{ MODKEY,                       XK_v,                           runorraise,     {.v = todocmd } },
 
 // igorg: scratchpad is unnecessary, just use regular '~' tag
 	//{ MODKEY,                       XK_grave,                       togglescratch,  {.v = scratchpadcmd } },
 
-// igorg: session control: lock/suspend/kill client/exit:
-	{ Mod1Mask|ControlMask,         XK_l,                           spawn,          SHCMD("~/bin/i3exit.sh lock") },
-	{ Mod1Mask|ControlMask,         XK_s,                           spawn,          SHCMD("~/bin/i3exit.sh suspend") },
-	{ Mod1Mask|ControlMask,         XK_h,                           spawn,          SHCMD("~/bin/i3exit.sh hibernate") },
-	// igorg: Temporarily use XK_r to quit dwm (since XK_q is used by a tag)
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
 
-	// igorg: use xkill instead of killclient() because it requires one more level of confirmation - a mouse click
-	{ MODKEY|ShiftMask,             XK_k,                           spawn,          SHCMD("xkill") },
-	//{ MODKEY|ShiftMask,             XK_c,                           killclient,     {0} },
-
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
 	{ MODKEY|ShiftMask,             XK_F5,                          xrdb,           {0} },
-	// igorg: reload xkb config
-	{ MODKEY|ShiftMask,             XK_F6,                          spawn,          SHCMD("~/rc/autostart/key.sh") },
+
 	// igorg: show/hide bar
 	{ MODKEY|ShiftMask,             XK_b,                           togglebar,      {0} },
-	// igorg: disable touchpad
-	{ MODKEY|ShiftMask,             XK_t,                           spawn,          SHCMD("~/bin/toggle-touchpad.sh") },
-	//igorg: automatically pick the best resolution/configuration, for solo/multi displays
-	{ MODKEY,                       XK_p,                           spawn,          SHCMD("~/bin/igorandr dwm") },
 
-// igorg: option 1: show pavucontrol for audio profile selection
-	//{ MODKEY,                       XK_bracketleft,         spawn,          SHCMD("pavucontrol -t 5") },
-// igorg: option 2: route audio between bluetooth/headphones/hdmi
-	{ MODKEY,                       XK_bracketleft,                 spawn,          SHCMD("~/bin/route-audio-to-bluetooth.sh") },
-	{ MODKEY,                       XK_bracketright,                spawn,          SHCMD("~/bin/route-audio-to-headphones.sh") },
-	{ MODKEY,                       XK_backslash,                   spawn,          SHCMD("~/bin/route-audio-to-hdmi.sh") },
-	{ MODKEY,                       XK_equal,                       spawn,          SHCMD("pavucontrol -t 5") },
-
-// igorg: screenshots
-	{ 0,                            XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh --select") },
-	{ Mod1Mask,                     XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh --window") },
-	{ ControlMask,                  XK_Print,                       spawn,          SHCMD("~/bin/take-screenshot.sh") },
-
-// igorg: keyboard layout switching
-	{ MODKEY,                       XK_e,                           spawn,          SHCMD("xkblayout-state set 0") },
-	{ MODKEY,                       XK_r,                           spawn,          SHCMD("xkblayout-state set 1") },
-	{ MODKEY,                       XK_u,                           spawn,          SHCMD("xkblayout-state set 2") },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
@@ -382,22 +337,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_KP_9,                        16)
 	TAGKEYS(                        XK_KP_0,                        17)
 
-// igorg: audio controls for Spotify
-	{ 0,                            XF86XK_AudioPlay,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") },
-	{ 0,                            XF86XK_AudioStop,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") },
-	{ 0,                            XF86XK_AudioPrev,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
-	{ 0,                            XF86XK_AudioNext,               spawn,          SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
-
-// igorg: screen brightness
-// TODO: change this to a script which will also show the current brightness from notify-send
-	{ 0,                            XF86XK_MonBrightnessUp,         spawn,          SHCMD("xbacklight +10") },
-	{ 0,                            XF86XK_MonBrightnessDown,       spawn,          SHCMD("xbacklight -10") },
-
-//# TODO: migrate volume control. Not urgent because pa-applet currently handles this
-//# igorg: TODO: fix unmute: https://askubuntu.com/questions/65764/how-do-i-toggle-sound-with-amixer
-	//bindsym XF86XK_AudioMute        exec amixer -D default sset Master toggle && pkill -RTMIN+10 i3blocks
-	//bindsym XF86XK_AudioRaiseVolume exec amixer -D default sset Master 5%+ && pkill -RTMIN+10 i3blocks
-	//bindsym XF86XK_AudioLowerVolume exec amixer -D default sset Master 5%- && pkill -RTMIN+10 i3blocks
 };
 
 /* button definitions */
