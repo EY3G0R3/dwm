@@ -179,6 +179,20 @@ static const Rule rules[] = {
         { "Steam"                , NULL                                         , NULL,       1 << 16,      0,           -1,},
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
+        { "scratchpad_todo"      , "scratchpad_todo"                            , NULL,       SPTAG(0),     1,           -1 },
+};
+
+
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+
+const char *spcmd1[] = {"kitty", "--class=scratchpad_todo", "--name=scratchpad_todo" "-o font_size=16", "joplin", NULL };
+
+static Sp scratchpads[] = {
+	/* name                  cmd  */
+	{"scratchpad_todo",      spcmd1},
 };
 
 /* layout(s) */
@@ -217,6 +231,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
 
+
 static Key keys[] = {
 	/* modifier                     key                             function        argument */
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
@@ -228,6 +243,8 @@ static Key keys[] = {
 	// igorg: show/hide bar
 	{ MODKEY|ShiftMask,             XK_b,                           togglebar,      {0} },
 
+	// igorg: scratchpads
+	{ MODKEY,                       XK_v,                           togglescratch,  {.ui = 0 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
@@ -327,7 +344,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_KP_8,                        15)
 	TAGKEYS(                        XK_KP_9,                        16)
 	TAGKEYS(                        XK_KP_0,                        17)
-
 };
 
 /* button definitions */
