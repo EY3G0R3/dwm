@@ -216,17 +216,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
-static const char scratchpadname[] = "scratchpad";
-//static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-//static const char *scratchpadcmd[] = { "kitty", "-T", scratchpadname, NULL };
 static const char *todocmd[]  = { "et", NULL, NULL, NULL, "TODO" };
 
 static Key keys[] = {
 	/* modifier                     key                             function        argument */
 	{ MODKEY,                       XK_v,                           runorraise,     {.v = todocmd } },
-
-// igorg: scratchpad is unnecessary, just use regular '~' tag
-	//{ MODKEY,                       XK_grave,                       togglescratch,  {.v = scratchpadcmd } },
 
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
