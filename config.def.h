@@ -82,12 +82,6 @@ static char emptybordercolor[]  = COL_UNUSED;
 static char emptybgcolor[]      = COL_GRUVBOX_BG;
 static char emptyfgcolor[]      = COL_GRUVBOX_BG1;
 
-
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*                      fg            bg               border   */
 	[SchemeNorm]     = { normfgcolor    , normbgcolor    , normbordercolor     },
@@ -99,23 +93,19 @@ static const char *colors[][3]      = {
 
 static const char *xres = "/home/igorg/.Xresources";
 
-
-
-/* tagging */
-// First tag has to be on line 110.
-// Then tags number can be figured out by subtracting 110 from the line number
-// TODO: tidy some code and move it to line 100 instead
+// First tag has to be on line 100.
+// Then tags number can be figured out by subtracting 100 from the line number
 // Convention: first letter of the word is the shortcut
 static const char *tags[] = {
-	"~", 		// ~: terminal
+	"~",		// ~: terminal
 	"quip",		// q: quip
-	"web", 	 	// w: web 		e: english layout 	a: launch apps
-	"slack", 	// s: slack (WorkChat)
+	"web",		// w: web 		e: english layout 	a: launch apps
+	"slack",	// s: slack (WorkChat)
 	"dm",		// d: dm (Messenger) 				z:zoom
-	"xmail", 	// x: mail
-	"calendar",     // c: calendar
-	"files",        // f: files
-	"1",  		// 1: todo
+	"xmail",	// x: mail
+	"calendar",	// c: calendar
+	"files",	// f: files
+	"1",		// 1: todo
 	"2",
 	"3",
 	"4",
@@ -126,16 +116,17 @@ static const char *tags[] = {
 	"9",
 	"0",
 };
+
 static const char *defaultapps[] = { // has to contain the same number of entries as tags[]
-	"dwm-sensible-terminal", 	// ~: terminal
+	"dwm-sensible-terminal",	// ~: terminal
 	"quip",		// q: quip
-	"google-chrome",// w: web 		e: english layout 	a: launch apps
-	"WorkChat", 	// s: slack (WorkChat)
-	"Messenger",    // d: dm (Messenger) 				z:zoom
-	"Mail", 	// x: mail
-	"Calendar",     // c: calendar
-	"nautilus",     // f: files
-	"Todo",  	// 1: todo
+	"google-chrome",// w: web 		e: english layout	a: launch apps
+	"WorkChat",	// s: slack (WorkChat)
+	"Messenger",	// d: dm (Messenger)				z:zoom
+	"Mail",		// x: mail
+	"Calendar",	// c: calendar
+	"nautilus",	// f: files
+	"Todo",		// 1: todo
 	NULL,
 	NULL,
 	NULL,
@@ -152,7 +143,7 @@ static const Rule rules[] = {
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
         /* class                   instance                                       title       tags mask     isfloating   monitor */
-// use left-hand-only shortcuts to switch between tags
+	// use left-hand-only shortcuts to switch between tags
 	// terminal
 	// q: quip
         { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 1,       0,           -1 },
@@ -181,7 +172,6 @@ static const Rule rules[] = {
         { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
         { "scratchpad_todo"      , "scratchpad_todo"                            , NULL,       SPTAG(0),     1,           -1 },
 };
-
 
 typedef struct {
 	const char *name;
@@ -223,15 +213,6 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
-/* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "dwm-sensible-terminal", NULL };
-
-
 static Key keys[] = {
 	/* modifier                     key                             function        argument */
 	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
@@ -255,7 +236,7 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_d,                           incnmaster,     {.i = -1 } },
 
 // igorg: option 1, default: use dwm's navigation
-        //{ MODKEY,                       XK_j,                           focusstack,     {.i = +1 } },
+	//{ MODKEY,                       XK_j,                           focusstack,     {.i = +1 } },
 	//{ MODKEY,                       XK_k,                           focusstack,     {.i = -1 } },
 	//{ MODKEY,                       XK_h,                           setmfact,       {.f = -0.05} },
 	//{ MODKEY,                       XK_l,                           setmfact,       {.f = +0.05} },
@@ -353,7 +334,6 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
