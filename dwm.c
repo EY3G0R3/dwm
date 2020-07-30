@@ -683,7 +683,6 @@ clientmessage(XEvent *e)
 	XSetWindowAttributes swa;
 	XClientMessageEvent *cme = &e->xclient;
 	Client *c = wintoclient(cme->window);
-	int i;
 
 	if (showsystray && cme->window == systray->win && cme->message_type == netatom[NetSystemTrayOP]) {
 		/* add systray icons */
@@ -1080,7 +1079,7 @@ drawtab(Monitor *m) {
 	int sorted_label_widths[MAXTABS];
 	/*int tot_width;*/
 	int tot_width = 0;
-	int maxsize = bh;
+	/*int maxsize = bh;*/
 	int x = 0;
 	int w = 0;
 
@@ -1124,9 +1123,9 @@ drawtab(Monitor *m) {
 	      break;
 	    tot_width += sorted_label_widths[i];
 	  }
-	  maxsize = (m->ww - tot_width) / (m->ntabs - i);
+	  /*maxsize = (m->ww - tot_width) / (m->ntabs - i);*/
 	} else{
-	  maxsize = m->ww;
+	  /*maxsize = m->ww;*/
 	}
 	i = 0;
 
