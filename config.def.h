@@ -178,7 +178,7 @@ typedef struct {
 	const void *cmd;
 } Sp;
 
-const char *spcmd1[] = {"kitty", "--class=scratchpad_todo", "--name=scratchpad_todo" "-o font_size=16", "joplin", NULL };
+const char *spcmd1[] = {"kitty", "--class=scratchpad_todo", "--name=scratchpad_todo", "-o", "font_size=16", "joplin", NULL };
 
 static Sp scratchpads[] = {
 	/* name                  cmd  */
