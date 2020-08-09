@@ -251,7 +251,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_F5,                          xrdb,           {0} },
 
 	// igorg: cycle through tab bar modes
-	{ MODKEY|ShiftMask,             XK_F10,                         tabmode,        {-1} },
+	{ MODKEY|ShiftMask,             XK_v,                           tabmode,        {-1} },
 	// igorg: show/hide bar
 	{ MODKEY|ShiftMask,             XK_b,                           togglebar,      {0} },
 
