@@ -164,8 +164,9 @@ static const Rule rules[] = {
 	// 1: Todo
         { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 8,       0,           -1 },
         { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 8,       0,           -1 },
-	// 3: Terraforming Mars
+	// 3: Games: Terraforming Mars
         { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 10,      0,           -1 },
+        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 10,      0,           -1 },
 	// 9: steam
         { "Steam"                , NULL                                         , NULL,       1 << 16,      0,           -1,},
 	// 0: Spotify (detection doesn't seem to work well)
