@@ -172,7 +172,7 @@ static const Rule rules[] = {
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
 	// Scratchpad: Nozbe
-        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           -1,},
+        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           -1 ,         200, 100, 1520, 880,        3 },
 };
 
 typedef struct {
