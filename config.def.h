@@ -142,7 +142,7 @@ static const Rule rules[] = {
 	// xprop(1):
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
-        /* class                   instance                                       title       tags mask     isfloating   monitor */
+        /* class                   instance                                       title       tags mask     isfloating   monitor       float x,y,w,h         floatborderpx*/
 	// use left-hand-only shortcuts to switch between tags
 	// terminal
 	// q: quip
@@ -172,7 +172,7 @@ static const Rule rules[] = {
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
 	// Scratchpad: Nozbe
-        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           -1 },
+        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           -1,},
 };
 
 typedef struct {
