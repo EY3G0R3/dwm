@@ -236,6 +236,7 @@ static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
 static void incnmaster(const Arg *arg) __attribute__ ((unused));
 static void keypress(XEvent *e);
+static void killall(const Arg *arg);
 static void killclient(const Arg *arg);
 static void loadxrdb(void);
 static void manage(Window w, XWindowAttributes *wa);
@@ -1334,6 +1335,33 @@ killclient(const Arg *arg)
 		XSync(dpy, False);
 		XSetErrorHandler(xerror);
 		XUngrabServer(dpy);
+	}
+}
+
+void
+killall(const Arg *arg)
+{
+	uint clicked_tag = arg->ui;
+	if (clicked_tag == 0) {
+	  return;
+	}
+
+	Client *c = NULL;
+	for (c = selmon->clients; c; c = c->next) {
+		if (!(c->tags & clicked_tag)) {
+			continue;
+		}
+
+		// kill this client
+		if (!sendevent(c->win, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) {
+			XGrabServer(dpy);
+			XSetErrorHandler(xerrordummy);
+			XSetCloseDownMode(dpy, DestroyAll);
+			XKillClient(dpy, c->win);
+			XSync(dpy, False);
+			XSetErrorHandler(xerror);
+			XUngrabServer(dpy);
+		}
 	}
 }
 
