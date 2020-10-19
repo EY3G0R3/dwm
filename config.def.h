@@ -249,8 +249,8 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_h,                           setmfact,       {.f = -0.05} },
 	//{ MODKEY,                       XK_l,                           setmfact,       {.f = +0.05} },
 // igorg: option 3: use vim navigation (hjkl) and left-right arrows to move screen divider:
-	{ MODKEY,                       XK_j,                           focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,                           focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_j,                           focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_k,                           focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_h,                           focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_l,                           focusstack,     {.i = +1 } },
 
