@@ -204,6 +204,7 @@ static const Layout layouts[] = {
 	{ "float" , NULL    },    /* no layout function means floating behavior */
 	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
 	{ "grid " , grid    },
+	{ "three" , tcl     },
 	// TODO: if modified, remember to update all references to &layouts[0] etc
 };
 
@@ -268,6 +269,7 @@ static Key keys[] = {
 // layout switching (tile, floating, monocle)
 	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_p,                           setlayout,      {.v = &layouts[4]} },
 // igorg: use XK_f and XK_m for tags
 	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[1]} },
 	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[2]} }
