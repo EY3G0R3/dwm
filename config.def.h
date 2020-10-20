@@ -97,7 +97,6 @@ static const char *xres = "/home/igorg/.Xresources";
 // Then tags number can be figured out by subtracting 100 from the line number
 // Convention: first letter of the word is the shortcut
 static const char *tags[] = {
-	"~",		// ~: terminal
 	"quip",		// q: quip
 	"web",		// w: web 		e: english layout 	a: launch apps
 	"slack",	// s: slack (WorkChat)
@@ -118,7 +117,6 @@ static const char *tags[] = {
 };
 
 static const char *defaultapps[] = { // has to contain the same number of entries as tags[]
-	"dwm-sensible-terminal",	// ~: terminal
 	"quip",		// q: quip
 	"google-chrome",// w: web 		e: english layout	a: launch apps
 	"WorkChat",	// s: slack (WorkChat)
@@ -146,33 +144,34 @@ static const Rule rules[] = {
 	// use left-hand-only shortcuts to switch between tags
 	// terminal
 	// q: quip
-        { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 1,       0,           -1 },
+        { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 0,       0,           -1 },
 	// s: slack (WorkChat)
-        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 3,       0,           -1 },
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           -1 },
 	// x: email
-        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 5,       0,           -1 },
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 4,       0,           -1 },
 	// w: web
-        { "Firefox"              , NULL                                         , NULL,       1 << 2,       0,           -1 },
+        { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           -1 },
 	// d: dm (Messenger)
-        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 4,       0,           -1 },
+        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           -1 },
 	// c: calendar
-        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           -1 },
-        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           -1 },
+        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 5,       0,           -1 },
+        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 5,       0,           -1 },
 	// f: files
-        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 7,       0,           -1 },
-        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 7,       0,           -1 },
+        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 6,       0,           -1 },
+        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 6,       0,           -1 },
 	// 1: Todo
-        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 8,       0,           -1 },
-        { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 8,       0,           -1 },
+        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           -1 },
+        { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           -1 },
 	// 3: Games: Terraforming Mars
-        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 10,      0,           -1 },
-        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 10,      0,           -1 },
+        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 9,      0,           -1 },
+        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 9,      0,           -1 },
 	// 9: steam
-        { "Steam"                , NULL                                         , NULL,       1 << 16,      0,           -1,},
+        { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           -1,},
 	// 0: Spotify (detection doesn't seem to work well)
-        { "Spotify"              , NULL                                         , NULL,       1 << 17,      0,           -1,},
+        { "Spotify"              , NULL                                         , NULL,       1 << 16,      0,           -1,},
 	// Scratchpad: Nozbe
         { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           -1 ,         200, 100, 1520, 880,        3 },
+        { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(1),     1,           -1 ,         200, 100, 1520, 880,        3 },
 };
 
 typedef struct {
@@ -181,10 +180,12 @@ typedef struct {
 } Sp;
 
 const char *spcmd_todo[] = {"Nozbe", NULL };
+const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
 
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"todo",        spcmd_todo},
+	{"todo"			,        spcmd_todo},
+	{"scratchpad_terminal"	,        spcmd_terminal},
 };
 
 /* layout(s) */
@@ -229,6 +230,7 @@ static Key keys[] = {
 
 	// igorg: scratchpads
 	{ MODKEY,                       XK_v,                           togglescratch,  {.ui = 0 } },
+	{ MODKEY,                       XK_grave,                       togglescratch,  {.ui = 1 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
@@ -295,27 +297,27 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,                      tagmon,         {.i = +1 } },
 
 // tags
-	TAGKEYS(                        XK_grave,                       0)   // console
-	TAGKEYS(                        XK_q,                           1)   // quip
-	TAGKEYS(                        XK_w,                           2)   // web
+	// TAGKEYS(                        XK_grave,                       0)   // console
+	TAGKEYS(                        XK_q,                           0)   // quip
+	TAGKEYS(                        XK_w,                           1)   // web
 	//TAGKEYS(                        XK_e,                           )  // reserved for switching to english layout
 	//TAGKEYS(                        XK_a,                           )  // reserved for launching apps
-	TAGKEYS(                        XK_s,                           3)   // slack
-	TAGKEYS(                        XK_d,                           4)   // dm
+	TAGKEYS(                        XK_s,                           2)   // slack
+	TAGKEYS(                        XK_d,                           3)   // dm
 	//TAGKEYS(                        XK_z,                           )  // reserved for 'zoom': switch between tile/mono
-	TAGKEYS(                        XK_x,                           5)   // xmail
-	TAGKEYS(                        XK_c,                           6)   // calendar
-	TAGKEYS(                        XK_f,                           7)   // files
-	TAGKEYS(                        XK_1,                           8)   // todo
-	TAGKEYS(                        XK_2,                           9)
-	TAGKEYS(                        XK_3,                           10)
-	TAGKEYS(                        XK_4,                           11)
-	TAGKEYS(                        XK_5,                           12)
-	TAGKEYS(                        XK_6,                           13)
-	TAGKEYS(                        XK_7,                           14)
-	TAGKEYS(                        XK_8,                           15)
-	TAGKEYS(                        XK_9,                           16)
-	TAGKEYS(                        XK_0,                           17)
+	TAGKEYS(                        XK_x,                           4)   // xmail
+	TAGKEYS(                        XK_c,                           5)   // calendar
+	TAGKEYS(                        XK_f,                           6)   // files
+	TAGKEYS(                        XK_1,                           7)   // todo
+	TAGKEYS(                        XK_2,                           8)
+	TAGKEYS(                        XK_3,                           9)
+	TAGKEYS(                        XK_4,                           10)
+	TAGKEYS(                        XK_5,                           11)
+	TAGKEYS(                        XK_6,                           12)
+	TAGKEYS(                        XK_7,                           13)
+	TAGKEYS(                        XK_8,                           14)
+	TAGKEYS(                        XK_9,                           15)
+	TAGKEYS(                        XK_0,                           16)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // igorg: Thus, the below declarations don't work:
