@@ -20,7 +20,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
-static const char *fonts[]          = { "monospace:pixelsize=10" };
+static const char *fonts[]          = { "monospace:pixelsize=15" };
 
 /* gruvbox color scheme */
 #define COL_GRUVBOX_BG        "#282828"
