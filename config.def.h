@@ -140,38 +140,38 @@ static const Rule rules[] = {
 	// xprop(1):
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
-        /* class                   instance                                       title       tags mask     isfloating   monitor       float x,y,w,h         floatborderpx*/
+        /* class                   instance                                       title       tags mask     isfloating   isfakefullscreen    monitor       float x,y,w,h         floatborderpx*/
 	// use left-hand-only shortcuts to switch between tags
 	// terminal
 	// q: quip
-        { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 0,       0,           -1 },
+        { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 0,       0,           0,                  -1 },
 	// s: slack (WorkChat)
-        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           -1 },
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           0,                  -1 },
 	// x: email
-        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 4,       0,           -1 },
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 4,       0,           0,                  -1 },
 	// w: web
-        { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           -1 },
+        { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           0,                  -1 },
 	// d: dm (Messenger)
-        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           -1 },
+        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           0,                  -1 },
 	// c: calendar
-        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 5,       0,           -1 },
-        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 5,       0,           -1 },
+        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 5,       0,           0,                  -1 },
+        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 5,       0,           0,                  -1 },
 	// f: files
-        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 6,       0,           -1 },
-        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 6,       0,           -1 },
+        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 6,       0,           0,                  -1 },
+        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 6,       0,           0,                  -1 },
 	// 1: Todo
-        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           -1 },
-        { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           -1 },
+        { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
+        { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
 	// 3: Games: Terraforming Mars
-        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 9,      0,           -1 },
-        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 9,      0,           -1 },
+        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 9,       0,           1,                  -1 },
+        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 9,       0,           0,                  -1 },
 	// 9: steam
-        { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           -1,},
+        { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
 	// 0: Spotify (detection doesn't seem to work well)
-        { "Spotify"              , NULL                                         , NULL,       1 << 16,      0,           -1,},
+        { "Spotify"              , NULL                                         , NULL,       1 << 16,      0,           0,                  -1 },
 	// Scratchpad: Nozbe
-        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           -1 ,         200, 100, 1520, 880,        3 },
-        { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(1),     1,           -1 ,         200, 100, 1520, 880,        3 },
+        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
+        { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
 };
 
 typedef struct {
