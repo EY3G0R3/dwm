@@ -170,7 +170,9 @@ static const Rule rules[] = {
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 16,      0,           0,                  -1 },
 	// Scratchpad: Nozbe
-        { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
+        // { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
+	// Scratchpad: Todoist
+        { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
         { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
 };
 
@@ -179,7 +181,7 @@ typedef struct {
 	const void *cmd;
 } Sp;
 
-const char *spcmd_todo[] = {"Nozbe", NULL };
+const char *spcmd_todo[] = {"Todoist", NULL };
 const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
 
 static Sp scratchpads[] = {
