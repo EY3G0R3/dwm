@@ -60,6 +60,7 @@
 #define TAGMASK                 ((1 << NUMTAGS) - 1)
 #define SPTAG(i)                ((1 << LENGTH(tags)) << (i))
 #define SPTAGMASK               (((1 << LENGTH(scratchpads))-1) << LENGTH(tags))
+#define NONSPTAGMASK            ((1 << LENGTH(tags))-1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 #define XRDB_LOAD_COLOR(R,V)    if (XrmGetResource(xrdb, R, "String", &type, &value) == True) { \
                                   if (value.addr != NULL && strnlen(value.addr, 8) == 7 && value.addr[0] == '#') { \
@@ -2361,11 +2362,11 @@ toggleoverview(const Arg *arg)
 {
 	Client* c = selmon->sel;
 
-	if (selmon->tagset[selmon->seltags] == TAGMASK) {
+	if (selmon->tagset[selmon->seltags] == NONSPTAGMASK) {
 		Arg viewarg = {.ui = c->tags};
 		view(&viewarg);
 	} else {
-		Arg viewarg = {.ui = TAGMASK};
+		Arg viewarg = {.ui = NONSPTAGMASK};
 		view(&viewarg);
 		// igorg: setlayout sets the layout not for the tag set (TAGMASK),
 		// but only on the first tag of the tag set (usually ~).
