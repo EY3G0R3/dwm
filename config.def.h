@@ -174,6 +174,9 @@ static const Rule rules[] = {
         { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
 	// Scratchpad: todo (nozbe)
         // { "Nozbe"                , "nozbe"                                      , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
+	// Scratchpad: vim
+	// note: gvim window resizes itself, so setting geometry here isn't doing any good. However, setting it to float is
+        { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1520, 880,        3 },
 };
 
 typedef struct {
@@ -183,11 +186,13 @@ typedef struct {
 
 const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
 const char *spcmd_todo[] = {"Todoist", NULL };
+const char *spcmd_vim[] = {"scratchpad_vim", NULL };
 
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"scratchpad_terminal"	,        spcmd_terminal},
 	{"todo"			,        spcmd_todo},
+	{"scratchpad_vim"	,        spcmd_vim},
 };
 
 /* layout(s) */
@@ -233,6 +238,7 @@ static Key keys[] = {
 	// igorg: scratchpads
 	{ MODKEY,                       XK_grave,                       togglescratch,  {.ui = 0 } },
 	{ MODKEY,                       XK_1,                           togglescratch,  {.ui = 1 } },
+	{ MODKEY,                       XK_v,                           togglescratch,  {.ui = 2 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
