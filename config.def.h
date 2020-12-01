@@ -284,7 +284,7 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[1]} },
 	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[2]} }
 // igorg: switch between tile and monocle layouts
-	{ MODKEY,                       XK_z,                           swaplayouts,    {0} },
+	{ MODKEY,                       XK_f,                           swaplayouts,    {0} },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
 	//{ MODKEY,                       XK_space,               setlayout,      {0} },
@@ -312,10 +312,9 @@ static Key keys[] = {
 	//TAGKEYS(                        XK_a,                           )  // reserved for launching apps
 	TAGKEYS(                        XK_s,                           2)   // slack
 	TAGKEYS(                        XK_d,                           3)   // dm
-	//TAGKEYS(                        XK_z,                           )  // reserved for 'zoom': switch between tile/mono
+	TAGKEYS(                        XK_z,                           6)   // files
 	TAGKEYS(                        XK_x,                           4)   // xmail
 	TAGKEYS(                        XK_c,                           5)   // calendar
-	TAGKEYS(                        XK_f,                           6)   // files
 	// TAGKEYS(                        XK_1,                           7)   // scratchpad: todo
 	TAGKEYS(                        XK_2,                           7)
 	TAGKEYS(                        XK_3,                           8)
