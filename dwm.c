@@ -2082,16 +2082,24 @@ setlayout(const Arg *arg)
 void
 swaplayouts(const Arg *arg)
 {
-  // TODO: tweak this if we update Layout layouts[]
-  const Layout* tilelayout = &layouts[0];
-  const Layout* monoclelayout = &layouts[2];
+	// TODO: tweak this if we update Layout layouts[]
+	const Layout* tile = &layouts[0];
+	const Layout* monocle = &layouts[2];
 
-  Arg a = {.v = monoclelayout};
+	const Layout* current_layout = selmon->lt[selmon->sellt];
 
-  if (selmon->lt[selmon->sellt] == monoclelayout)
-    a.v = tilelayout;
-
-  setlayout(&a);
+	if (current_layout == monocle && selmon->showbar) {
+		Arg dummy;
+		togglebar(&dummy);
+	} else if (current_layout == monocle && !selmon->showbar) {
+		Arg a = {.v = tile};
+		setlayout(&a);
+		Arg dummy;
+		togglebar(&dummy);
+	} else {
+		Arg a = {.v = monocle};
+		setlayout(&a);
+	}
 }
 
 /* arg > 1.0 will set mfact absolutely */
