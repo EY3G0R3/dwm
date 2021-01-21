@@ -531,6 +531,9 @@ attachbelow(Client *c)
 {
 	Client *below = c->mon->clients;
 	for (; below && below->next; below = below->next);
+	// igorg: fix for a potential deadlock when moving windows between monitors
+	// (https://www.reddit.com/r/suckless/comments/g4vsjo/dwm_moving_windows_between_monitors_causes_crash/)
+	c->next = NULL;
 	if (below)
 		below->next = c;
 	else
