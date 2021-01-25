@@ -1140,6 +1140,10 @@ getatomprop(Client *c, Atom prop)
 const char*
 getdefaultapp(const Arg *arg)
 {
+	// only launch apps on main monitor
+	if (selmon->num != 0)
+		return NULL;
+
 	unsigned int newtagset = arg->ui & TAGMASK;
 
 	// doubletap only if we repeatedly try to show the same tag
