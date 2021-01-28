@@ -98,12 +98,12 @@ static const char *xres = "/home/igorg/.Xresources";
 // Convention: first letter of the word is the shortcut
 static const char *tags[] = {
 	"qcode",	// q: code
-	"web",		// w: web 		e: english layout 	a: launch apps
+	"web",		// w: web 			e: english layout
 	"slack",	// s: slack (WorkChat)
-	"dm",		// d: dm (Messenger) 				z:zoom
+	"dm",		// d: dm (Messenger)		f: toggle fullscreen
+	"filez",	// z: files
 	"xmail",	// x: mail
 	"calendar",	// c: calendar
-	"files",	// f: files             1: scratchpad-todo
 	"2",
 	"3",
 	"4",
@@ -115,14 +115,15 @@ static const char *tags[] = {
 	"0",
 };
 
+
 static const char *defaultapps[] = { // has to contain the same number of entries as tags[]
 	"code-fb",	// q: code
-	"google-chrome",// w: web 		e: english layout	a: launch apps
+	"google-chrome",// w: web 			e: english layout
 	"WorkChat",	// s: slack (WorkChat)
-	"Messenger",	// d: dm (Messenger)				z:zoom
+	"Messenger",	// d: dm (Messenger)		f: toggle fullscreen
+	"nautilus",	// z: filez
 	"Mail",		// x: mail
-	"Calendar",	// c: calendar
-	"nautilus",	// f: files             1: scratchpad-todo
+	"Calendar",	// c: calendar			v: vim scratchpad
 	NULL,
 	NULL,
 	NULL,
@@ -141,22 +142,22 @@ static const Rule rules[] = {
         /* class                   instance                                       title       tags mask     isfloating   isfakefullscreen    monitor       float x,y,w,h         floatborderpx*/
 	// use left-hand-only shortcuts to switch between tags
 	// terminal
-	// q: quip
+	// q: code. Keep quip here as well in the meantime
         { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 0,       0,           0,                  -1 },
-	// s: slack (WorkChat)
-        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           0,                  -1 },
-	// x: email
-        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 4,       0,           0,                  -1 },
 	// w: web
         { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           0,                  -1 },
+	// s: slack (WorkChat)
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           0,                  -1 },
 	// d: dm (Messenger)
         { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           0,                  -1 },
+	// z: filez
+        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 4,       0,           0,                  -1 },
+        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 4,       0,           0,                  -1 },
+	// x: email
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 5,       0,           0,                  -1 },
 	// c: calendar
-        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 5,       0,           0,                  -1 },
-        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 5,       0,           0,                  -1 },
-	// f: files
-        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 6,       0,           0,                  -1 },
-        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 6,       0,           0,                  -1 },
+        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           0,                  -1 },
+        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           0,                  -1 },
 	// 1: Todo
         // { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
         // { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
@@ -309,12 +310,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_q,                           0)   // qcode
 	TAGKEYS(                        XK_w,                           1)   // web
 	//TAGKEYS(                        XK_e,                           )  // reserved for switching to english layout
-	//TAGKEYS(                        XK_a,                           )  // reserved for launching apps
+	//TAGKEYS(                        XK_a,                           )  // reserved for adding a task
 	TAGKEYS(                        XK_s,                           2)   // slack
 	TAGKEYS(                        XK_d,                           3)   // dm
-	TAGKEYS(                        XK_z,                           6)   // files
-	TAGKEYS(                        XK_x,                           4)   // xmail
-	TAGKEYS(                        XK_c,                           5)   // calendar
+	TAGKEYS(                        XK_z,                           4)   // filez
+	TAGKEYS(                        XK_x,                           5)   // xmail
+	TAGKEYS(                        XK_c,                           6)   // calendar
 	// TAGKEYS(                        XK_1,                           7)   // scratchpad: todo
 	TAGKEYS(                        XK_2,                           7)
 	TAGKEYS(                        XK_3,                           8)
