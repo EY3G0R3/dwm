@@ -170,14 +170,14 @@ static const Rule rules[] = {
         { "Spotify"              , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
 
 	// Scratchpad: terminal
-        { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1520, 880,  0 },
+        { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: todo (todoist)
-        { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1520, 880,  0 },
+        { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: todo (nozbe)
-        // { "Nozbe"             , "nozbe"                                      , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1520, 880,  0 },
+        // { "Nozbe"             , "nozbe"                                      , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: vim
 	// note: gvim window resizes itself, so setting geometry here isn't doing any good. However, setting it to float is
-        { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1520, 880,  0 },
+        { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 };
 
 typedef struct {
