@@ -2085,27 +2085,26 @@ setlayout(const Arg *arg)
 		drawbar(selmon);
 }
 
-/* swaps between tile and monocle layouts */
+/* swaps between monocle and default layout. enables/disables bar. */
 void
 swaplayouts(const Arg *arg)
 {
-	// TODO: tweak this if we update Layout layouts[]
-	const Layout* tile = &layouts[0];
+	// TODO: tweak this if we update layouts[] array
 	const Layout* monocle = &layouts[2];
+	const Layout* other = &layouts[0];   // default layout
 
 	const Layout* current_layout = selmon->lt[selmon->sellt];
 
-	if (current_layout == monocle && selmon->showbar) {
-		Arg dummy;
-		togglebar(&dummy);
-	} else if (current_layout == monocle && !selmon->showbar) {
-		Arg a = {.v = tile};
+	if (current_layout == monocle) {
+		Arg a = {.v = other};
 		setlayout(&a);
-		Arg dummy;
-		togglebar(&dummy);
+		if (!selmon->showbar)
+			 togglebar(NULL);
 	} else {
 		Arg a = {.v = monocle};
 		setlayout(&a);
+		if (selmon->showbar)
+			 togglebar(NULL);
 	}
 }
 
