@@ -2121,6 +2121,7 @@ setmfact(const Arg *arg)
 		return;
 	selmon->mfact = selmon->pertag->mfacts[selmon->pertag->curtag] = f;
 	arrange(selmon);
+	// TODO: use notify-send to show current mfact and its pixel size
 }
 
 void
