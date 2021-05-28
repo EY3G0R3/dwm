@@ -239,7 +239,7 @@ static Key keys[] = {
 	// igorg: scratchpads
 	{ MODKEY,                       XK_grave,                       togglescratch,  {.ui = 0 } },
 	{ MODKEY,                       XK_1,                           togglescratch,  {.ui = 1 } },
-	{ MODKEY,                       XK_v,                           togglescratch,  {.ui = 2 } },
+	{ MODKEY,                       XK_semicolon,                   togglescratch,  {.ui = 2 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
@@ -276,6 +276,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Down,                        incrovgaps,     {.i = +5 } },
 // make the selected window "in spotlight", bumping it to order 0
 	{ MODKEY,                       XK_Return,                      zoom,           {0} },
+	{ MODKEY,                       XK_v,                      	zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
 	{ MODKEY|ShiftMask,             XK_t,                           setlayout,      {.v = &layouts[4]} },
