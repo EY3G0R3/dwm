@@ -2098,13 +2098,15 @@ swaplayouts(const Arg *arg)
 	if (current_layout == monocle) {
 		Arg a = {.v = other};
 		setlayout(&a);
-		if (!selmon->showbar)
-			 togglebar(NULL);
+		// igorg: uncomment to automatically show the top bar
+		// if (!selmon->showbar)
+		//	togglebar(NULL);
 	} else {
 		Arg a = {.v = monocle};
 		setlayout(&a);
-		if (selmon->showbar)
-			 togglebar(NULL);
+		// igorg: uncomment to automatically hide the top bar
+		// if (selmon->showbar)
+		// 	togglebar(NULL);
 	}
 }
 
