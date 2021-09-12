@@ -48,13 +48,9 @@ tcl(Monitor * m)
 	sw = (m->ww - mw) / 2;
 	bdw = (2 * c->bw);
 	resize(c,
-	       // igorg: always center the master area
-	       /* n < 3 ? m->wx : m->wx + sw, */
-	       m->wx + sw,
+	       n < 3 ? m->wx : m->wx + sw,
 	       m->wy,
-	       // igorg: always center the master area
-	       /* n == 1 ? m->ww - bdw : mw - bdw, */
-	       mw - bdw,
+	       n == 1 ? m->ww - bdw : mw - bdw,
 	       m->wh - bdw,
 	       False);
 
