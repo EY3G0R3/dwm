@@ -103,3 +103,86 @@ tcl(Monitor * m)
 			y = c->y + HEIGHT(c);
 	}
 }
+
+void
+tcl_always(Monitor * m)
+{
+	int x, y, h, w, mw, sw, bdw;
+	unsigned int i, n;
+	Client * c;
+	int right_n, left_n;
+
+	for (n = 0, c = nexttiled(m->clients); c;
+	        c = nexttiled(c->next), n++);
+
+	if (n == 0)
+		return;
+
+	// position master window
+	c = nexttiled(m->clients);
+
+	mw = m->mfact * m->ww;
+	sw = (m->ww - mw) / 2;
+	bdw = (2 * c->bw);
+	resize(c,
+	       m->wx + sw,
+	       m->wy,
+	       mw - bdw,
+	       m->wh - bdw,
+	       False);
+
+	if (--n == 0)
+		return;
+
+	// right stack
+	right_n = (n + 1) / 2;  // round up for right stack
+	left_n = n - right_n;   // so the first stack window will be on the right
+
+	x = m->wx + sw + mw;
+	w = (m->ww - mw) / 2;
+	y = m->wy;
+	h = m->wh / right_n;
+
+	if (h < bh)
+		h = m->wh; // if there are too many windows, show one with full height
+
+	for (c = nexttiled(c->next), i = 0; c && i < right_n; c = nexttiled(c->next), ++i)
+	{
+		bdw = (2 * c->bw);
+		resize(c,
+		       x,
+		       y,
+		       w - bdw,
+		       h - bdw,
+		       False);
+
+		if (h != m->wh)
+			y = c->y + HEIGHT(c);
+	}
+
+	if (left_n == 0)
+		return;
+
+	// left stack
+	x = m->wx;
+	w = (m->ww - mw) / 2;
+	y = m->wy;
+	h = m->wh / left_n;
+
+	if (h < bh)
+		h = m->wh; // if there are too many windows, show one with full height
+
+	for (; c; c = nexttiled(c->next))
+	{
+		bdw = (2 * c->bw);
+		resize(c,
+		       x,
+		       y,
+		       w - bdw,
+		       h - bdw,
+		       False);
+
+		if (h != m->wh)
+			y = c->y + HEIGHT(c);
+	}
+}
