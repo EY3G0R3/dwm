@@ -210,7 +210,7 @@ static const Layout layouts[] = {
 //       to avoid jerking while switching layouts
 //       Currently keeping all symbols 5 characters long
 	/* symbol     arrange function */
-	{ "three" , tcl_always },    /* first entry is default */
+	{ "centered" , tcl_always },    /* first entry is default */
 	{ "float" , NULL    },    /* no layout function means floating behavior */
 	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
 	{ "grid " , grid    },
