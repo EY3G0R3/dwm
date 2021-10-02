@@ -970,6 +970,7 @@ drawbar(Monitor *m)
 		if (!s && a)
 			s = a;
 		snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "[%d/%d]", s, a);
+		snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen");
 	}
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
