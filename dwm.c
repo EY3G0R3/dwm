@@ -158,7 +158,7 @@ typedef struct {
 
 typedef struct Pertag Pertag;
 struct Monitor {
-	char ltsymbol[16];
+	char ltsymbol[32];
 	float mfact;
 	int nmaster;
 	int num;
@@ -969,8 +969,25 @@ drawbar(Monitor *m)
 				s = a;
 		if (!s && a)
 			s = a;
-		snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "[%d/%d]", s, a);
-		snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen");
+
+		// snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "[%d/%d]", s, a);
+
+		switch (a) {
+		  case 0: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "zero??");
+			  break;
+		  case 1: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen");
+			  break;
+		  case 2: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen plus one");
+			  break;
+		  case 3: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen plus two");
+			  break;
+		  case 4: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen plus three");
+			  break;
+		  case 5: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen plus four");
+			  break;
+		  default: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen plus many");
+		}
+
 	}
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
