@@ -274,7 +274,7 @@ const enum {
   LayoutMonocle,
   LayoutGrid,
   LayoutTile
-} LayoutDefault = LayoutTile;
+} LayoutDefault = LayoutGrid;
 
 // igorg: custom characters for layouts
 // igorg: some more: ╠ ├ ┣ ▞ ꖸ 𐌎
