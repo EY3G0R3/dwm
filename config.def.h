@@ -205,10 +205,10 @@ static const Layout layouts[] = {
 //       to avoid jerking while switching layouts
 //       Currently keeping all symbols 5 characters long
 	/* symbol     arrange function */
-	{ "centered" , tcl_always },    /* first entry is default */
+	{ "grid " , grid    },
 	{ "float" , NULL    },    /* no layout function means floating behavior */
 	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
-	{ "grid " , grid    },
+	{ "centered" , tcl_always },    /* first entry is default */
 	{ "tile " , tile    },
 	// TODO: if modified, remember to update all references to &layouts[0] etc
 };
@@ -278,8 +278,8 @@ static Key keys[] = {
 
 // layout switching (tile, floating, monocle)
 	{ MODKEY|ShiftMask,             XK_t,                           setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_p,                           setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_p,                           setlayout,      {.v = &layouts[3]} },
 // igorg: use XK_f and XK_m for tags
 	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[1]} },
 	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[2]} }
