@@ -228,7 +228,7 @@ static const Layout layouts[] = {
 
 static Key keys[] = {
 	/* modifier                     key                             function        argument */
-	{ MODKEY|ShiftMask,             XK_r,                           quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace, 			quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
 
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
