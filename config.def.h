@@ -117,7 +117,7 @@ static const char *tags[] = {
 
 
 static const char *defaultapps[] = { // has to contain the same number of entries as tags[]
-	NULL, 		// "code-fb",	// q: code
+	"dwm-sensible-terminal",	// q: code
 	"google-chrome",// w: web 			e: english layout
 	"WorkChat",	// s: slack (WorkChat)
 	"Messenger",	// d: dm (Messenger)		f: toggle fullscreen
