@@ -993,7 +993,7 @@ drawbar(Monitor *m)
 		// snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "[%d/%d]", s, a);
 
 		switch (a) {
-		  case 0: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "zero??");
+		  case 0: *m->ltsymbol = 0;
 			  break;
 		  case 1: snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "fullscreen");
 			  break;
