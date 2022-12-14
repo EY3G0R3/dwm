@@ -188,7 +188,7 @@ typedef struct {
 } Sp;
 
 const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
-const char *spcmd_todo[] = {"Todoist", NULL };
+const char *spcmd_todo[] = {"Todo", NULL };
 const char *spcmd_vim[] = {"scratchpad_vim", NULL };
 
 static Sp scratchpads[] = {
