@@ -132,7 +132,7 @@ static const char *defaultapps[] = { // has to contain the same number of entrie
 	NULL,
 	NULL,
 	"steam",
-	"spotify",
+	"Spotify",
 };
 
 static const Rule rules[] = {
