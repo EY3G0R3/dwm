@@ -166,6 +166,7 @@ static const Rule rules[] = {
         { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 8,       0,           0,                  -1 },
 	// 9: steam
         { "Steam"                , NULL                                         , NULL,       1 << 14,      0,           0,                  -1 },
+        { "steam"                , "steamwebhelper"                             , NULL,       1 << 14,      0,           0,                  -1 },
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
 
