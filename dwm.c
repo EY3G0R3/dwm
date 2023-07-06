@@ -232,7 +232,6 @@ static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
-static const char* getdefaultapp(const Arg* a);
 static int getrootptr(int *x, int *y);
 static long getstate(Window w);
 static unsigned int getsystraywidth();
@@ -1173,33 +1172,6 @@ getatomprop(Client *c, Atom prop)
 		XFree(p);
 	}
 	return atom;
-}
-
-const char*
-getdefaultapp(const Arg *arg)
-{
-	// only launch apps on main monitor
-	if (selmon->num != 0)
-		return NULL;
-
-	unsigned int newtagset = arg->ui & TAGMASK;
-
-	// doubletap only if we repeatedly try to show the same tag
-	if (newtagset != selmon->tagset[selmon->seltags])
-		return NULL;
-
-	// launch programs only if there are no visible clients
-	Client *c;
-	for (c = selmon->clients; c; c = c->next)
-		if (ISVISIBLE(c))
-			return NULL;
-
-	int i;
-	for (i = 0; !(newtagset & 1 << i); i++) ;
-	if (i >= LENGTH(tags))
-		return NULL;
-
-	return defaultapps[i];
 }
 
 int
@@ -3007,13 +2979,35 @@ void
 vieworlaunch(const Arg *arg)
 {
 	view(arg);
-	const char *defaultapp = getdefaultapp(arg);
-	if (defaultapp) {
-		const char *arguments[] = { defaultapp, NULL };
-		Arg a = {.v = arguments};
-		spawn(&a);
+
+	// auto-launch logic
+	// only launch apps on main monitor
+	if (selmon->num != 0)
 		return;
-	}
+
+	unsigned int newtagset = arg->ui & TAGMASK;
+
+	// doubletap only if we repeatedly try to show the same tag
+	if (newtagset != selmon->tagset[selmon->seltags])
+		return;
+
+	// launch programs only if there are no visible clients
+	Client *c;
+	for (c = selmon->clients; c; c = c->next)
+		if (ISVISIBLE(c))
+			return;
+
+	int i;
+	for (i = 0; !(newtagset & 1 << i); i++) ;
+	if (i >= LENGTH(tags))
+		return;
+
+	char tag_string[80]; // should be enough to store MAX_INT representation
+	snprintf(tag_string, sizeof(tag_string), "%d", i);
+
+	const char *arguments[] = { "dwm-tag-launcher", tag_string, NULL };
+	Arg a = {.v = arguments};
+	spawn(&a);
 }
 
 Client *

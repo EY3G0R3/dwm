@@ -115,26 +115,6 @@ static const char *tags[] = {
 	"0",
 };
 
-
-static const char *defaultapps[] = { // has to contain the same number of entries as tags[]
-	"dwm-sensible-terminal",	// q: code
-	"dwm-sensible-browser",		// w: web 			e: english layout
-	"WorkChat",	// s: slack (WorkChat)
-	"Messenger",	// d: dm (Messenger)		f: toggle fullscreen
-	"nautilus",	// z: filez
-	"Mail",		// x: mail
-	"Calendar",	// c: calendar			v: vim scratchpad
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	"steam",
-	"Spotify",
-};
-
 static const Rule rules[] = {
 	// xprop(1):
 	//      WM_CLASS(STRING) = instance, class
