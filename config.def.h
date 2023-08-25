@@ -211,7 +211,7 @@ static const Layout layouts[] = {
 
 static Key keys[] = {
 	/* modifier                     key                             function        argument */
-	{ MODKEY|ShiftMask,             XK_BackSpace, 			quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace,                   quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
 
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
@@ -261,7 +261,7 @@ static Key keys[] = {
 // make the selected window "in spotlight", bumping it to order 0
 	// currently used by terminal
 	// { MODKEY,                       XK_Return,                      zoom,           {0} },
-	{ MODKEY,                       XK_v,                      	zoom,           {0} },
+	{ MODKEY,                       XK_v,                           zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
 	{ MODKEY|ShiftMask,             XK_t,                           setlayout,      {.v = &layouts[4]} },
