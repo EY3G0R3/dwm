@@ -128,6 +128,7 @@ static const Rule rules[] = {
         { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           0,                  -1 },
 	// s: slack (WorkChat)
         { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           0,                  -1 },
+        { "Slack"                , "slack"                                      , NULL,       1 << 2,       0,           0,                  -1 },
 	// d: dm (Messenger)
         { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           0,                  -1 },
 	// z: filez
