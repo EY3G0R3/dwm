@@ -20,7 +20,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
-static const char *fonts[]          = { "monofur for Powerline:size=15" };
+// static const char *fonts[]          = { "monofur for Powerline:size=15" };
+// static const char *fonts[]          = { "HeavyData Nerd Font:size=14" };
+// static const char *fonts[]          = { "ProFont for Powerline:size=14" };
+// static const char *fonts[]          = { "ProggyClean Nerd Font Mono:size=16" };
+static const char *fonts[]          = { "IosevkaTerm Nerd Font Mono:size=14" };
+
 
 /* gruvbox color scheme */
 #define COL_GRUVBOX_BG        "#282828"
