@@ -97,13 +97,13 @@ static const char *xres = "/home/igorg/.Xresources";
 // Then tags number can be figured out by subtracting 100 from the line number
 // Convention: first letter of the word is the shortcut
 static const char *tags[] = {
-	"qcode",	// q: code
-	"web",		// w: web 			e: english layout
-	"slack",	// s: slack (WorkChat)
-	"dm",		// d: dm (Messenger)		f: toggle fullscreen
-	"filez",	// z: files
-	"xmail",	// x: mail
-	"calendar",	// c: calendar
+	" quick",       // q: quick terminal. More icons:          
+	" web",         // w: web    󰖟                e: english layout
+	"󰒱 slack",       // s: slack (WorkChat 󰒱 )
+	"󰍡 dm",          // d: dm (Messenger 󰍥 󰍡 󰍧 )     f: toggle fullscreen
+	" filez",       // z: files
+	" xmail",       // x: mail
+	" calendar",    // c: calendar
 	"2",
 	"3",
 	"4",
