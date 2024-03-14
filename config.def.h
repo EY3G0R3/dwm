@@ -136,6 +136,7 @@ static const Rule rules[] = {
         { "Slack"                , "slack"                                      , NULL,       1 << 2,       0,           0,                  -1 },
 	// d: dm (Messenger)
         { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           0,                  -1 },
+        { "Surf"                 , "https://www.messenger.com/"                 , NULL,       1 << 3,       0,           0,                  -1 },
 	// z: filez
         { "Nautilus"             , "nautilus"                                   , NULL,       1 << 4,       0,           0,                  -1 },
         { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 4,       0,           0,                  -1 },
@@ -163,6 +164,7 @@ static const Rule rules[] = {
         { "Google-chrome"        , "todoist.com__app_project_2247069292"        , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
 	// Scratchpad: todo (ticktick)
 	{ "Google-chrome"        , "ticktick.com__webapp"                       , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+	{ "Surf"                 , "https://ticktick.com/webapp/"               , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
         // { "Nozbe"             , "nozbe"                                      , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: vim
 	// note: gvim window resizes itself, so setting geometry here isn't doing any good. However, setting it to float is
