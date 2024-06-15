@@ -24,6 +24,7 @@ static const Bool viewontag         = True;     /* Switch view on tag switch */
 // static const char *fonts[]          = { "HeavyData Nerd Font:size=14" };
 // static const char *fonts[]          = { "ProFont for Powerline:size=14" };
 // static const char *fonts[]          = { "ProggyClean Nerd Font Mono:size=16" };
+// static const char *fonts[]          = { "CaskaydiaCove NFM:size=14" };
 static const char *fonts[]          = { "IosevkaTermSlab Nerd Font Mono:size=14" };
 
 
