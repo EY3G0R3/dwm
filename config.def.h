@@ -164,11 +164,12 @@ static const Rule rules[] = {
 	// Scratchpad: terminal
         { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: todo (todoist)
-	{ "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+	    { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
         { "Google-chrome"        , "todoist.com__app_project_2247069292"        , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
 	// Scratchpad: todo (ticktick)
-	{ "Google-chrome"        , "ticktick.com__webapp"                       , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
-	{ "Surf"                 , "https://ticktick.com/webapp/"               , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+        { "Google-chrome"        , "ticktick.com__webapp"                       , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+        { "Surf"                 , "https://ticktick.com/webapp/"               , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+        { "ticktick"             , "ticktick"                                   , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
         // { "Nozbe"             , "nozbe"                                      , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: vim
 	// note: gvim window resizes itself, so setting geometry here isn't doing any good. However, setting it to float is
