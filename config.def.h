@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+// disable autoformatting by clang for now
+// clang-format off
+
 /* igorg: needed for media keys */
 #include "X11/XF86keysym.h"
 

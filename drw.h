@@ -1,4 +1,8 @@
 /* See LICENSE file for copyright and license details. */
+
+// disable autoformatting by clang for now
+// clang-format off
+
 #include <X11/Xlib.h>
 #include <X11/Xft/Xft.h>
 

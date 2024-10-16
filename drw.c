@@ -1,4 +1,8 @@
 /* See LICENSE file for copyright and license details. */
+
+// disable autoformatting by clang for now
+// clang-format off
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

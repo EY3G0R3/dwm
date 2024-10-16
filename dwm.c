@@ -20,6 +20,10 @@
  *
  * To understand everything else, start reading main().
  */
+
+// disable autoformatting by clang for now
+// clang-format off
+
 #include <time.h>
 #include <errno.h>
 #include <locale.h>
