@@ -160,11 +160,10 @@ static const Rule rules[] = {
         { "steam"                , "steamwebhelper"                             , NULL,       1 << 14,      0,           0,                  -1 },
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
-
 	// Scratchpad: terminal
         { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: todo (todoist)
-	    { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+        { "Google-chrome"        , "todoist.com__app"                           , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
         { "Google-chrome"        , "todoist.com__app_project_2247069292"        , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
 	// Scratchpad: todo (ticktick)
         { "Google-chrome"        , "ticktick.com__webapp"                       , NULL,       SPTAG(1),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
