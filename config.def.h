@@ -281,9 +281,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_v,                           zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
-	{ MODKEY|ShiftMask,             XK_t,                           setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_p,                           setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_p,                           setlayout,      {.v = &layouts[0]} },
 // igorg: use XK_f and XK_m for tags
 	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[1]} },
 	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[2]} }
