@@ -3140,7 +3140,7 @@ zoom(const Arg *arg)
 int
 main(int argc, char *argv[])
 {
-	Bool autostart = True;
+	Bool autostart = False;
 	const char disableautostart[] = "--disable-autostart";
 
 	if (argc == 2 && !strcmp("-v", argv[1]))
