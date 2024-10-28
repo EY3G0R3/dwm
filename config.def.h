@@ -23,12 +23,14 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
+// NOTE: for Nerd Fonts, prefer "Propo" variants because they contain large-sized icons
 // static const char *fonts[]          = { "monofur for Powerline:size=15" };
 // static const char *fonts[]          = { "HeavyData Nerd Font:size=14" };
 // static const char *fonts[]          = { "ProFont for Powerline:size=14" };
 // static const char *fonts[]          = { "ProggyClean Nerd Font Mono:size=16" };
 // static const char *fonts[]          = { "CaskaydiaCove NFM:size=14" };
-static const char *fonts[]          = { "IosevkaTermSlab Nerd Font Propo:size=14" };
+// static const char *fonts[]          = { "IosevkaTermSlab Nerd Font Propo:size=14" };
+static const char *fonts[]          = { "Terminess Nerd Font Propo:size=16" };
 
 
 /* gruvbox color scheme */
