@@ -162,6 +162,7 @@ static const Rule rules[] = {
         { "steam"                , "steamwebhelper"                             , NULL,       1 << 14,      0,           0,                  -1 },
 	// 0: Spotify (detection doesn't seem to work well)
         { "Spotify"              , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
+
 	// Scratchpad: terminal
         { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: todo (todoist)
@@ -177,6 +178,8 @@ static const Rule rules[] = {
         { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: top
         { "scratchpad_top"       , "scratchpad_top"                             , NULL,       SPTAG(3),     1,           0,                  -1 ,         2000, 100, 1000, 1000,  0 },
+	// Scratchpad: asana
+        { "Google-chrome"        , "app.asana.com"                              , NULL,       SPTAG(4),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
 };
 
 typedef struct {
@@ -188,13 +191,15 @@ const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
 const char *spcmd_todo[] = {"Todo", NULL };
 const char *spcmd_vim[] = {"scratchpad_vim", NULL };
 const char *spcmd_top[] = {"scratchpad_top", NULL };
+const char *spcmd_asana[] = {"Asana", NULL };
 
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"scratchpad_terminal"	,        spcmd_terminal},
-	{"todo"			,        spcmd_todo},
-	{"scratchpad_vim"	,        spcmd_vim},
-	{"scratchpad_top"	,        spcmd_top},
+	{"scratchpad_terminal", spcmd_terminal},
+	{"todo",                spcmd_todo},
+	{"scratchpad_vim",      spcmd_vim},
+	{"scratchpad_top",      spcmd_top},
+	{"scratchpad_top",      spcmd_asana},
 };
 
 /* layout(s) */
@@ -243,6 +248,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_1,                           togglescratch,  {.ui = 1 } },
 	{ MODKEY,                       XK_semicolon,                   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_Escape,                      togglescratch,  {.ui = 3 } },
+	{ MODKEY,                       XK_a,                           togglescratch,  {.ui = 4 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
@@ -314,8 +320,8 @@ static Key keys[] = {
 	// TAGKEYS(                        XK_grave,                       0)   // scratchpad: console
 	TAGKEYS(                        XK_q,                           0)   // qcode
 	TAGKEYS(                        XK_w,                           1)   // web
-	//TAGKEYS(                        XK_e,                           )  // reserved for switching to english layout
-	//TAGKEYS(                        XK_a,                           )  // reserved for adding a task
+	// TAGKEYS(                        XK_e,                            )  // reserved for switching to english layout
+	// TAGKEYS(                        XK_a,                            )  // reserved for adding a task
 	TAGKEYS(                        XK_s,                           2)   // slack
 	TAGKEYS(                        XK_d,                           3)   // dm
 	TAGKEYS(                        XK_z,                           4)   // filez
