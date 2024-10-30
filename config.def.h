@@ -148,6 +148,7 @@ static const Rule rules[] = {
         { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 4,       0,           0,                  -1 },
 	// x: email
         { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 5,       0,           0,                  -1 },
+        { "Google-chrome"        , "mail.google.com__mail_u_0"                  , NULL,       1 << 5,       0,           0,                  -1 },
 	// c: calendar
         { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           0,                  -1 },
         { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           0,                  -1 },
