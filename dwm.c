@@ -2542,7 +2542,7 @@ unmanage(Client *c, int destroyed)
 			if (nclients > 1) break;
 		}
 		if (nclients == 1) {
-			Arg a = {.v = &layouts[0]}; // default layout (tile)
+			Arg a = {.v = &layouts[0]}; // default layout
 			setlayout(&a);
 		}
 	}
@@ -2550,7 +2550,7 @@ unmanage(Client *c, int destroyed)
 	// igorg: don't rearrange after closing windows in overview mode
 	// because arrange() doesn't look at all the tags but only the current tag
 	// and rearrange the clients according to the layout set for tag 1
-	if (selmon->tagset[selmon->seltags] != TAGMASK) {
+	if (selmon->tagset[selmon->seltags] != NONSPTAGMASK) {
 	  arrange(m);
 	}
 }
