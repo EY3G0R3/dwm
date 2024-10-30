@@ -152,6 +152,7 @@ static const Rule rules[] = {
 	// c: calendar
         { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           0,                  -1 },
         { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           0,                  -1 },
+        { "Google-chrome"        , "calendar.google.com__calendar"              , NULL,       1 << 6,       0,           0,                  -1 },
 	// 1: Todo
         // { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
         // { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
