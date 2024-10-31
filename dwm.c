@@ -838,9 +838,9 @@ createmon(void)
 	m->gappiv = gappiv;
 	m->gappoh = gappoh;
 	m->gappov = gappov;
-	m->lt[0] = &layouts[0];
-	m->lt[1] = &layouts[1 % LENGTH(layouts)];
-	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
+	m->lt[0] = &layouts[LayoutDefault];
+	m->lt[1] = &layouts[1 % LENGTH(layouts)]; // TODO: what does this do?
+	strncpy(m->ltsymbol, layouts[LayoutDefault].symbol, sizeof m->ltsymbol);
 	m->pertag = ecalloc(1, sizeof(Pertag));
 	m->pertag->curtag = m->pertag->prevtag = 1;
 
@@ -2106,8 +2106,8 @@ void
 swaplayouts(const Arg *arg)
 {
 	// TODO: tweak this if we update layouts[] array
-	const Layout* monocle = &layouts[2];
-	const Layout* other = &layouts[0];   // default layout
+	const Layout* monocle = &layouts[LayoutMonocle];
+	const Layout* other = &layouts[LayoutDefault];
 
 	const Layout* current_layout = selmon->lt[selmon->sellt];
 
@@ -2410,7 +2410,7 @@ toggleoverview(const Arg *arg)
 		// hence using setlayout here will botch the layout of the first tag
 		// igorg: using setlayout here somehow also sets it on the first tag (~)
 		// igorg: thus, call grid() directly
-		// Arg setlayoutarg = {.v = &layouts[3]};
+		// Arg setlayoutarg = {.v = &layouts[LayoutGrid]};
 		// setlayout(&setlayoutarg);
 		grid(selmon);
 		// Known Problem: if a window appears/disappears during change to grid layout
@@ -2542,7 +2542,7 @@ unmanage(Client *c, int destroyed)
 			if (nclients > 1) break;
 		}
 		if (nclients == 1) {
-			Arg a = {.v = &layouts[0]}; // default layout
+			Arg a = {.v = &layouts[LayoutDefault]};
 			setlayout(&a);
 		}
 	}

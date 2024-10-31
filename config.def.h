@@ -300,19 +300,19 @@ static Key keys[] = {
 	{ MODKEY,                       XK_v,                           zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
-	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_p,                           setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[LayoutTile]} },
+	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[LayoutGrid]} },
+	{ MODKEY,                       XK_p,                           setlayout,      {.v = &layouts[LayoutCentered]} },
 // igorg: use XK_f and XK_m for tags
-	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[1]} },
-	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[2]} }
+	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[LayoutFloat]} },
+	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[LayoutMonocle]} }
 // igorg: switch between tile and monocle layouts
 	{ MODKEY,                       XK_f,                           swaplayouts,    {0} },
 
 // igorg: Mod+Space option 1: switch between two last layouts. Can be extremely confusing.
 	//{ MODKEY,                       XK_space,               setlayout,      {0} },
 // igorg: Mod+Space option 2: switch to monocle layout
-	//{ MODKEY,                       XK_space,               setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_space,               setlayout,      {.v = &layouts[LayoutMonocle]} },
 // igorg: Mod+Space option 3: superior to option 1 and 2: switch between tile and monocle layouts
 	//{ MODKEY,                       XK_space,               swaplayouts,    {0} },
 // igorg: Mod+Space option 4: disable and use Mod+Z because it works better with mouse
@@ -368,7 +368,7 @@ static Key keys[] = {
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[LayoutMonocle]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
