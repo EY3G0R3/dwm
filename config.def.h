@@ -110,6 +110,7 @@ static const char *xres = "/home/igorg/.Xresources";
 static const char *tags[] = {
 	"", // q: quick terminal. More icons:          
 	"", // w: web    󰖟                e: english layout
+	"", // a: asana    
 	"󰒱", // s: slack (WorkChat 󰒱 )
 	"󰍡", // d: dm (Messenger 󰍥 󰍡 󰍧 )     f: toggle fullscreen
 	"", // z: files
@@ -137,33 +138,35 @@ static const Rule rules[] = {
         { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 0,       0,           0,                  -1 },
 	// w: web
         { "Firefox"              , NULL                                         , NULL,       1 << 1,       0,           0,                  -1 },
+	// a: asana
+        { "Google-chrome"        , "app.asana.com"                              , NULL,       1 << 2,       0,           0,                  -1 },
 	// s: slack (WorkChat)
-        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 2,       0,           0,                  -1 },
-        { "Slack"                , "slack"                                      , NULL,       1 << 2,       0,           0,                  -1 },
+        { "Google-chrome"        , "fb.workplace.com__chat"                     , NULL,       1 << 3,       0,           0,                  -1 },
+        { "Slack"                , "slack"                                      , NULL,       1 << 3,       0,           0,                  -1 },
 	// d: dm (Messenger)
-        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 3,       0,           0,                  -1 },
-        { "Surf"                 , "https://www.messenger.com/"                 , NULL,       1 << 3,       0,           0,                  -1 },
+        { "Google-chrome"        , "www.messenger.com"                          , NULL,       1 << 4,       0,           0,                  -1 },
+        { "Surf"                 , "https://www.messenger.com/"                 , NULL,       1 << 4,       0,           0,                  -1 },
 	// z: filez
-        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 4,       0,           0,                  -1 },
-        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 4,       0,           0,                  -1 },
+        { "Nautilus"             , "nautilus"                                   , NULL,       1 << 5,       0,           0,                  -1 },
+        { "Org.gnome.Nautilus"   , "org.gnome.Nautilus"                         , NULL,       1 << 5,       0,           0,                  -1 },
 	// x: email
-        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 5,       0,           0,                  -1 },
-        { "Google-chrome"        , "mail.google.com__mail_u_0"                  , NULL,       1 << 5,       0,           0,                  -1 },
+        { "Google-chrome"        , "outlook.office365.com__owa"                 , NULL,       1 << 6,       0,           0,                  -1 },
+        { "Google-chrome"        , "mail.google.com__mail_u_0"                  , NULL,       1 << 6,       0,           0,                  -1 },
 	// c: calendar
-        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 6,       0,           0,                  -1 },
-        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 6,       0,           0,                  -1 },
-        { "Google-chrome"        , "calendar.google.com__calendar"              , NULL,       1 << 6,       0,           0,                  -1 },
+        { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 7,       0,           0,                  -1 },
+        { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 7,       0,           0,                  -1 },
+        { "Google-chrome"        , "calendar.google.com__calendar"              , NULL,       1 << 7,       0,           0,                  -1 },
 	// 1: Todo
         // { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
         // { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
 	// 3: Games: Terraforming Mars
-        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 8,       0,           1,                  -1 },
-        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 8,       0,           0,                  -1 },
+        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 9,       0,           1,                  -1 },
+        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 9,       0,           0,                  -1 },
 	// 9: steam
-        { "Steam"                , NULL                                         , NULL,       1 << 14,      0,           0,                  -1 },
-        { "steam"                , "steamwebhelper"                             , NULL,       1 << 14,      0,           0,                  -1 },
+        { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
+        { "steam"                , "steamwebhelper"                             , NULL,       1 << 15,      0,           0,                  -1 },
 	// 0: Spotify (detection doesn't seem to work well)
-        { "Spotify"              , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
+        { "Spotify"              , NULL                                         , NULL,       1 << 16,      0,           0,                  -1 },
 
 	// Scratchpad: terminal
         { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
@@ -180,8 +183,6 @@ static const Rule rules[] = {
         { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: top
         { "scratchpad_top"       , "scratchpad_top"                             , NULL,       SPTAG(3),     1,           0,                  -1 ,         2000, 100, 1000, 1000,  0 },
-	// Scratchpad: asana
-        { "Google-chrome"        , "app.asana.com"                              , NULL,       SPTAG(4),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
 };
 
 typedef struct {
@@ -193,7 +194,6 @@ const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
 const char *spcmd_todo[] = {"Todo", NULL };
 const char *spcmd_vim[] = {"scratchpad_vim", NULL };
 const char *spcmd_top[] = {"scratchpad_top", NULL };
-const char *spcmd_asana[] = {"Asana", NULL };
 
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -201,7 +201,6 @@ static Sp scratchpads[] = {
 	{"todo",                spcmd_todo},
 	{"scratchpad_vim",      spcmd_vim},
 	{"scratchpad_top",      spcmd_top},
-	{"scratchpad_top",      spcmd_asana},
 };
 
 /* layout(s) */
@@ -259,7 +258,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_1,                           togglescratch,  {.ui = 1 } },
 	{ MODKEY,                       XK_semicolon,                   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_Escape,                      togglescratch,  {.ui = 3 } },
-	{ MODKEY,                       XK_a,                           togglescratch,  {.ui = 4 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
@@ -332,35 +330,35 @@ static Key keys[] = {
 	TAGKEYS(                        XK_q,                           0)   // qcode
 	TAGKEYS(                        XK_w,                           1)   // web
 	// TAGKEYS(                        XK_e,                            )  // reserved for switching to english layout
-	// TAGKEYS(                        XK_a,                            )  // reserved for adding a task
-	TAGKEYS(                        XK_s,                           2)   // slack
-	TAGKEYS(                        XK_d,                           3)   // dm
-	TAGKEYS(                        XK_z,                           4)   // filez
-	TAGKEYS(                        XK_x,                           5)   // xmail
-	TAGKEYS(                        XK_c,                           6)   // calendar
-	// TAGKEYS(                        XK_1,                           7)   // scratchpad: todo
-	TAGKEYS(                        XK_2,                           7)
-	TAGKEYS(                        XK_3,                           8)
-	TAGKEYS(                        XK_4,                           9)
-	TAGKEYS(                        XK_5,                           10)
-	TAGKEYS(                        XK_6,                           11)
-	TAGKEYS(                        XK_7,                           12)
-	TAGKEYS(                        XK_8,                           13)
-	TAGKEYS(                        XK_9,                           14)
-	TAGKEYS(                        XK_0,                           15)
+	TAGKEYS(                        XK_a,                           2)   // asana
+	TAGKEYS(                        XK_s,                           3)   // slack
+	TAGKEYS(                        XK_d,                           4)   // dm
+	TAGKEYS(                        XK_z,                           5)   // filez
+	TAGKEYS(                        XK_x,                           6)   // xmail
+	TAGKEYS(                        XK_c,                           7)   // calendar
+	// TAGKEYS(                        XK_1,                           8)   // scratchpad: todo
+	TAGKEYS(                        XK_2,                           8)
+	TAGKEYS(                        XK_3,                           9)
+	TAGKEYS(                        XK_4,                           10)
+	TAGKEYS(                        XK_5,                           11)
+	TAGKEYS(                        XK_6,                           12)
+	TAGKEYS(                        XK_7,                           13)
+	TAGKEYS(                        XK_8,                           14)
+	TAGKEYS(                        XK_9,                           15)
+	TAGKEYS(                        XK_0,                           16)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // igorg: Thus, the below declarations don't work:
-	TAGKEYS(                        XK_KP_1,                        8)
-	TAGKEYS(                        XK_KP_2,                        9)
-	TAGKEYS(                        XK_KP_3,                        10)
-	TAGKEYS(                        XK_KP_4,                        11)
-	TAGKEYS(                        XK_KP_5,                        12)
-	TAGKEYS(                        XK_KP_6,                        13)
-	TAGKEYS(                        XK_KP_7,                        14)
-	TAGKEYS(                        XK_KP_8,                        15)
-	TAGKEYS(                        XK_KP_9,                        16)
-	TAGKEYS(                        XK_KP_0,                        17)
+	TAGKEYS(                        XK_KP_1,                        9)
+	TAGKEYS(                        XK_KP_2,                        10)
+	TAGKEYS(                        XK_KP_3,                        11)
+	TAGKEYS(                        XK_KP_4,                        12)
+	TAGKEYS(                        XK_KP_5,                        13)
+	TAGKEYS(                        XK_KP_6,                        14)
+	TAGKEYS(                        XK_KP_7,                        15)
+	TAGKEYS(                        XK_KP_8,                        16)
+	TAGKEYS(                        XK_KP_9,                        17)
+	TAGKEYS(                        XK_KP_0,                        18)
 };
 
 /* button definitions */
