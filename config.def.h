@@ -211,20 +211,29 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #include "layouts.c"
-static const Layout layouts[] = {
+
+const enum {
+  LayoutCentered,
+  LayoutFloat,
+  LayoutMonocle,
+  LayoutGrid,
+  LayoutTile
+} LayoutDefault = LayoutTile;
+
 // igorg: custom characters for layouts
 // igorg: some more: ╠ ├ ┣ ▞ ꖸ 𐌎
 // TODO: pick more representative symbols now that I realized that symbols need to be 3 characters long
 //       to avoid jerking while switching layouts
 //       Currently keeping all symbols 5 characters long
-	/* symbol     arrange function */
-	{ "centered" , tcl_always },    /* first entry is default */
-	{ "float" , NULL    },    /* no layout function means floating behavior */
-	{ "     " , monocle },    /* monocle layout will have special symbol handling in drawbar() */
-	{ "grid " , grid    },
-	{ "tile " , tile    },
-	// TODO: if modified, remember to update all references to &layouts[0] etc
+static const Layout layouts[] = {
+                      /* symbol     arrange function */
+	[LayoutCentered] = { "centered" , tcl_always }, /* first entry is default */
+	[LayoutFloat]    = { "float"    , NULL       }, /* no layout function means floating behavior */
+	[LayoutMonocle]  = { "     "    , monocle    }, /* monocle layout will have special symbol handling in drawbar() */
+	[LayoutGrid]     = { "grid "    , grid       },
+	[LayoutTile]     = { "tile "    , tile       },
 };
+
 
 /* key definitions */
 #define MODKEY Mod4Mask
