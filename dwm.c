@@ -2332,11 +2332,11 @@ tile(Monitor *m)
 		return;
 
 	if (smartgaps == n) {
-		oe = 0; // outer gaps disabled
+		// oe = 0; // outer gaps disabled
 	}
 
 	if (n > 1) {
-		oe = 0; // igorg: disable outer gaps when there is more than one window
+		// oe = 0; // igorg: disable outer gaps when there is more than one window
 	}
 
 	if (n > m->nmaster)
