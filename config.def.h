@@ -71,6 +71,19 @@ static const char *fonts[]          = { "RecMonoCasual Nerd Font Propo:size=14" 
 #define COL_GRUVBOX_ORANGE_HI "#d65d0e"
 #define COL_GRUVBOX_ORANGE_LO "#fe8019"
 
+/* dracula color scheme */
+#define COL_DRACULA_BG        "#282A36"
+#define COL_DRACULA_CURRENT   "#44475A"
+#define COL_DRACULA_FG        "#F8F8F2"
+#define COL_DRACULA_COMMENT   "#6272A4"
+#define COL_DRACULA_CYAN      "#8BE9FD"
+#define COL_DRACULA_GREEN     "#50FA7B"
+#define COL_DRACULA_ORANGE    "#FFB86C"
+#define COL_DRACULA_PINK      "#FF79C6"
+#define COL_DRACULA_PURPLE    "#BD93F9"
+#define COL_DRACULA_RED       "#FF5555"
+#define COL_DRACULA_YELLOW    "#F1FA8C"
+
 /* some schemes don't use border/fg/bg colors */
 #define COL_UNUSED            "#ff0000"
 
