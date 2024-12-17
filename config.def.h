@@ -71,6 +71,7 @@ static const char *fonts[]          = { "RecMonoCasual Nerd Font Propo:size=14" 
 #define COL_GRUVBOX_ORANGE_HI "#d65d0e"
 #define COL_GRUVBOX_ORANGE_LO "#fe8019"
 
+
 /* dracula color scheme */
 #define COL_DRACULA_BG        "#282A36"
 #define COL_DRACULA_CURRENT   "#44475A"
@@ -84,9 +85,13 @@ static const char *fonts[]          = { "RecMonoCasual Nerd Font Propo:size=14" 
 #define COL_DRACULA_RED       "#FF5555"
 #define COL_DRACULA_YELLOW    "#F1FA8C"
 
+
 /* some schemes don't use border/fg/bg colors */
 #define COL_UNUSED            "#ff0000"
 
+/* Gruvbox color scheme */
+
+/*
 static char normbordercolor[]   = COL_GRUVBOX_BG;
 static char normbgcolor[]       = COL_GRUVBOX_BG;
 static char normfgcolor[]       = COL_GRUVBOX_GRAY2;
@@ -107,6 +112,30 @@ static char urgentfgcolor[]     = COL_GRUVBOX_GREEN_LO;
 static char emptybordercolor[]  = COL_UNUSED;
 static char emptybgcolor[]      = COL_GRUVBOX_BG;
 static char emptyfgcolor[]      = COL_GRUVBOX_BG1;
+*/
+
+
+/* Dracula color scheme */
+static char normbordercolor[]   = COL_DRACULA_BG;
+static char normbgcolor[]       = COL_DRACULA_BG;
+static char normfgcolor[]       = COL_DRACULA_FG;
+static char selbordercolor[]    = COL_UNUSED;
+static char selbgcolor[]        = COL_DRACULA_FG;
+static char selfgcolor[]        = COL_DRACULA_CURRENT;
+// option 1: title is present
+//static char titlebordercolor[] = COL_UNUSED;
+//static char titlebgcolor[]     = COL_DRACULA_BG;
+//static char titlefgcolor[]     = COL_DRACULA_FG;
+// option 2: title is disabled (fg=bg) because it introduces more noise than value
+static char titlebordercolor[]  = COL_UNUSED;
+static char titlebgcolor[]      = COL_DRACULA_BG;
+static char titlefgcolor[]      = COL_DRACULA_BG;
+static char urgentbordercolor[] = COL_UNUSED;
+static char urgentbgcolor[]     = COL_DRACULA_BG;
+static char urgentfgcolor[]     = COL_DRACULA_RED;
+static char emptybordercolor[]  = COL_UNUSED;
+static char emptybgcolor[]      = COL_DRACULA_BG;
+static char emptyfgcolor[]      = COL_DRACULA_CURRENT;
 
 static const char *colors[][3]      = {
 	/*                      fg            bg               border   */
