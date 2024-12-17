@@ -226,7 +226,7 @@ static const Rule rules[] = {
 	// note: gvim window resizes itself, so setting geometry here isn't doing any good. However, setting it to float is
         { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: top
-        { "scratchpad_top"       , "scratchpad_top"                             , NULL,       SPTAG(3),     1,           0,                  -1 ,         2000, 100, 1000, 1000,  0 },
+        { "scratchpad_top"       , "scratchpad_top"                             , NULL,       SPTAG(3),     1,           0,                  -1 ,         2000, 100, 1200, 1000,  0 },
 };
 
 typedef struct {
