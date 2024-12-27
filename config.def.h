@@ -227,6 +227,8 @@ static const Rule rules[] = {
         { "scratchpad_vim"       , "scratchpad_vim"                             , NULL,       SPTAG(2),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
 	// Scratchpad: top
         { "scratchpad_top"       , "scratchpad_top"                             , NULL,       SPTAG(3),     1,           0,                  -1 ,         2000, 100, 1200, 1000,  0 },
+	// Scratchpad: mixer
+        { "pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
 };
 
 typedef struct {
@@ -238,13 +240,15 @@ const char *spcmd_terminal[] = {"scratchpad_terminal", NULL };
 const char *spcmd_todo[] = {"Todo", NULL };
 const char *spcmd_vim[] = {"scratchpad_vim", NULL };
 const char *spcmd_top[] = {"scratchpad_top", NULL };
+const char *spcmd_mixer[] = {"pavucontrol", NULL };
 
 static Sp scratchpads[] = {
-	/* name          cmd  */
+	/* name                   cmd  */
 	{"scratchpad_terminal", spcmd_terminal},
 	{"todo",                spcmd_todo},
 	{"scratchpad_vim",      spcmd_vim},
 	{"scratchpad_top",      spcmd_top},
+	{"scratchpad_mixer",    spcmd_mixer},
 };
 
 /* layout(s) */
@@ -302,6 +306,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_1,                           togglescratch,  {.ui = 1 } },
 	{ MODKEY,                       XK_semicolon,                   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_Escape,                      togglescratch,  {.ui = 3 } },
+	{ MODKEY,                       XK_apostrophe,                  togglescratch,  {.ui = 4 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
