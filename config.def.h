@@ -497,4 +497,5 @@ static Signal signals[] = {
 	{ "quit",           quit },
 	{ "setlayout",      setlayout },
 	{ "setlayoutex",    setlayoutex },
+	{ "togglescratch",  togglescratch },
 };

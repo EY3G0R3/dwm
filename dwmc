@@ -30,6 +30,9 @@ case $# in
 	setmfact)
 		signal $1 f $2
 		;;
+	togglescratch)
+		signal $1 ui $2
+		;;
 	*)
 		echo "Unknown command or one too many arguments."
 		exit 1
