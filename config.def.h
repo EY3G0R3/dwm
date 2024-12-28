@@ -229,6 +229,7 @@ static const Rule rules[] = {
         { "scratchpad_top"       , "scratchpad_top"                             , NULL,       SPTAG(3),     1,           0,                  -1 ,         2000, 100, 1200, 1000,  0 },
 	// Scratchpad: mixer
         { "pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
+        { "Pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
 };
 
 typedef struct {
