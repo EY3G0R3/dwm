@@ -348,6 +348,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_v,                           zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
+// TODO: explore mod+1, mod+2, mod+3, mod+4 (or mod+F1, mod+F2, mod+F3, mod+F4) for switching layouts 
+//       between one window (monocle), two windows (tile), three windows (center) and 4 windows (grid)
 	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[LayoutTile]} },
 	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[LayoutGrid]} },
 	{ MODKEY,                       XK_p,                           setlayout,      {.v = &layouts[LayoutCentered]} },
