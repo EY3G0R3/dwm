@@ -353,6 +353,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,                           setlayout,      {.v = &layouts[LayoutTile]} },
 	{ MODKEY|ShiftMask,             XK_g,                           setlayout,      {.v = &layouts[LayoutGrid]} },
 	{ MODKEY,                       XK_p,                           setlayout,      {.v = &layouts[LayoutCentered]} },
+	{ MODKEY,                       XK_2,                           setlayout,      {.v = &layouts[LayoutTile]} },
+	{ MODKEY,                       XK_3,                           setlayout,      {.v = &layouts[LayoutCentered]} },
+	{ MODKEY,                       XK_4,                           setlayout,      {.v = &layouts[LayoutGrid]} },
 // igorg: use XK_f and XK_m for tags
 	//{ MODKEY,                       XK_f,                           setlayout,      {.v = &layouts[LayoutFloat]} },
 	//{ MODKEY,                       XK_m,                           setlayout,      {.v = &layouts[LayoutMonocle]} }
@@ -389,9 +392,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_x,                           6)   // xmail
 	TAGKEYS(                        XK_c,                           7)   // calendar
 	// TAGKEYS(                        XK_1,                           8)   // scratchpad: todo
-	TAGKEYS(                        XK_2,                           8)
-	TAGKEYS(                        XK_3,                           9)
-	TAGKEYS(                        XK_4,                           10)
+	// TAGKEYS(                        XK_2,                           8)
+	// TAGKEYS(                        XK_3,                           9)
+	// TAGKEYS(                        XK_4,                           10)
 	TAGKEYS(                        XK_5,                           11)
 	TAGKEYS(                        XK_6,                           12)
 	TAGKEYS(                        XK_7,                           13)
