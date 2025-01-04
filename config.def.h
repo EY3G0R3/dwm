@@ -160,9 +160,6 @@ static const char *tags[] = {
 	"", // z: files
 	"", // x: mail
 	"", // c: calendar
-	"2",
-	"3",
-	"4",
 	"5",
 	"6",
 	"7",
@@ -204,13 +201,13 @@ static const Rule rules[] = {
         // { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
         // { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
 	// 3: Games: Terraforming Mars
-        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 9,       0,           1,                  -1 },
-        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 9,       0,           0,                  -1 },
+        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 11,       0,           1,                  -1 },
+        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 11,       0,           0,                  -1 },
 	// 9: steam
-        { "Steam"                , NULL                                         , NULL,       1 << 15,      0,           0,                  -1 },
-        { "steam"                , "steamwebhelper"                             , NULL,       1 << 15,      0,           0,                  -1 },
+        { "Steam"                , NULL                                         , NULL,       1 << 12,      0,           0,                  -1 },
+        { "steam"                , "steamwebhelper"                             , NULL,       1 << 12,      0,           0,                  -1 },
 	// 0: Spotify (detection doesn't seem to work well)
-        { "Spotify"              , NULL                                         , NULL,       1 << 16,      0,           0,                  -1 },
+        { "Spotify"              , NULL                                         , NULL,       1 << 13,      0,           0,                  -1 },
 
 	// Scratchpad: terminal
         { "scratchpad_terminal"  , "scratchpad_terminal"                        , NULL,       SPTAG(0),     1,           0,                  -1 ,         200, 100, 1400, 880,  0 },
@@ -395,12 +392,12 @@ static Key keys[] = {
 	// TAGKEYS(                        XK_2,                           8)
 	// TAGKEYS(                        XK_3,                           9)
 	// TAGKEYS(                        XK_4,                           10)
-	TAGKEYS(                        XK_5,                           11)
-	TAGKEYS(                        XK_6,                           12)
-	TAGKEYS(                        XK_7,                           13)
-	TAGKEYS(                        XK_8,                           14)
-	TAGKEYS(                        XK_9,                           15)
-	TAGKEYS(                        XK_0,                           16)
+	TAGKEYS(                        XK_5,                           8)
+	TAGKEYS(                        XK_6,                           9)
+	TAGKEYS(                        XK_7,                           10)
+	TAGKEYS(                        XK_8,                           11)
+	TAGKEYS(                        XK_9,                           12)
+	TAGKEYS(                        XK_0,                           13)
 
 // igorg: Weirdly, xev doesn't generate XK_KP_x events when pressed together with windows key
 // igorg: Thus, the below declarations don't work:
