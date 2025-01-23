@@ -160,7 +160,7 @@ static const char *tags[] = {
 	"", // z: files
 	"", // x: mail
 	"", // c: calendar
-	"5",
+	"", // video         󰕧        󰯜 
 	"6",
 	"7",
 	"8",
@@ -197,6 +197,9 @@ static const Rule rules[] = {
         { "Google-chrome"        , "outlook.office.com__calendar_view_workweek" , NULL,       1 << 7,       0,           0,                  -1 },
         { "Google-chrome"        , "our.intern.facebook.com__intern_calendar"   , NULL,       1 << 7,       0,           0,                  -1 },
         { "Google-chrome"        , "calendar.google.com__calendar"              , NULL,       1 << 7,       0,           0,                  -1 },
+	// VC - Google Meet
+        { "Google-chrome"        , "google-chrome"                              , "Meet - ",  1 << 8,       0,           0,                  -1 },
+
 	// 1: Todo
         // { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
         // { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
@@ -227,6 +230,7 @@ static const Rule rules[] = {
 	// Scratchpad: mixer
         { "pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
         { "Pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
+
 };
 
 typedef struct {
