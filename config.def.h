@@ -346,7 +346,7 @@ static Key keys[] = {
 // make the selected window "in spotlight", bumping it to order 0
 	// currently used by terminal
 	// { MODKEY,                       XK_Return,                      zoom,           {0} },
-	{ MODKEY,                       XK_v,                           zoom,           {0} },
+	{ MODKEY,                       XK_b,                           zoom,           {0} },
 
 // layout switching (tile, floating, monocle)
 // TODO: decide whether to convert XK_1 to monocle
@@ -388,11 +388,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_z,                           5)   // filez
 	TAGKEYS(                        XK_x,                           6)   // xmail
 	TAGKEYS(                        XK_c,                           7)   // calendar
+	TAGKEYS(                        XK_v,                           8)   // video calls
 	// TAGKEYS(                        XK_1,                           8)   // scratchpad: todo
 	// TAGKEYS(                        XK_2,                           8)
 	// TAGKEYS(                        XK_3,                           9)
 	// TAGKEYS(                        XK_4,                           10)
-	TAGKEYS(                        XK_5,                           8)
 	TAGKEYS(                        XK_6,                           9)
 	TAGKEYS(                        XK_7,                           10)
 	TAGKEYS(                        XK_8,                           11)
