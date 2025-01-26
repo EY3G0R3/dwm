@@ -172,9 +172,9 @@ static const Rule rules[] = {
 	// xprop(1):
 	//      WM_CLASS(STRING) = instance, class
 	//      WM_NAME(STRING) = title
+
         /* class                   instance                                       title       tags mask     isfloating   isfakefullscreen    monitor       float x,y,w,h         floatborderpx*/
-	// use left-hand-only shortcuts to switch between tags
-	// terminal
+
 	// q: code. Keep quip here as well in the meantime
         { "Google-chrome"        , "fb.quip.com__browse"                        , NULL,       1 << 0,       0,           0,                  -1 },
 	// w: web
@@ -201,11 +201,12 @@ static const Rule rules[] = {
         { "Google-chrome"        , "google-chrome"                              , "Meet - ",  1 << 8,       0,           0,                  -1 },
 
 	// 1: Todo
-        // { "Google-chrome"        , "www.wunderlist.com"                         , NULL,       1 << 7,       0,           0,                  -1 },
-        // { "Google-chrome"        , "to-do.office.com"                           , NULL,       1 << 7,       0,           0,                  -1 },
+        // { "Google-chrome"        , "www.wunderlist.com"                      , NULL,       1 << 7,       0,           0,                  -1 },
+        // { "Google-chrome"        , "to-do.office.com"                        , NULL,       1 << 7,       0,           0,                  -1 },
 	// 3: Games: Terraforming Mars
-        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 11,       0,           1,                  -1 },
-        { "CS.x86_64"            , "CS.x86_64"          /* Cultist Simulator */ , NULL,       1 << 11,       0,           0,                  -1 },
+        { "steam_app_800270"     , "terraformingmars.exe"                       , NULL,       1 << 11,      0,           1,                  -1 },
+	// 3: Games: Cultist Simulator
+        { "CS.x86_64"            , "CS.x86_64"                                  , NULL,       1 << 11,      0,           0,                  -1 },
 	// 9: steam
         { "Steam"                , NULL                                         , NULL,       1 << 12,      0,           0,                  -1 },
         { "steam"                , "steamwebhelper"                             , NULL,       1 << 12,      0,           0,                  -1 },
