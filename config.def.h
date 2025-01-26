@@ -230,6 +230,9 @@ static const Rule rules[] = {
 	// Scratchpad: mixer
         { "pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
         { "Pavucontrol"          , "pavucontrol"                                , NULL,       SPTAG(4),     1,           0,                  -1 ,         2000, 50, 1200, 1150,  0 },
+	// Scratchpad: chatgpt
+        { "Google-chrome"        , "chatgpt.com"                                , NULL,       SPTAG(5),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
+        { "Google-chrome"        , "www.chatgpt.com"                            , NULL,       SPTAG(5),     1,           0,                  -1 ,         200, 50, 2000, 1280,  0 },
 
 };
 
@@ -243,6 +246,7 @@ const char *spcmd_todo[] = {"Todo", NULL };
 const char *spcmd_vim[] = {"scratchpad_vim", NULL };
 const char *spcmd_top[] = {"scratchpad_top", NULL };
 const char *spcmd_mixer[] = {"pavucontrol", NULL };
+const char *spcmd_gpt[] = {"Gpt", NULL };
 
 static Sp scratchpads[] = {
 	/* name                   cmd  */
@@ -251,6 +255,7 @@ static Sp scratchpads[] = {
 	{"scratchpad_vim",      spcmd_vim},
 	{"scratchpad_top",      spcmd_top},
 	{"scratchpad_mixer",    spcmd_mixer},
+	{"scratchpad_gpt",      spcmd_gpt},
 };
 
 /* layout(s) */
@@ -309,6 +314,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_semicolon,                   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_Escape,                      togglescratch,  {.ui = 3 } },
 	{ MODKEY,                       XK_apostrophe,                  togglescratch,  {.ui = 4 } },
+	{ MODKEY,                       XK_t,                           togglescratch,  {.ui = 5 } },
 
 // igorg: disable increment/decrement number of clients in master/stack area.
 //	rationale:
