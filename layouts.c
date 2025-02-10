@@ -118,8 +118,13 @@ tcl_always(Monitor * m)
 	if (n == 0)
 		return;
 
-	// TODO: automatically move currently focused window into master area
-	//       essentially "centering" the view on it
+	// automatically move currently focused window into master area
+	// essentially "centering" the view on it
+	if (selmon->sel) {
+		Client *new_master = selmon->sel;
+		detach(new_master);
+		attach(new_master);
+	}
 
 	// position master window
 	c = nexttiled(m->clients);
