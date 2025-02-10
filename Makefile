@@ -11,7 +11,8 @@ all: dwm
 .c.o:
 	${CC} -c ${CFLAGS} $<
 
-${OBJ}: config.def.h config.mk
+# adding layouts.c here because it can't be compiled separately
+${OBJ}: config.def.h config.mk layouts.c
 
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
