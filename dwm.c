@@ -720,6 +720,9 @@ clientmessage(XEvent *e)
 		if (c != selmon->sel && !c->isurgent)
 			seturgent(c, 1);
 	}
+
+	// TODO: here we could intercept requests from rofi -show window
+	// and switch to the tag containing that window
 }
 
 void
