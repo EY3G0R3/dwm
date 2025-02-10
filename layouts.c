@@ -118,6 +118,9 @@ tcl_always(Monitor * m)
 	if (n == 0)
 		return;
 
+	// TODO: automatically move currently focused window into master area
+	//       essentially "centering" the view on it
+
 	// position master window
 	c = nexttiled(m->clients);
 
