@@ -32,6 +32,7 @@ static const Bool viewontag         = True;     /* Switch view on tag switch */
 // static const char *fonts[]          = { "IosevkaTermSlab Nerd Font Propo:size=14" };
 // static const char *fonts[]          = { "Terminess Nerd Font Propo:size=12" };
 // static const char *fonts[]          = { "FantasqueSansM Nerd Font Propo:size=14" };
+// static const char *fonts[]          = { "ShureTechMono Nerd Font Propo:size=14" };
 static const char *fonts[]          = { "RecMonoCasual Nerd Font Propo:size=14" };
 
 
