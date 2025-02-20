@@ -302,6 +302,7 @@ static Key keys[] = {
 	/* modifier                     key                             function        argument */
 	{ MODKEY|ShiftMask,             XK_BackSpace,                   quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_r,                           quit,           {1} },
+	{ MODKEY|ShiftMask,             XK_l,                           killclient,     {0} },
 
 	// igorg: dwm-xrdb patch: reload ~/.Xresources
 	{ MODKEY|ShiftMask,             XK_F5,                          xrdb,           {0} },
@@ -354,7 +355,6 @@ static Key keys[] = {
 	// currently used by terminal
 	// { MODKEY,                       XK_Return,                      zoom,           {0} },
 	{ MODKEY,                       XK_b,                           zoom,           {0} },
-
 // layout switching (tile, floating, monocle)
 // TODO: decide whether to convert XK_1 to monocle
 	{ MODKEY,                       XK_2,                           setlayout,      {.v = &layouts[LayoutTile]} },
